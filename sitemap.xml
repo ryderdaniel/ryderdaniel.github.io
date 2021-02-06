@@ -3,17 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://example.org/COMP4631/</loc>
+    <lastmod>2021-02-06T10:48:17+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/COMP4631/02.-Discrete-Math-Review/</loc>
+    <lastmod>2021-02-06T10:48:17+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://example.org/</loc>
     <lastmod>2021-02-05T00:43:14+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/COMP4631/</loc>
-    <lastmod>2021-02-04T16:22:55+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/COMP4631/Introduction-and-Physical-Security/</loc>
+    <loc>http://example.org/COMP4631/01.-Introduction-and-Physical-Security/</loc>
     <lastmod>2021-02-04T16:22:55+08:00</lastmod>
   </url>
   

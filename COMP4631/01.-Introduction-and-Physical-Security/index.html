@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.68.3" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The content of the first two lectures. Laying down definitions, and the giving some scope on what is to be covered">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Course Introduction and Physical Security" />
+<meta property="og:description" content="The content of the first two lectures. Laying down definitions, and the giving some scope on what is to be covered" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/COMP4631/01.-Introduction-and-Physical-Security/" />
+<meta property="article:published_time" content="2021-02-04T16:22:55+08:00" />
+<meta property="article:modified_time" content="2021-02-04T16:22:55+08:00" />
+<title>Course Introduction and Physical Security | Spring 2021</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
+<script defer src="/en.search.min.e5d9f5d9c8cbcbe910713986197fe300cd901f76d1a4a6d5defed574d955844a.js" integrity="sha256-5dn12cjLy&#43;kQcTmGGX/jAM2QH3bRpKbV3v7VdNlVhEo="></script>
+
+<script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>Spring 2021</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/COMP4631/" target="_blank" rel="noopener">
+        COMP4631
+      </a>
+  </li>
+  
+  <li>
+    <a href="/COMP4632/" target="_blank" rel="noopener">
+        COMP4632
+      </a>
+  </li>
+  
+  <li>
+    <a href="/COMP4901O/" target="_blank" rel="noopener">
+        COMP4901O
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ELEC1010/" target="_blank" rel="noopener">
+        ELEC1010
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ELEC1200/" target="_blank" rel="noopener">
+        ELEC1200
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+delimiters: [
+  {left: "$$", right: "$$", display: true},
+  {left: "$", right: "$", display: false},
+  {left: "\\(", right: "\\)", display: false},
+  {left: "\\[", right: "\\]", display: true}
+]
+        });
+    });
+</script>
+
+
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+  
+  <strong>Course Introduction and Physical Security</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+  
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#course-introduction-and-physical-security">Course Introduction and Physical Security</a>
+      <ul>
+        <li><a href="#topics-to-be-covered">Topics to be Covered</a></li>
+        <li><a href="#reference-books">Reference Books</a></li>
+      </ul>
+    </li>
+    <li><a href="#physical-security">Physical Security</a>
+      <ul>
+        <li><a href="#elements-of-physical-security">Elements of Physical Security</a></li>
+        <li><a href="#design-of-physical-security">Design of Physical Security</a></li>
+        <li><a href="#violating-physical-access-control">Violating Physical Access Control</a></li>
+        <li><a href="#summary">Summary</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="course-introduction-and-physical-security">Course Introduction and Physical Security</h1>
+<h2 id="topics-to-be-covered">Topics to be Covered</h2>
+<ol>
+<li>Computer Security: An Introduction</li>
+<li>Conventional Cryptosystems</li>
+<li>Public-Key Cryptosystems</li>
+<li>Key Management</li>
+<li>Hash Functions, Authentication</li>
+<li>Digital Signature, Identification</li>
+<li>Access Control</li>
+<li>Unix Security</li>
+<li>Windows NT Security</li>
+<li>Distributed System Security</li>
+<li>Network Security</li>
+<li>IP Security</li>
+<li>Email Security</li>
+<li>Web Security</li>
+<li>Firewalls</li>
+<li>Virtual Private Networks</li>
+</ol>
+<h2 id="reference-books">Reference Books</h2>
+<ul>
+<li>Behrouz A. Forouz, Cryptography and Network Security, McGraw Hill, 2008.</li>
+<li>D. Gollmann, Computer Security, John Wiley &amp; Sons, 1999.</li>
+<li>W. Stallings and L. Brown, Computer Security: Principles and Practice, Pearson Education, 2008.</li>
+</ul>
+<hr>
+<h1 id="physical-security">Physical Security</h1>
+<ul>
+<li>Physical security refers to the protection of building sites and equipment (and all information and software contained therein) from theft, vandalism, natural disaster, manmade catastrophes, and accidental damage (e.g., from electrical surges, extreme temperatures, and spilled coffee).</li>
+</ul>
+<h2 id="elements-of-physical-security">Elements of Physical Security</h2>
+<ul>
+<li>Obstacles, to frustrate trivial attacker and delay serious ones. <em>(Prevention)</em></li>
+<li>Alarms, security lighting, guard patrols, closed-circuit cameras to make it likely that an attack will be noticed. <em>(Detection)</em></li>
+<li>Security response, to repel, catch or frustrate attackers when an attack is detected. <em>(Response)</em></li>
+</ul>
+<p>In a well-designed system, these features must complement each other.</p>
+<h2 id="design-of-physical-security">Design of Physical Security</h2>
+<ul>
+<li>
+<p><strong>Environmental Design</strong> <em>(Prevention)</em></p>
+<ul>
+<li>The intial layer of security of a physical space.</li>
+<li>Used to deter threats</li>
+<li>Examples: warnings, fences, vehicle height restrictors, etc&hellip;</li>
+</ul>
+</li>
+<li>
+<p><strong>Mechanical and Electronic Access Control</strong> <em>(Prevention)</em></p>
+<ul>
+<li>Second layer of physical security</li>
+<li>Access control policy is what determines who grants access and how. Could be a guard controlled door, or a simple RFID card.</li>
+<li>Examples: Doors with locks, guard controlled doors or gates, etc&hellip;</li>
+</ul>
+</li>
+<li>
+<p>Intrusion detection <em>(Detection)</em></p>
+<ul>
+<li>Third layer of physical security</li>
+<li>Monitors for attacks</li>
+<li>Less of a preventative measure, and more of a responsive measure.</li>
+</ul>
+</li>
+</ul>
+<h2 id="violating-physical-access-control">Violating Physical Access Control</h2>
+<ul>
+<li><strong><em>Masquerading</em></strong>: A person A person disguised as an authorized user. This can be done using a forged ID or pretending to be a repair man.</li>
+<li><strong><em>Piggy-Backing</em></strong>: A person who enters the security perimeter by following an authorized user.</li>
+<li><strong><em>Lock Picking</em></strong>: Any lock can be picked. Or better, go through dropped ceilings or removing the hinges from door.</li>
+<li><strong><em>Visual/Auditory Access</em></strong>: Using side channels to get information which enable access.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Physical security helps:
+<ul>
+<li>Understand computer security</li>
+<li>Strengthen computer security</li>
+</ul>
+</li>
+</ul>
+<p>Physcial security is combined with information security in many real-world applications. Physical security is a vital part of any security plan and is fundamental to all security efforts. Without it, information security, software security, user access security and network security are considered more difficult, if not possible, to initiate.</p>
+<hr>
+<p>Source(s):</p>
+<ul>
+<li>
+  <a href="https://www.cse.ust.hk/faculty/cding/COMP364/SLIDES/set301.pdf">Course Notes (Lecture 1)</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#course-introduction-and-physical-security">Course Introduction and Physical Security</a>
+      <ul>
+        <li><a href="#topics-to-be-covered">Topics to be Covered</a></li>
+        <li><a href="#reference-books">Reference Books</a></li>
+      </ul>
+    </li>
+    <li><a href="#physical-security">Physical Security</a>
+      <ul>
+        <li><a href="#elements-of-physical-security">Elements of Physical Security</a></li>
+        <li><a href="#design-of-physical-security">Design of Physical Security</a></li>
+        <li><a href="#violating-physical-access-control">Violating Physical Access Control</a></li>
+        <li><a href="#summary">Summary</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

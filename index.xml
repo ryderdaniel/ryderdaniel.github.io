@@ -12,11 +12,20 @@
     
     
     <item>
+      <title>Discrete Math Review</title>
+      <link>http://example.org/COMP4631/02.-Discrete-Math-Review/</link>
+      <pubDate>Sat, 06 Feb 2021 10:48:17 +0800</pubDate>
+      
+      <guid>http://example.org/COMP4631/02.-Discrete-Math-Review/</guid>
+      <description>Discrete Mathematics Review Sets A set is a collection of distinct objects.  Members and Elements  The objects that make up a set are called members or elements of the set. An object is anything that is &amp;quot;meaningful&amp;quot;. For example: a number, equation, other sets, etc...  Equality of Sets  Two sets are equal if an only if they have the same members. That is, a set is completely determined by its members.</description>
+    </item>
+    
+    <item>
       <title>Course Introduction and Physical Security</title>
-      <link>http://example.org/COMP4631/Introduction-and-Physical-Security/</link>
+      <link>http://example.org/COMP4631/01.-Introduction-and-Physical-Security/</link>
       <pubDate>Thu, 04 Feb 2021 16:22:55 +0800</pubDate>
       
-      <guid>http://example.org/COMP4631/Introduction-and-Physical-Security/</guid>
+      <guid>http://example.org/COMP4631/01.-Introduction-and-Physical-Security/</guid>
       <description>Course Introduction and Physical Security Topics to be Covered  Computer Security: An Introduction Conventional Cryptosystems Public-Key Cryptosystems Key Management Hash Functions, Authentication Digital Signature, Identification Access Control Unix Security Windows NT Security Distributed System Security Network Security IP Security Email Security Web Security Firewalls Virtual Private Networks  Reference Books  Behrouz A. Forouz, Cryptography and Network Security, McGraw Hill, 2008. D. Gollmann, Computer Security, John Wiley &amp;amp; Sons, 1999.</description>
     </item>
     
