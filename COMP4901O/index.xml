@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>COMP4901O - Competitive Programming in Cybersecurity II on Spring 2021</title>
-    <link>http://example.org/COMP4901O/</link>
+    <link>http://ryderdaniel.github.io/COMP4901O/</link>
     <description>Recent content in COMP4901O - Competitive Programming in Cybersecurity II on Spring 2021</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="http://example.org/COMP4901O/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://ryderdaniel.github.io/COMP4901O/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
