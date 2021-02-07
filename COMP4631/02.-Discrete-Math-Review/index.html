@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.a924ffb9757afd25b95cfd1d2e670b397e1e27112f95e35b4cf52e4b8ed9ce0b.js" integrity="sha256-qST/uXV6/SW5XP0dLmcLOX4eJxEvleNbTPUuS47Zzgs="></script>
+<script defer src="/en.search.min.ec24e64b293e1d7ea7cb5f7d49a4faa07e93592a7e69d8856d3359196cc8a86c.js" integrity="sha256-7CTmSyk&#43;HX6ny199SaT6oH6TWSp&#43;adiFbTNZGWzIqGw="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -211,6 +211,16 @@ delimiters: [
           <ul>
             <li><a href="#universal-sets">Universal Sets</a></li>
             <li><a href="#venn-diagrams">Venn Diagrams</a></li>
+          </ul>
+        </li>
+        <li><a href="#set-operations">Set Operations</a>
+          <ul>
+            <li><a href="#venn-diagram-visualization">Venn Diagram Visualization</a></li>
+          </ul>
+        </li>
+        <li><a href="#set-identities">Set Identities</a>
+          <ul>
+            <li><a href="#questions-1">Questions</a></li>
           </ul>
         </li>
       </ul>
@@ -456,11 +466,11 @@ The members of $S$ are members of an already known set $T$ that satisfy property
 <li>$2x^3-x^2-2x+1=0$</li>
 <li>$2x(x^2-1)-(x^2-1)=0$</li>
 <li>$(2x-1)(x^2-1)=0$</li>
-<li>$\because x \in \Bbb Z, \space (2x-1)(x^2-1) = 0 \implies (x^2-1) = 0$
-$\therefore A = B$</li>
+<li>$\because x \in \Bbb Z, \space (2x-1)(x^2-1) = 0 \implies (x^2-1) = 0$</li>
 </ol>
 </li>
 </ul>
+<p>$\therefore A = B$
     </div>
   </label>
 </div>
@@ -487,6 +497,129 @@ $\therefore A = B$</li>
 </ul>
 <p>
   <img src="/static/COMP4631/venn.png" alt="venn" /></p>
+<h2 id="set-operations">Set Operations</h2>
+<p>Let $A, B$ be subsets of some universal set $\Bbb U$.<br>
+The following set operations create new sets from $A$ and $B$:</p>
+<ul>
+<li>Union
+<ul>
+<li>$A \cup B = \{x \in \Bbb U \space | \space x \in A \text{ or } x \in B\}$</li>
+<li>Example: $$\{1,2,3\} \cup \{2,3,4,5\} = \{1,2,3,4,5\}$$</li>
+</ul>
+</li>
+<li>Intersection
+<ul>
+<li>$A \cap B = \{x \in \Bbb U \space | \space x \in A \text{ and } x \in B\}$</li>
+<li>Example: $$\{1,2,3\} \cap \{2,3,4,5\} = \{2,3\}$$</li>
+</ul>
+</li>
+<li>Difference
+<ul>
+<li>$A - B = A \backslash B = \{x \in \Bbb U \space | \space x \in A \text{ and } x \not \in B\}$</li>
+<li>Example: $$\{1,2,3\} - \{2,3,4,5\} = \{1\}$$</li>
+</ul>
+</li>
+<li>Complement
+<ul>
+<li>$A^c = \Bbb U - A = \{x \in \Bbb U \space | \space x \not \in A\}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="venn-diagram-visualization">Venn Diagram Visualization</h3>
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    <h3 id="union">Union</h3>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Venn0111.svg/220px-Venn0111.svg.png" alt="union">
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <h3 id="intersection">Intersection</h3>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Venn0001.svg/220px-Venn0001.svg.png" alt="intersection">
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <h3 id="difference">Difference</h3>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Venn0100.svg/220px-Venn0100.svg.png" alt="difference">
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <h3 id="complement">Complement</h3>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Venn1010.svg/220px-Venn1010.svg.png" alt="complement">
+  </div>
+  
+</div>
+
+<h2 id="set-identities">Set Identities</h2>
+<ul>
+<li>Commutative Laws:
+<ul>
+<li>$A \cup B = B \cup A$</li>
+<li>$A \cap B = B \cap A$</li>
+</ul>
+</li>
+<li>Associative Laws:
+<ul>
+<li>$(A \cup B) \cup C = A \cup (B \cup C)$</li>
+<li>$(A \cap B) \cap C = A \cap (B \cap C)$</li>
+</ul>
+</li>
+<li>Distributive Laws:
+<ul>
+<li>$A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$</li>
+<li>$A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$</li>
+</ul>
+</li>
+<li>$\emptyset$ is the identity for union:
+<ul>
+<li>$\emptyset \cup A = A \cup \emptyset = A$</li>
+</ul>
+</li>
+<li>$\Bbb U$ is the identitiy for intersection:
+<ul>
+<li>$A \cap \Bbb U = \Bbb U \cap A = A$</li>
+</ul>
+</li>
+<li>Double Comlement Law:
+<ul>
+<li>$(A^c)^c = A$</li>
+</ul>
+</li>
+<li>Idempotent Laws:
+<ul>
+<li>$A \cup A = A$</li>
+<li>$A \cap A = A$</li>
+</ul>
+</li>
+<li>De Morgan&rsquo;s Laws:
+<ul>
+<li>$(A \cup B)^c = A^c \cap B^c$</li>
+<li>$(A \cap B)^c = A^c \cup B^c$</li>
+</ul>
+</li>
+</ul>
+<h3 id="questions-1">Questions</h3>
+<ol>
+<li>What is $(A \cap B) \cap (A \cup B)$?</li>
+<li>What is $(A \cup B) \cup (A \cap B)$?</li>
+</ol>
+
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Answers</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" class="hidden" />
+    <div class="book-expand-content markdown-inner">
+      <ol>
+<li>$A \cap B$</li>
+<li>$A \cup B$</li>
+</ol>
+    </div>
+  </label>
+</div>
+
 </article>
  
       
@@ -553,6 +686,16 @@ $\therefore A = B$</li>
           <ul>
             <li><a href="#universal-sets">Universal Sets</a></li>
             <li><a href="#venn-diagrams">Venn Diagrams</a></li>
+          </ul>
+        </li>
+        <li><a href="#set-operations">Set Operations</a>
+          <ul>
+            <li><a href="#venn-diagram-visualization">Venn Diagram Visualization</a></li>
+          </ul>
+        </li>
+        <li><a href="#set-identities">Set Identities</a>
+          <ul>
+            <li><a href="#questions-1">Questions</a></li>
           </ul>
         </li>
       </ul>
