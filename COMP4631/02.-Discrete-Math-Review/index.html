@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.e5d9f5d9c8cbcbe910713986197fe300cd901f76d1a4a6d5defed574d955844a.js" integrity="sha256-5dn12cjLy&#43;kQcTmGGX/jAM2QH3bRpKbV3v7VdNlVhEo="></script>
+<script defer src="/en.search.min.895307663f9194fa44d8fb49f5f7c80ec4eda0772e029c1fc8057020e7c41d7f.js" integrity="sha256-iVMHZj&#43;RlPpE2PtJ9ffIDsTtoHcuApwfyAVwIOfEHX8="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -192,21 +192,23 @@ delimiters: [
       
   <article class="markdown"><h1 id="discrete-mathematics-review">Discrete Mathematics Review</h1>
 
-<h2 id="sets">Sets</h2>
+<hr>
+
+<h1 id="sets">Sets</h1>
 
 <blockquote class="book-hint info">
   <strong>A set is a collection of distinct objects.</strong>
 </blockquote>
 
 
-<h3 id="members-and-elements">Members and Elements</h3>
+<h2 id="members-and-elements">Members and Elements</h2>
 
 <ul>
 <li>The objects that make up a set are called members or elements of the set.</li>
 <li>An object is anything that is &quot;meaningful&quot;. For example: a number, equation, other sets, etc...</li>
 </ul>
 
-<h3 id="equality-of-sets">Equality of Sets</h3>
+<h2 id="equality-of-sets">Equality of Sets</h2>
 
 <ul>
 <li>Two sets are equal if an only if they have the same members. That is, a set is completely determined by its members.</li>
@@ -219,10 +221,66 @@ delimiters: [
   <p><strong>A set can be described by listing comma seperated members within curly braces</strong></p>
 <p>Example:</p>
 <p>Let $S = \{1,3,9\}$</p>
-<p>$$x=3$$</p>
+<p>$S$ is a set, and $1,3,9$ are its members.</p>
 
 </blockquote>
 
+
+<p>It is important to note that order and repetition do not matter in sets. That is, $\{1,3,9\}$ is equivalent to $\{9,1,3\}$ and $\{1,1,1,1,9,9,9,9,3,9,3\}$. They all denote a set whose members are $1, 3, \text{and} \space 9$.</p>
+
+<h3 id="the-membership-symbol-in">The Membership Symbol $\in$</h3>
+
+<ul>
+<li>The fact that $x$ is a member of $S$ can be expressed as $x \in S$.</li>
+<li>The membership symbol $\in$ can be read as &quot;is in&quot;, &quot;is a member of&quot;, or &quot;belongs to&quot;.</li>
+<li>The negation of $\in$ is $\not\in$</li>
+</ul>
+
+<p>Example:</p>
+
+<p>Let $S = \{7,13,21,47\}$, then $7 \in S, 13 \in S, 21 \in S, 47 \in S, 56 \not\in S$.</p>
+
+<h3 id="defining-a-set-by-membership-properties">Defining a Set by Membership Properties</h3>
+
+<blockquote class="book-hint info">
+  $$S = \{x \in T \space| \space P(x)\}$$
+The members of $S$ are members of an already known set $T$ that satisfy property $P$.
+</blockquote>
+
+
+<p>Example:</p>
+
+<ul>
+<li>Let $\Bbb Z$ be the set of integers.</li>
+<li>Let $\Bbb Z_+$ be the set of positive integers.</li>
+<li>Then $\Bbb Z_+ = \{x \in \Bbb Z \space | \space x &gt; 0\}$</li>
+</ul>
+
+<h2 id="the-empty-set-and-sets-of-numbers">The Empty Set and Sets of Numbers</h2>
+
+<h3 id="the-empty-set">The Empty Set</h3>
+
+<ul>
+<li>The empty set is also called the null set.</li>
+<li>It is a set with no members.</li>
+<li>It is denoted as $\emptyset$. Thus $\{\} = \emptyset$</li>
+<li>For any object $x, x\not\in \emptyset$.</li>
+</ul>
+
+<h3 id="the-sets-of-positive-negative-and-all-integers">The Sets of Positive, Negative, and All Integers</h3>
+
+<ul>
+<li>$\Bbb Z$ is the set of all integers.
+
+<ul>
+<li>$\Bbb Z = \{..., -2, -1, 0, 1, 2, ...\}$</li>
+</ul></li>
+<li>$Bbb Z_+$ is the set of all positive integers.
+
+<ul>
+<li>$Bbb Z_+ = \{1,2,3,...\} = \{x\in \Bbb Z \space | \space x &gt; 0\}$</li>
+</ul></li>
+</ul>
 </article>
  
       
