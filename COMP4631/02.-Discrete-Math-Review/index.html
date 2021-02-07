@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.1a8f1294df3b1dfa806c1e637ee57f22727f6625a9b3fd5499619e25afe01673.js" integrity="sha256-Go8SlN87HfqAbB5jfuV/InJ/ZiWps/1UmWGeJa/gFnM="></script>
+<script defer src="/en.search.min.c638baceef44a8cad4f1e1e71a3fb74f8be9dd900d6197cdf9aec003c929fdfe.js" integrity="sha256-xji6zu9EqMrU8eHnGj&#43;3T4vp3ZANYZfN&#43;a7AA8kp/f4="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -202,11 +202,11 @@ delimiters: [
         <li><a href="#subsets-and-power-sets">Subsets and Power Sets</a>
           <ul>
             <li><a href="#subsets-subset-subseteq">Subsets ($\subset, \subseteq$)</a></li>
-            <li><a href="#negation-of-subseteq">Negation of $\subseteq$</a></li>
-            <li><a href="#obvious-subsets">Obvious Subsets</a></li>
-            <li><a href="#proper-subsets">Proper Subsets</a></li>
+            <li><a href="#power-sets">Power Sets</a></li>
+            <li><a href="#questions">Questions</a></li>
           </ul>
         </li>
+        <li><a href="#equality-of-sets-by-mutual-inclusion">Equality of Sets by Mutual Inclusion</a></li>
       </ul>
     </li>
   </ul>
@@ -310,7 +310,7 @@ The members of $S$ are members of an already known set $T$ that satisfy property
 <p>$$A \subseteq B \text{ iff } \space \forall x, x \in A \implies x \in B$$</p>
 <p>Example:</p>
 <p>$$\{-2,0,8\} \subseteq \{-3,-2,-1,0,2,4,6,8,10\}$$</p>
-<h3 id="negation-of-subseteq">Negation of $\subseteq$</h3>
+<h4 id="negation-of-subseteq">Negation of $\subseteq$</h4>
 <blockquote class="book-hint info">
   $A$ is not a subset of $B$, or $B$ is not a superset of $A$ if and only if there is a member of $A$ that is not a member of $B$
 </blockquote>
@@ -319,7 +319,7 @@ The members of $S$ are members of an already known set $T$ that satisfy property
 <p>$$A \not \subseteq \text{ iff } \space \exists x, x \in A \text{ and } x \not \in B$$</p>
 <p>Example:</p>
 <p>$$\{2,4\} \not \subseteq \{2,3\}$$</p>
-<h3 id="obvious-subsets">Obvious Subsets</h3>
+<h4 id="obvious-subsets">Obvious Subsets</h4>
 <ul>
 <li>$S \subseteq S$</li>
 <li>$\emptyset \subseteq S$
@@ -329,7 +329,132 @@ The members of $S$ are members of an already known set $T$ that satisfy property
 </ul>
 </li>
 </ul>
-<h3 id="proper-subsets">Proper Subsets</h3>
+<h4 id="proper-subsets-subset">Proper Subsets $\subset$</h4>
+<blockquote class="book-hint info">
+  $A$ is a proper subset of $B$, or $B$ is a proper superset of $A$ if and only if $A$ is a subset of $B$ and $A$ is not equal to $B$.
+</blockquote>
+
+<p>Notation:</p>
+<p>$$A \subset B \text{ iff } A \subseteq B \text{ and } A \not = B$$</p>
+<p>Examples:</p>
+<p>$$S \not = \emptyset \implies \emptyset \subset S$$</p>
+<p>$$\Bbb Z_+ \subset \Bbb Z \subset \Bbb Q \subset \Bbb R$$</p>
+<h3 id="power-sets">Power Sets</h3>
+<blockquote class="book-hint info">
+  <p>The set of all subsets of a set is called the power set of the set.</p>
+<p>The power set of $S$ is $P(S)$</p>
+
+</blockquote>
+
+<p>Examples:</p>
+<ul>
+<li>$P(\emptyset) = \{\emptyset\}$</li>
+<li>$P(\{1,2\}) = \{\emptyset, \{1\}, \{2\}, \{1,2\}\}$</li>
+<li>$P(S) = \{\emptyset, &hellip;, S\}$</li>
+</ul>
+<blockquote class="book-hint danger">
+  <p><strong>$\in$ and $\subseteq$ are different!</strong></p>
+<p>Examples:</p>
+<ul>
+<li>$1 \in \{1\}$ is true.</li>
+<li>$1 \subseteq \{1\}$ is false.</li>
+<li>$\{1\} \subseteq \{1\}$ is true.</li>
+</ul>
+
+</blockquote>
+
+<h3 id="questions">Questions</h3>
+<ol>
+<li>Which of the following statements is true?
+<ul>
+<li>$S \subseteq P(S)$</li>
+<li>$S \in P(S)$</li>
+</ul>
+</li>
+<li>What is $P(\{1,2,3\})$?</li>
+</ol>
+
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Answers</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" class="hidden" />
+    <div class="book-expand-content markdown-inner">
+      <ol>
+<li>$S \in P(S)$</li>
+<li>$P(\{1,2,3\}) = \{\emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\}\}$</li>
+</ol>
+    </div>
+  </label>
+</div>
+
+<h2 id="equality-of-sets-by-mutual-inclusion">Equality of Sets by Mutual Inclusion</h2>
+<blockquote class="book-hint info">
+  <p>Sets $A$ and $B$ have the same members if and only if they mutually include. Meaning, $A \subseteq B \text{ and } B \subseteq A$.</p>
+<p>That is, $A = B \text{ iff } A \subseteq B \text{ and } B \subseteq A$</p>
+
+</blockquote>
+
+<p>Mutual inclusion is very useful for proving the equality of two sets. To prove and equality, we prove two subset relationships.</p>
+<p><strong>Example Showing the Equality of Sets:</strong></p>
+<ul>
+<li>Recall that $\Bbb Z$ is the set of all integers.</li>
+<li>Let $A = \{x \in \Bbb Z \space | \space x = 2m \space \text{for some } m \in \Bbb Z \}$</li>
+<li>Let $B = \{y \in \Bbb Z \space | \space y = 2n-2 \space \text{for some } n \in \Bbb Z\}$</li>
+<li>To show that $A \subseteq B$, note that
+<ul>
+<li>$2m = 2(m+1)-2 = 2n-2$</li>
+</ul>
+</li>
+<li>To show that $B \subseteq A$, note that
+<ul>
+<li>$2n-2 = 2(n-1) = 2m$</li>
+</ul>
+</li>
+<li>That is, $A=B$</li>
+<li>Both $A$ and $B$ denote the set of even integers.</li>
+</ul>
+<p><strong>Exercise:</strong></p>
+<ul>
+<li>Let
+<ul>
+<li>$A = \{x \in \Bbb Z \space | \space x^2 -1 = 0\}$</li>
+<li>$B = \{x \in \Bbb Z \space | \space 2x^3 - x^2 -2x +1 = 0\}$</li>
+</ul>
+</li>
+</ul>
+<p>Show that $A = B$ by the method of mutual inclusion.</p>
+
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Potential Answer</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" class="hidden" />
+    <div class="book-expand-content markdown-inner">
+      <ul>
+<li>To show that $A \subseteq B$:
+<ol>
+<li>$x^2 -1 = 0 \implies x = \pm 1$</li>
+<li>$\because x = \pm 1, \space x^3 = x$</li>
+<li>$\forall n \in \Bbb R, \space n - n = 0$</li>
+<li>$\text{From (2) and (3), } \space x^2-1=0 \implies -(x^2-1) + (2x^3-2x) = 0$</li>
+<li>$\therefore x^2-1 = 0 \implies 2x^3-x^2-2x+1=0$</li>
+</ol>
+</li>
+<li>To show that $B \subseteq A$:
+<ol>
+<li>$2x^3-x^2-2x+1=0$</li>
+</ol>
+</li>
+</ul>
+    </div>
+  </label>
+</div>
+
 </article>
  
       
@@ -387,11 +512,11 @@ The members of $S$ are members of an already known set $T$ that satisfy property
         <li><a href="#subsets-and-power-sets">Subsets and Power Sets</a>
           <ul>
             <li><a href="#subsets-subset-subseteq">Subsets ($\subset, \subseteq$)</a></li>
-            <li><a href="#negation-of-subseteq">Negation of $\subseteq$</a></li>
-            <li><a href="#obvious-subsets">Obvious Subsets</a></li>
-            <li><a href="#proper-subsets">Proper Subsets</a></li>
+            <li><a href="#power-sets">Power Sets</a></li>
+            <li><a href="#questions">Questions</a></li>
           </ul>
         </li>
+        <li><a href="#equality-of-sets-by-mutual-inclusion">Equality of Sets by Mutual Inclusion</a></li>
       </ul>
     </li>
   </ul>
