@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.61c13c351c38e47bc7223d35d61783b0060c728e24b1e07e7a4d5363e99415a1.js" integrity="sha256-YcE8NRw45HvHIj011heDsAYMco4kseB&#43;ek1TY&#43;mUFaE="></script>
+<script defer src="/en.search.min.165bb0b3ddb7cf6a847e1ce28c39c0beadc3a38930eebed09abbf5c53f5ff7be.js" integrity="sha256-Fluws923z2qEfhzijDnAvq3Do4kw7r7Qmrv1xT9f974="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -635,7 +635,52 @@ The following set operations create new sets from $A$ and $B$:</p>
     </div>
     <input type="checkbox" class="hidden" />
     <div class="book-expand-content markdown-inner">
-      
+      <p><strong>Prove $A \cup B = B \cup A$</strong></p>
+<div class="book-columns flex flex-wrap">
+  <div class="flex-even markdown-inner">
+    <ul>
+<li>$\text{Let } x \in A \cup B$.</li>
+<li>$\text{Then } x \in A \text{ or } x \in B$</li>
+<li>$x \in A \text{ or } x \in B \implies x \in B \text{ or } x \in A$</li>
+<li>$\text{Hence } x \in B \cup A \text{. Thus } A \cup B \subseteq B \cup A$</li>
+</ul>
+  </div>
+  <div class="flex-even markdown-inner">
+    <ul>
+<li>$\text{Let } x \in B \cup A$.</li>
+<li>$\text{Then } x \in B \text{ or } x \in A$</li>
+<li>$x \in B \text{ or } x \in A \implies x \in A \text{ or } x \in B$</li>
+<li>$\text{Hence } x \in A \cup B \text{. Thus } B \cup A \subseteq A \cup B$</li>
+</ul>
+  </div>
+</div>
+<ul>
+<li>$\therefore \text{ by mutual exclusion, } A \cup B = B \cup A$</li>
+</ul>
+<hr>
+<p><strong>Prove $A \cap B = B \cap A$</strong></p>
+<div class="book-columns flex flex-wrap">
+  <div class="flex-even markdown-inner">
+    <ul>
+<li>$\text{Let } x \in A \cap B$.</li>
+<li>$\text{Then } x \in A \text{ and } x \in B$</li>
+<li>$x \in A \text{ and } x \in B \implies x \in B \text{ and } x \in A$</li>
+<li>$\text{Hence } x \in B \cap A \text{. Thus } A \cap B \subseteq B \cap A$</li>
+</ul>
+  </div>
+  <div class="flex-even markdown-inner">
+    <ul>
+<li>$\text{Let } x \in B \cap A$.</li>
+<li>$\text{Then } x \in B \text{ and } x \in A$</li>
+<li>$x \in B \text{ and } x \in A \implies x \in A \text{ and } x \in B$</li>
+<li>$\text{Hence } x \in A \cap B \text{. Thus } B \cap A \subseteq A \cap B$</li>
+</ul>
+  </div>
+</div>
+<ul>
+<li>$\therefore \text{ by mutual exclusion, } A \cap B = B \cap A$</li>
+</ul>
+
     </div>
   </label>
 </div>
@@ -644,7 +689,7 @@ The following set operations create new sets from $A$ and $B$:</p>
 <div class="book-expand">
   <label>
     <div class="book-expand-head flex justify-between">
-      <span>Commutative Laws</span>
+      <span>Associative Laws</span>
       <span>↕</span>
     </div>
     <input type="checkbox" class="hidden" />
@@ -658,7 +703,33 @@ The following set operations create new sets from $A$ and $B$:</p>
 <div class="book-expand">
   <label>
     <div class="book-expand-head flex justify-between">
-      <span>Commutative Laws</span>
+      <span>Distributive Laws</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" class="hidden" />
+    <div class="book-expand-content markdown-inner">
+      <p><strong>Prove $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$</strong></p>
+<hr>
+<p><strong>Prove $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$</strong></p>
+<ul>
+<li>$\text{Let } x \in A \cap (B \cup C)$</li>
+<li>$\text{Then } x \in A \text{ and } x \in B \cup C$</li>
+<li>$\text{Thus } x \in A \text{ and } x \in B or x \in C$</li>
+<li>$\text{Which implies } x \in A and x \in B or x \in A and x \in C$</li>
+<li>$\text{Hence } x \in (A \cap B) \cup (A \cap C) \implies A \cap (B \cup C) \subseteq (A \cap B) \cup (A \cap C)$</li>
+<li>$\text{Similarly, we can show that } (A \cap B) \cup (A \cap C) \subseteq A \cap (B \cup C)$</li>
+<li>$\therefore A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$</li>
+</ul>
+
+    </div>
+  </label>
+</div>
+
+
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>$\emptyset$ is the identity for union</span>
       <span>↕</span>
     </div>
     <input type="checkbox" class="hidden" />
@@ -672,7 +743,7 @@ The following set operations create new sets from $A$ and $B$:</p>
 <div class="book-expand">
   <label>
     <div class="book-expand-head flex justify-between">
-      <span>Commutative Laws</span>
+      <span>$\Bbb U$ is the identitiy for intersection</span>
       <span>↕</span>
     </div>
     <input type="checkbox" class="hidden" />
@@ -686,7 +757,7 @@ The following set operations create new sets from $A$ and $B$:</p>
 <div class="book-expand">
   <label>
     <div class="book-expand-head flex justify-between">
-      <span>Commutative Laws</span>
+      <span>Double Comlement Law</span>
       <span>↕</span>
     </div>
     <input type="checkbox" class="hidden" />
@@ -700,7 +771,7 @@ The following set operations create new sets from $A$ and $B$:</p>
 <div class="book-expand">
   <label>
     <div class="book-expand-head flex justify-between">
-      <span>Commutative Laws</span>
+      <span>Idempotent Laws</span>
       <span>↕</span>
     </div>
     <input type="checkbox" class="hidden" />
@@ -714,21 +785,7 @@ The following set operations create new sets from $A$ and $B$:</p>
 <div class="book-expand">
   <label>
     <div class="book-expand-head flex justify-between">
-      <span>Commutative Laws</span>
-      <span>↕</span>
-    </div>
-    <input type="checkbox" class="hidden" />
-    <div class="book-expand-content markdown-inner">
-      
-    </div>
-  </label>
-</div>
-
-
-<div class="book-expand">
-  <label>
-    <div class="book-expand-head flex justify-between">
-      <span>Commutative Laws</span>
+      <span>De Morgan&#39;s Laws</span>
       <span>↕</span>
     </div>
     <input type="checkbox" class="hidden" />
