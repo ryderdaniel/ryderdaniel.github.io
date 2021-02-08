@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.bfd7da7f6584d435e0d8f4ffc84d9c51fe7bb3c6e186d73fb4fcc0d576783521.js" integrity="sha256-v9faf2WE1DXg2PT/yE2cUf57s8bhhtc/tPzA1XZ4NSE="></script>
+<script defer src="/en.search.min.e9bec16760b779cb28822a5ff30ee2095e31b7ff3eb47cd8144dec2c321625d5.js" integrity="sha256-6b7BZ2C3ecsogipf8w7iCV4xt/8&#43;tHzYFE3sLDIWJdU="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -260,7 +260,15 @@ delimiters: [
         </li>
         <li><a href="#equality-of-functions">Equality of Functions</a>
           <ul>
-            <li><a href="#proof-that-set-f---set-g-implies--domain-f---domain-g">Proof that Set $f = $ Set $g \implies $ Domain $f = $ Domain $g$</a></li>
+            <li><a href="#proof-that-set-f---set-g-implies--domain-f---domain-g">Proof That Set $f = $ Set $g \implies $ Domain $f = $ Domain $g$</a></li>
+            <li><a href="#proof-that-set-f---set-g-implies-fx--gx-for-all-x-in-a">Proof That Set $f = $ Set $g \implies f(x) = g(x)$ for all $x \in A$</a></li>
+          </ul>
+        </li>
+        <li><a href="#some-special-functions">Some Special Functions</a>
+          <ul>
+            <li><a href="#identity-functions">Identity Functions</a></li>
+            <li><a href="#constant-functions">Constant Functions</a></li>
+            <li><a href="#characteristic-functions">Characteristic Functions</a></li>
           </ul>
         </li>
       </ul>
@@ -344,7 +352,7 @@ The members of $S$ are members of an already known set $T$ that satisfy property
 <li>$\Bbb Z_+ = \{1,2,3,&hellip;\} = \{x\in \Bbb Z \space | \space x &gt; 0\}$</li>
 </ul>
 </li>
-<li>$\Bbb Z_-$ is the set of all positive integers.
+<li>$\Bbb Z_-$ is the set of all negative integers.
 <ul>
 <li>$\Bbb Z_- = \{\space&hellip;,-3,-2,-1\} = \{x\in \Bbb Z \space | \space x &lt; 0\}$</li>
 </ul>
@@ -1001,7 +1009,48 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
 </ul>
 </blockquote>
 
-<h3 id="proof-that-set-f---set-g-implies--domain-f---domain-g">Proof that Set $f = $ Set $g \implies $ Domain $f = $ Domain $g$</h3>
+<h3 id="proof-that-set-f---set-g-implies--domain-f---domain-g">Proof That Set $f = $ Set $g \implies $ Domain $f = $ Domain $g$</h3>
+<ul>
+<li>$\text{Let } f:A \to B \text{ and } g:C \to D \text{ and set } f = \text{ set }g$</li>
+<li>$\text{Let } x \in A$
+<ul>
+<li>$(x, f(x)) \in f$</li>
+<li>$\text{But } f = g \text{as sets.}$</li>
+<li>$(x,f(x)) \in g$</li>
+<li>$\text{That is, } x \in C$</li>
+<li>$\text{Consequently, } A \subseteq C$</li>
+</ul>
+</li>
+<li>$\text{Similarly, we have } C \subseteq A$</li>
+<li>$\text{That is, } A = C$</li>
+</ul>
+<h3 id="proof-that-set-f---set-g-implies-fx--gx-for-all-x-in-a">Proof That Set $f = $ Set $g \implies f(x) = g(x)$ for all $x \in A$</h3>
+<ul>
+<li>$\text{Let } f,g: A \to B \text{ and set } f = \text{ set }g$</li>
+<li>$\text{Let } x \in A$
+<ul>
+<li>$(x,f(x)) \in f$</li>
+<li>$\text{But } f=g \text{ as sets.}$</li>
+<li>$(x,f(x)) \in g$</li>
+<li>$\text{That is, } (x,f(x)), (x,g(x)) \in g$</li>
+<li>$\text{Since $g$ is a function, so } f(x) = g(x)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="some-special-functions">Some Special Functions</h2>
+<h3 id="identity-functions">Identity Functions</h3>
+<ul>
+<li>Consider the identity relation $I_A$ on the set $A$.</li>
+<li>For every $x \in A, \  I_A$ relates $x$ to a unique element of $A$ that is itself.</li>
+<li>Consequently we have $I_A: A \to A$</li>
+<li>$I_A$ is also called the identity function on $A$</li>
+</ul>
+<h3 id="constant-functions">Constant Functions</h3>
+<ul>
+<li>$\text{Let } f: A \to B$</li>
+<li>$\text{If } f(A) = \{y\} \text{ for some } y \in B \text{, $f$ is called a constant function of value }y$</li>
+</ul>
+<h3 id="characteristic-functions">Characteristic Functions</h3>
 </article>
  
       
@@ -1117,7 +1166,15 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
         </li>
         <li><a href="#equality-of-functions">Equality of Functions</a>
           <ul>
-            <li><a href="#proof-that-set-f---set-g-implies--domain-f---domain-g">Proof that Set $f = $ Set $g \implies $ Domain $f = $ Domain $g$</a></li>
+            <li><a href="#proof-that-set-f---set-g-implies--domain-f---domain-g">Proof That Set $f = $ Set $g \implies $ Domain $f = $ Domain $g$</a></li>
+            <li><a href="#proof-that-set-f---set-g-implies-fx--gx-for-all-x-in-a">Proof That Set $f = $ Set $g \implies f(x) = g(x)$ for all $x \in A$</a></li>
+          </ul>
+        </li>
+        <li><a href="#some-special-functions">Some Special Functions</a>
+          <ul>
+            <li><a href="#identity-functions">Identity Functions</a></li>
+            <li><a href="#constant-functions">Constant Functions</a></li>
+            <li><a href="#characteristic-functions">Characteristic Functions</a></li>
           </ul>
         </li>
       </ul>
