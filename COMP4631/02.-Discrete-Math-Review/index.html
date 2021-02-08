@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.900fbc5c81362adb56bc56173b6a9d61cae3fdfd398c86e20c6f064933e88e6b.js" integrity="sha256-kA&#43;8XIE2KttWvFYXO2qdYcrj/f05jIbiDG8GSTPojms="></script>
+<script defer src="/en.search.min.bfd7da7f6584d435e0d8f4ffc84d9c51fe7bb3c6e186d73fb4fcc0d576783521.js" integrity="sha256-v9faf2WE1DXg2PT/yE2cUf57s8bhhtc/tPzA1XZ4NSE="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -244,6 +244,23 @@ delimiters: [
             <li><a href="#values-images">Values, Images</a></li>
             <li><a href="#inverse-images-pre-images">Inverse Images, Pre-Images</a></li>
             <li><a href="#images-and-pre-images-of-subsets">Images and Pre-Images of Subsets</a></li>
+            <li><a href="#questions-2">Questions</a></li>
+          </ul>
+        </li>
+        <li><a href="#codomains-domains-ranges">Codomains, Domains, Ranges</a>
+          <ul>
+            <li><a href="#domains">Domains</a></li>
+            <li><a href="#codomains-and-ranges">Codomains and Ranges</a></li>
+          </ul>
+        </li>
+        <li><a href="#sets-of-images-and-pre-images">Sets of Images and Pre-Images</a>
+          <ul>
+            <li><a href="#images-and-pre-images-of-subsets-1">Images and Pre-Images of Subsets</a></li>
+          </ul>
+        </li>
+        <li><a href="#equality-of-functions">Equality of Functions</a>
+          <ul>
+            <li><a href="#proof-that-set-f---set-g-implies--domain-f---domain-g">Proof that Set $f = $ Set $g \implies $ Domain $f = $ Domain $g$</a></li>
           </ul>
         </li>
       </ul>
@@ -274,7 +291,7 @@ delimiters: [
 </ul>
 <h2 id="equality-of-sets">Equality of Sets</h2>
 <ul>
-<li>Two sets are equal if an only if they have the same members. That is, a set is completely determined by its members.</li>
+<li>Two sets are equal if and only if they have the same members. That is, a set is completely determined by its members.</li>
 <li>This is the principle of extension.</li>
 </ul>
 <h2 id="set-notation">Set Notation</h2>
@@ -896,6 +913,95 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
 <li>$f(A) \subseteq$ B</li>
 <li>$f^{-1}(B) = A$ because every element of $A$ has an image in $B$.</li>
 </ul>
+<h3 id="questions-2">Questions</h3>
+<ul>
+<li>Let $f: A \to B \text{ and } X \subseteq A \text{ and } Y \subseteq B$</li>
+</ul>
+<ol>
+<li>If there are $n$ elements in $X$, how many elements are there in $f(X)$?</li>
+<li>If there are $n$ elements in $Y$, how many elements are there in $f^{-1}(Y)$?</li>
+</ol>
+
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Answers</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" class="hidden" />
+    <div class="book-expand-content markdown-inner">
+      <ol>
+<li>The number of elements in $f(X)$ could be any integer between $1$ and $n$.</li>
+<li>The number of elements in $f^{-1}(Y)$ cannot be determined.</li>
+</ol>
+    </div>
+  </label>
+</div>
+
+<h2 id="codomains-domains-ranges">Codomains, Domains, Ranges</h2>
+<h3 id="domains">Domains</h3>
+<blockquote class="book-hint info">
+  <ul>
+<li>Let $f: A \to B$</li>
+</ul>
+<p>The domain of function $f$ is the set $A$.
+</blockquote>
+
+<h3 id="codomains-and-ranges">Codomains and Ranges</h3>
+<blockquote class="book-hint info">
+  <ul>
+<li>Let $f: A \to B$</li>
+</ul>
+<p>The codomain of function $f$ is the set $B$.</p>
+<p>The range of function $f$ is the set of images of $f$. Clearly, the range of $f$ is $f(A)$.</p>
+
+</blockquote>
+
+<p>Example:</p>
+<ul>
+<li>Consider $\exp: \Bbb R \to \Bbb R$. That is, $\exp(x) = e^x$.</li>
+<li>The domain and codomain are both $\Bbb R$, but the range of $\exp$ is $\Bbb R_+$, the set of positive reals.</li>
+</ul>
+<h2 id="sets-of-images-and-pre-images">Sets of Images and Pre-Images</h2>
+<h3 id="images-and-pre-images-of-subsets-1">Images and Pre-Images of Subsets</h3>
+<ul>
+<li>Let $f:A \to B$.</li>
+<li>Let $X, X^\prime \subseteq A \text{ and } Y, Y^\prime \subseteq B$.</li>
+<li>We shall call $f(X)$ the image of $X$ instead of the set of images of members $X$. Similarly, we shall simply call $f^{-1}(Y)$ the pre-image of $Y$.</li>
+<li>We have:
+<ul>
+<li>$f(f^{-1}(Y)) \subseteq Y \text{ and } X \subseteq f^{-1}(f(X))$
+<ul>
+<li>It is possible to have strict inclusion when the range of $f$ is a proper subset of its codomain, we may take $Y = B$ to obtain $f(f^{-1}(B)) = f(A) \subset B$</li>
+</ul>
+</li>
+<li>$f(X \cup X^\prime) = f(X) \cup f(X^\prime), \  f(X \cap X^\prime) \subseteq f(X) \cap f(X^\prime)$
+<ul>
+<li>$\because X \cup X^\prime \supseteq X, f(X \cup X^\prime) \supseteq f(X)$</li>
+<li>$\text{Likewise we have } f(X \cup X^\prime) \supseteq f(X^\prime)$</li>
+<li>$\therefore f(X \cup X^\prime) \supseteq f(X) \cup f(X^\prime)$</li>
+<li>$\text{To show that } f(X \cup X^\prime) \subseteq f(X) \cup f(X^\prime), \text{ let } y \in f(X \cup X^\prime)$</li>
+<li>$\exists x \in X \cup X^\prime \text{ such that } f(x) = y$</li>
+<li>$x \in X \implies y \in f(X); \text{ otherwise, } y \in f(X^\prime)$</li>
+<li>$\therefore y \in f(X) \cup f(X^\prime)$</li>
+<li>That is, $f(X \cup X^\prime) \subseteq f(X) \cup f(X^\prime)$</li>
+</ul>
+</li>
+<li>$f^{-1}(Y \cup Y^\prime) = f^{-1}(Y) \cup f^{-1}(Y^\prime)$</li>
+<li>$f^{-1}(Y \cap Y^\prime) = f^{-1}(Y) \cap f^{-1}(Y^\prime)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="equality-of-functions">Equality of Functions</h2>
+<blockquote class="book-hint info">
+  <ul>
+<li>Let $f:A \to B \text{ and } g: C \to D$</li>
+<li>We define function $f = $ function $g$ if and only if set $f = $ set $g$</li>
+<li>Note that this forces $A = C$ but allows $B \not = D$. Some still require $B = D$.</li>
+</ul>
+</blockquote>
+
+<h3 id="proof-that-set-f---set-g-implies--domain-f---domain-g">Proof that Set $f = $ Set $g \implies $ Domain $f = $ Domain $g$</h3>
 </article>
  
       
@@ -995,6 +1101,23 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
             <li><a href="#values-images">Values, Images</a></li>
             <li><a href="#inverse-images-pre-images">Inverse Images, Pre-Images</a></li>
             <li><a href="#images-and-pre-images-of-subsets">Images and Pre-Images of Subsets</a></li>
+            <li><a href="#questions-2">Questions</a></li>
+          </ul>
+        </li>
+        <li><a href="#codomains-domains-ranges">Codomains, Domains, Ranges</a>
+          <ul>
+            <li><a href="#domains">Domains</a></li>
+            <li><a href="#codomains-and-ranges">Codomains and Ranges</a></li>
+          </ul>
+        </li>
+        <li><a href="#sets-of-images-and-pre-images">Sets of Images and Pre-Images</a>
+          <ul>
+            <li><a href="#images-and-pre-images-of-subsets-1">Images and Pre-Images of Subsets</a></li>
+          </ul>
+        </li>
+        <li><a href="#equality-of-functions">Equality of Functions</a>
+          <ul>
+            <li><a href="#proof-that-set-f---set-g-implies--domain-f---domain-g">Proof that Set $f = $ Set $g \implies $ Domain $f = $ Domain $g$</a></li>
           </ul>
         </li>
       </ul>
