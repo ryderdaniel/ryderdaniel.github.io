@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.b561315d5d4e5762fca4dd3970cef2caf433a6e603f8e4cd0d581572608766f3.js" integrity="sha256-tWExXV1OV2L8pN05cM7yyvQzpuYD&#43;OTNDVgVcmCHZvM="></script>
+<script defer src="/en.search.min.900fbc5c81362adb56bc56173b6a9d61cae3fdfd398c86e20c6f064933e88e6b.js" integrity="sha256-kA&#43;8XIE2KttWvFYXO2qdYcrj/f05jIbiDG8GSTPojms="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -226,7 +226,28 @@ delimiters: [
         <li><a href="#proofs-of-set-identities">Proofs of Set Identities</a></li>
       </ul>
     </li>
-    <li><a href="#functions">Functions</a></li>
+    <li><a href="#functions">Functions</a>
+      <ul>
+        <li><a href="#from-high-school-functions-to-general-functions">From High School Functions to General Functions</a>
+          <ul>
+            <li><a href="#high-school-functions">High School Functions</a></li>
+            <li><a href="#general-functions">General Functions</a></li>
+          </ul>
+        </li>
+        <li><a href="#function-notation">Function Notation</a>
+          <ul>
+            <li><a href="#notational-convention">Notational Convention</a></li>
+          </ul>
+        </li>
+        <li><a href="#values-images-inverse-images-pre-images">Values, Images, Inverse Images, Pre-Images</a>
+          <ul>
+            <li><a href="#values-images">Values, Images</a></li>
+            <li><a href="#inverse-images-pre-images">Inverse Images, Pre-Images</a></li>
+            <li><a href="#images-and-pre-images-of-subsets">Images and Pre-Images of Subsets</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -585,7 +606,7 @@ The following set operations create new sets from $A$ and $B$:</p>
 <li>$A \cap \Bbb U = \Bbb U \cap A = A$</li>
 </ul>
 </li>
-<li>Double Comlement Law:
+<li>Double Complement Law:
 <ul>
 <li>$(A^c)^c = A$</li>
 </ul>
@@ -636,47 +657,41 @@ The following set operations create new sets from $A$ and $B$:</p>
     <input type="checkbox" class="hidden" />
     <div class="book-expand-content markdown-inner">
       <p><strong>Prove $A \cup B = B \cup A$</strong></p>
-<div class="book-columns flex flex-wrap">
-  <div class="flex-even markdown-inner">
-    <ul>
+<div class="book-tabs"><input type="radio" class="toggle" name="tabs-commutative1" id="tabs-commutative1-0" checked="checked" />
+  <label for="tabs-commutative1-0">To show $A \cup B \subseteq B \cup A$</label>
+  <div class="book-tabs-content markdown-inner"><ul>
 <li>$\text{Let } x \in A \cup B$.</li>
 <li>$\text{Then } x \in A \text{ or } x \in B$</li>
 <li>$x \in A \text{ or } x \in B \implies x \in B \text{ or } x \in A$</li>
 <li>$\text{Hence } x \in B \cup A \text{. Thus } A \cup B \subseteq B \cup A$</li>
-</ul>
-  </div>
-  <div class="flex-even markdown-inner">
-    <ul>
+</ul></div><input type="radio" class="toggle" name="tabs-commutative1" id="tabs-commutative1-1"  />
+  <label for="tabs-commutative1-1">To show $B \cup A \subseteq A \cup B$</label>
+  <div class="book-tabs-content markdown-inner"><ul>
 <li>$\text{Let } x \in B \cup A$.</li>
 <li>$\text{Then } x \in B \text{ or } x \in A$</li>
 <li>$x \in B \text{ or } x \in A \implies x \in A \text{ or } x \in B$</li>
 <li>$\text{Hence } x \in A \cup B \text{. Thus } B \cup A \subseteq A \cup B$</li>
-</ul>
-  </div>
-</div>
+</ul></div></div>
 <ul>
 <li>$\therefore \text{ by mutual exclusion, } A \cup B = B \cup A$</li>
 </ul>
 <hr>
 <p><strong>Prove $A \cap B = B \cap A$</strong></p>
-<div class="book-columns flex flex-wrap">
-  <div class="flex-even markdown-inner">
-    <ul>
+<div class="book-tabs"><input type="radio" class="toggle" name="tabs-commutative2" id="tabs-commutative2-0" checked="checked" />
+  <label for="tabs-commutative2-0">To show $A \cap B \subseteq B \cap A$</label>
+  <div class="book-tabs-content markdown-inner"><ul>
 <li>$\text{Let } x \in A \cap B$.</li>
 <li>$\text{Then } x \in A \text{ and } x \in B$</li>
 <li>$x \in A \text{ and } x \in B \implies x \in B \text{ and } x \in A$</li>
 <li>$\text{Hence } x \in B \cap A \text{. Thus } A \cap B \subseteq B \cap A$</li>
-</ul>
-  </div>
-  <div class="flex-even markdown-inner">
-    <ul>
+</ul></div><input type="radio" class="toggle" name="tabs-commutative2" id="tabs-commutative2-1"  />
+  <label for="tabs-commutative2-1">To show $B \cap A \subseteq A \cap B$</label>
+  <div class="book-tabs-content markdown-inner"><ul>
 <li>$\text{Let } x \in B \cap A$.</li>
 <li>$\text{Then } x \in B \text{ and } x \in A$</li>
 <li>$x \in B \text{ and } x \in A \implies x \in A \text{ and } x \in B$</li>
 <li>$\text{Hence } x \in A \cap B \text{. Thus } B \cap A \subseteq A \cap B$</li>
-</ul>
-  </div>
-</div>
+</ul></div></div>
 <ul>
 <li>$\therefore \text{ by mutual exclusion, } A \cap B = B \cap A$</li>
 </ul>
@@ -709,6 +724,15 @@ The following set operations create new sets from $A$ and $B$:</p>
     <input type="checkbox" class="hidden" />
     <div class="book-expand-content markdown-inner">
       <p><strong>Prove $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$</strong></p>
+<ul>
+<li>$\text{Let } x \in A \cup (B \cap C)$</li>
+<li>$\text{Then } x \in A \text{ or } x \in B \cap C$</li>
+<li>$\text{Thus } x \in A \text{ or } x \in B \text{ and } x \in C$</li>
+<li>$\text{Which implies } x \in A \text{ or } x \in B \text{ and } x \in A \text{ or } x \in C$</li>
+<li>$\text{Hence } x \in (A \cup B) \cap (A \cup C) \implies A \cup (B \cap C) \subseteq (A \cup B) \cap (A \cup C)$</li>
+<li>$\text{Similarly, we can show that } (A \cup B) \cap (A \cup C) \subseteq A \cup (B \cap C)$</li>
+<li>$\therefore A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$</li>
+</ul>
 <hr>
 <p><strong>Prove $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$</strong></p>
 <ul>
@@ -757,7 +781,7 @@ The following set operations create new sets from $A$ and $B$:</p>
 <div class="book-expand">
   <label>
     <div class="book-expand-head flex justify-between">
-      <span>Double Comlement Law</span>
+      <span>Double Complement Law</span>
       <span>↕</span>
     </div>
     <input type="checkbox" class="hidden" />
@@ -797,6 +821,81 @@ The following set operations create new sets from $A$ and $B$:</p>
 
 <hr>
 <h1 id="functions">Functions</h1>
+<h2 id="from-high-school-functions-to-general-functions">From High School Functions to General Functions</h2>
+<h3 id="high-school-functions">High School Functions</h3>
+<p>Functions are usually given by formulas such as $f(x) = \sin (x)$ or $f(x) = e^x$, etc&hellip;<br>
+A function is a computation rule that changes one value to another. Effectively associating or relating one value to another.</p>
+<h3 id="general-functions">General Functions</h3>
+<p>Since a function relates one value to another, we can think of a function as relating one object to another object. These objects dont necessarily need to be numbers.<br>
+Usually, we want to be able to relate each object of interest to only one object. That is, a function is a single-valued and exhaustive relation.</p>
+<blockquote class="book-hint info">
+  <ul>
+<li>A relation $f$ from $A$ to $B$ is a function from $A$ to $B$ if and only if:
+<ul>
+<li>For every $x \in A$, there exists a unique $y \in B$ such that $x\ f\ y$, or equivalently $(x,y) \in f$</li>
+</ul>
+</li>
+<li>Functions are also known as transformations, maps and mappings.</li>
+</ul>
+</blockquote>
+
+<p>Examples:</p>
+<p>Let $A = \{1,2,3\} \text{ and } B = \{a,b\}$<br>
+$R = \{(1,a), (2,a), (3,b)\}$ is a function from $A$ to $B$.
+
+  <img src="/static/COMP4631/fn1.jpg" alt="ex1" /></p>
+<p>Let $A = \{1,2,3\} \text{ and } B = \{a,b\}$<br>
+$S = \{(1,a), (1,b), (2,a), (3,b)\}$ is not a function from $A$ to $B$.
+
+  <img src="/static/COMP4631/fn2.jpg" alt="ex1" /></p>
+<p>Let $A = \{1,2,3\} \text{ and } B = \{a,b\}$<br>
+$T = \{(1,a), (3,b)\}$ is not a function from $A$ to $B$.
+
+  <img src="/static/COMP4631/fn3.jpg" alt="ex1" /></p>
+<h2 id="function-notation">Function Notation</h2>
+<blockquote class="book-hint info">
+  <ul>
+<li>Let $f$ be a relation from $A$ to $B$. That is, $f \subseteq A \times B$</li>
+<li>If the relation is a function:
+<ul>
+<li>We write $f: A \to B$</li>
+<li>If $(x,y) \in f$, we write $y = f(x)$</li>
+</ul>
+</li>
+<li>Usually $f,g,h,&hellip;$ are used to denote relations that are functions.</li>
+</ul>
+</blockquote>
+
+<h3 id="notational-convention">Notational Convention</h3>
+<p>Sometimes functions are given by stating the rule of transformation. For example, $f(x) = x + 1$. This should be taken to mean:</p>
+<p>$$f = \{(x,f(x)) \in A \times B \ | \ x \in A \}$$</p>
+<p>Where $A$ and $B$ are some understood sets.</p>
+<h2 id="values-images-inverse-images-pre-images">Values, Images, Inverse Images, Pre-Images</h2>
+<h3 id="values-images">Values, Images</h3>
+<p>Let $f: A \to B$<br>
+Let $y = f(x)$ or $(x,y) \in f$</p>
+<p>The object $y$ is called:</p>
+<ul>
+<li>The image of $x$ under the functions $f$.</li>
+<li>The value of $f$ at $x$.</li>
+</ul>
+<h3 id="inverse-images-pre-images">Inverse Images, Pre-Images</h3>
+<p>Let $f: A \to B \text{ and } y \in B$</p>
+<p>Define $f^{-1}(y) = \{x \in A | f(x) = y\}$</p>
+<p>The set of $f^{-1}(y)$ is called the inverse image , or pre-image of $y$ under $f$.</p>
+<h3 id="images-and-pre-images-of-subsets">Images and Pre-Images of Subsets</h3>
+<p>Let $f: A \to B \text{ and } X \subseteq A \text{ and } Y \subseteq B$</p>
+<p>We define:</p>
+<ul>
+<li>$f(X) = \{f(x) \in B \ | \ x \in X\}$</li>
+<li>$f^{-1}(Y) = \{x \in A \  | \  f(x) \in Y\}$</li>
+</ul>
+<h4 id="some-properties">Some Properties</h4>
+<ul>
+<li>Let $f: A \to B \text{ and } X \subseteq A \text{ and } Y \subseteq B$</li>
+<li>$f(A) \subseteq$ B</li>
+<li>$f^{-1}(B) = A$ because every element of $A$ has an image in $B$.</li>
+</ul>
 </article>
  
       
@@ -878,7 +977,28 @@ The following set operations create new sets from $A$ and $B$:</p>
         <li><a href="#proofs-of-set-identities">Proofs of Set Identities</a></li>
       </ul>
     </li>
-    <li><a href="#functions">Functions</a></li>
+    <li><a href="#functions">Functions</a>
+      <ul>
+        <li><a href="#from-high-school-functions-to-general-functions">From High School Functions to General Functions</a>
+          <ul>
+            <li><a href="#high-school-functions">High School Functions</a></li>
+            <li><a href="#general-functions">General Functions</a></li>
+          </ul>
+        </li>
+        <li><a href="#function-notation">Function Notation</a>
+          <ul>
+            <li><a href="#notational-convention">Notational Convention</a></li>
+          </ul>
+        </li>
+        <li><a href="#values-images-inverse-images-pre-images">Values, Images, Inverse Images, Pre-Images</a>
+          <ul>
+            <li><a href="#values-images">Values, Images</a></li>
+            <li><a href="#inverse-images-pre-images">Inverse Images, Pre-Images</a></li>
+            <li><a href="#images-and-pre-images-of-subsets">Images and Pre-Images of Subsets</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
