@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.49bed637d850af797140d8d32c3af3d2483c02a775f5a3f366b9bbad54329475.js" integrity="sha256-Sb7WN9hQr3lxQNjTLDrz0kg8Aqd19aPzZrm7rVQylHU="></script>
+<script defer src="/en.search.min.00247efa2918204b405f3c0ad22a0f70f7c74dbea15f05bfedfe088d303a9585.js" integrity="sha256-ACR&#43;&#43;ikYIEtAXzwK0ioPcPfHTb6hXwW/7f4IjTA6lYU="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -282,6 +282,13 @@ delimiters: [
             <li><a href="#funtion-composition-gives-a-function">Funtion Composition gives a Function</a></li>
           </ul>
         </li>
+        <li><a href="#the-values-of-function-composition">The Values of Function Composition</a>
+          <ul>
+            <li><a href="#for-compositions-of-two-functions">For Compositions of Two Functions</a></li>
+            <li><a href="#for-compositions-of-three-functions">For Compositions of Three Functions</a></li>
+          </ul>
+        </li>
+        <li><a href="#one-to-one-functions">One to One Functions</a></li>
       </ul>
     </li>
   </ul>
@@ -1114,9 +1121,46 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
 <ul>
 <li>$\text{Let } x \in A$</li>
 <li>$\text{Since $f$ is a function from $A \to B$, there is a unique $y \in B$ such that $(x,y) \in f$}$</li>
-<li>$\text{For this $y \in B$, there is a unique $z \in C$ such that $(y,z) \in g$ because $g$ is a function from $B \to C$}$</li>
+<li>$\text{For this $y \in B$, there is a unique $z \in C$ such that $(y,z) \in g$}$ $\text{ because $g$ is a function from } B \to C$</li>
 <li>$\text{That is, $(x,z) \in g \circ f$}$</li>
 </ul>
+<h4 id="uniqueness-proof">Uniqueness Proof</h4>
+<ul>
+<li>$\text{Let } (x,z), (x,z^\prime) \in g \circ f$</li>
+<li>$\text{There exist } y, y^\prime \in B \text{ such that }$
+<ul>
+<li>$(x,y) \in f, \  (y,z) \in g$</li>
+<li>$(x, y^\prime) \in f, \  (y^\prime , z^\prime) \in g$</li>
+</ul>
+</li>
+<li>$\text{But $f$ is a function, so } y = y^\prime$</li>
+<li>$\text{Now we have } (y,z), (y, z^\prime) \in g$</li>
+<li>$\tetx{But $g$ is a function, so }z = z^\prime$</li>
+</ul>
+<h2 id="the-values-of-function-composition">The Values of Function Composition</h2>
+<h3 id="for-compositions-of-two-functions">For Compositions of Two Functions</h3>
+<ul>
+<li>$\text{Let } f: A \to B \text{ and } g: B \to C$</li>
+<li>$\text{Since } g \circ f: A \to C \text{, for any $x \in A$, there is a } z \in C, \text{ such that } g \circ f(x) = z$</li>
+<li>$\text{That is, } (x,z) \in g \circ f$</li>
+<li>$\text{By the definition of function composition, there is a } y \in B \text{, such that } (x,y) \in f \text{ and } (y,z) \in g$.</li>
+<li>$\text{Since $f$ and $g$ are functions, we can write } f(x) = y \text{ and } g(y) = z$</li>
+<li>$\text{Substituting } y = f(x) \text{ in } g(y) = z \text{, we have } g(f(x)) = z$</li>
+<li>$\text{That is, } g \circ f(x) = g(f(x))$</li>
+</ul>
+<h3 id="for-compositions-of-three-functions">For Compositions of Three Functions</h3>
+<ul>
+<li>$\text{Let } f: A \to B, \  g: B \to C, \  h: C \to D$</li>
+<li>$\text{Since relation composition are associative and functions are relations, } h \circ (g \circ f) = (h \circ g) \circ f$</li>
+<li>Furthermore we have:
+<ul>
+<li>$(h \circ (g \circ f))(x) = h((g \circ f)(x)) = h(g(f(x)))$</li>
+<li>$((h \circ g) \circ f)(x) = (h \circ g)(f(x)) = h(g(f(x)))$</li>
+</ul>
+</li>
+<li>$\text{That is, } (h \circ (g \circ f))(x) = ((h \circ g) \circ f)(x) = h(g(f(x)))$</li>
+</ul>
+<h2 id="one-to-one-functions">One to One Functions</h2>
 </article>
  
       
@@ -1254,6 +1298,13 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
             <li><a href="#funtion-composition-gives-a-function">Funtion Composition gives a Function</a></li>
           </ul>
         </li>
+        <li><a href="#the-values-of-function-composition">The Values of Function Composition</a>
+          <ul>
+            <li><a href="#for-compositions-of-two-functions">For Compositions of Two Functions</a></li>
+            <li><a href="#for-compositions-of-three-functions">For Compositions of Three Functions</a></li>
+          </ul>
+        </li>
+        <li><a href="#one-to-one-functions">One to One Functions</a></li>
       </ul>
     </li>
   </ul>
