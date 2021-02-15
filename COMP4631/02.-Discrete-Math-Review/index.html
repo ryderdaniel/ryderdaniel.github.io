@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.bba9e105f271d575069bc47d755408b4956b0aaf2914d955b4efafd30b14e309.js" integrity="sha256-u6nhBfJx1XUGm8R9dVQItJVrCq8pFNlVtO&#43;v0wsU4wk="></script>
+<script defer src="/en.search.min.16ab88823f36f2d1fb15e19164c0d5885fbbbe6e198fdcaaa8fb154fa51de3b1.js" integrity="sha256-FquIgj828tH7FeGRZMDViF&#43;7vm4Zj9yqqPsVT6Ud47E="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -223,7 +223,12 @@ delimiters: [
             <li><a href="#questions-1">Questions</a></li>
           </ul>
         </li>
-        <li><a href="#proofs-of-set-identities">Proofs of Set Identities</a></li>
+        <li><a href="#other-useful-notation-and-definitions">Other Useful Notation and Definitions</a>
+          <ul>
+            <li><a href="#the-number-of-elements-in-a-set">The Number of Elements in a Set</a></li>
+            <li><a href="#cartesian-product-of-sets">Cartesian Product of Sets</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#functions">Functions</a>
@@ -267,6 +272,7 @@ delimiters: [
         <li><a href="#some-special-functions">Some Special Functions</a>
           <ul>
             <li><a href="#identity-functions">Identity Functions</a></li>
+            <li><a href="#permutations">Permutations</a></li>
             <li><a href="#constant-functions">Constant Functions</a></li>
             <li><a href="#characteristic-functions">Characteristic Functions</a></li>
           </ul>
@@ -322,7 +328,16 @@ delimiters: [
             <li><a href="#the-inverse-image-and-the-pre-image">The Inverse Image and the Pre-Image</a></li>
           </ul>
         </li>
-        <li><a href="#function-composition-properties">Function Composition Properties</a></li>
+        <li><a href="#function-composition-properties">Function Composition Properties</a>
+          <ul>
+            <li><a href="#f-circ-f-1">$f \circ f^{-1}$</a></li>
+            <li><a href="#f-1-circ-f">$f^{-1} \circ f$</a></li>
+            <li><a href="#f-circ-i_a">$f \circ I_A$</a></li>
+            <li><a href="#i_b-circ-f">$I_B \circ f$</a></li>
+            <li><a href="#i_a-circ-f-1--f-1-circ-i_b">$I_A \circ f^{-1}, \ f^{-1} \circ I_B$</a></li>
+          </ul>
+        </li>
+        <li><a href="#questions-3">Questions</a></li>
       </ul>
     </li>
   </ul>
@@ -581,7 +596,7 @@ The members of $S$ are members of an already known set $T$ that satisfy property
   <ul>
 <li>Depending on the context of discussion:
 <ul>
-<li>Define a set $U$ such that all sets of interest are subsets of $\Bbb U$.</li>
+<li>Define a set $\Bbb U$ such that all sets of interest are subsets of $\Bbb U$.</li>
 <li>The set $\Bbb U$ is known as a universal set.</li>
 </ul>
 </li>
@@ -723,179 +738,24 @@ The following set operations create new sets from $A$ and $B$:</p>
   </label>
 </div>
 
-<h2 id="proofs-of-set-identities">Proofs of Set Identities</h2>
+<h2 id="other-useful-notation-and-definitions">Other Useful Notation and Definitions</h2>
+<h3 id="the-number-of-elements-in-a-set">The Number of Elements in a Set</h3>
+<p>The number of elements in set $A$ is defined to be $\vert A \vert$</p>
+<p>Example:</p>
+<p>$\vert A \vert = \vert \{x,y,z\} \vert = 3$</p>
+<h3 id="cartesian-product-of-sets">Cartesian Product of Sets</h3>
+<blockquote class="book-hint info">
+  The cartesian product of two sets is defined as
+$$ A \times B = \{ (a,b): a \in A, b \in B\} $$
+</blockquote>
 
-<div class="book-expand">
-  <label>
-    <div class="book-expand-head flex justify-between">
-      <span>Commutative Laws</span>
-      <span>↕</span>
-    </div>
-    <input type="checkbox" class="hidden" />
-    <div class="book-expand-content markdown-inner">
-      <p><strong>Prove $A \cup B = B \cup A$</strong></p>
-<div class="book-tabs"><input type="radio" class="toggle" name="tabs-commutative1" id="tabs-commutative1-0" checked="checked" />
-  <label for="tabs-commutative1-0">To show $A \cup B \subseteq B \cup A$</label>
-  <div class="book-tabs-content markdown-inner"><ul>
-<li>$\text{Let } x \in A \cup B$.</li>
-<li>$\text{Then } x \in A \text{ or } x \in B$</li>
-<li>$x \in A \text{ or } x \in B \implies x \in B \text{ or } x \in A$</li>
-<li>$\text{Hence } x \in B \cup A \text{. Thus } A \cup B \subseteq B \cup A$</li>
-</ul></div><input type="radio" class="toggle" name="tabs-commutative1" id="tabs-commutative1-1"  />
-  <label for="tabs-commutative1-1">To show $B \cup A \subseteq A \cup B$</label>
-  <div class="book-tabs-content markdown-inner"><ul>
-<li>$\text{Let } x \in B \cup A$.</li>
-<li>$\text{Then } x \in B \text{ or } x \in A$</li>
-<li>$x \in B \text{ or } x \in A \implies x \in A \text{ or } x \in B$</li>
-<li>$\text{Hence } x \in A \cup B \text{. Thus } B \cup A \subseteq A \cup B$</li>
-</ul></div></div>
-<ul>
-<li>$\therefore \text{ by mutual exclusion, } A \cup B = B \cup A$</li>
-</ul>
-<hr>
-<p><strong>Prove $A \cap B = B \cap A$</strong></p>
-<div class="book-tabs"><input type="radio" class="toggle" name="tabs-commutative2" id="tabs-commutative2-0" checked="checked" />
-  <label for="tabs-commutative2-0">To show $A \cap B \subseteq B \cap A$</label>
-  <div class="book-tabs-content markdown-inner"><ul>
-<li>$\text{Let } x \in A \cap B$.</li>
-<li>$\text{Then } x \in A \text{ and } x \in B$</li>
-<li>$x \in A \text{ and } x \in B \implies x \in B \text{ and } x \in A$</li>
-<li>$\text{Hence } x \in B \cap A \text{. Thus } A \cap B \subseteq B \cap A$</li>
-</ul></div><input type="radio" class="toggle" name="tabs-commutative2" id="tabs-commutative2-1"  />
-  <label for="tabs-commutative2-1">To show $B \cap A \subseteq A \cap B$</label>
-  <div class="book-tabs-content markdown-inner"><ul>
-<li>$\text{Let } x \in B \cap A$.</li>
-<li>$\text{Then } x \in B \text{ and } x \in A$</li>
-<li>$x \in B \text{ and } x \in A \implies x \in A \text{ and } x \in B$</li>
-<li>$\text{Hence } x \in A \cap B \text{. Thus } B \cap A \subseteq A \cap B$</li>
-</ul></div></div>
-<ul>
-<li>$\therefore \text{ by mutual exclusion, } A \cap B = B \cap A$</li>
-</ul>
+<blockquote class="book-hint danger">
+  $$A \times B \text{ is not always the same as } B \times A$$
+</blockquote>
 
-    </div>
-  </label>
-</div>
-
-
-<div class="book-expand">
-  <label>
-    <div class="book-expand-head flex justify-between">
-      <span>Associative Laws</span>
-      <span>↕</span>
-    </div>
-    <input type="checkbox" class="hidden" />
-    <div class="book-expand-content markdown-inner">
-      
-    </div>
-  </label>
-</div>
-
-
-<div class="book-expand">
-  <label>
-    <div class="book-expand-head flex justify-between">
-      <span>Distributive Laws</span>
-      <span>↕</span>
-    </div>
-    <input type="checkbox" class="hidden" />
-    <div class="book-expand-content markdown-inner">
-      <p><strong>Prove $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$</strong></p>
-<ul>
-<li>$\text{Let } x \in A \cup (B \cap C)$</li>
-<li>$\text{Then } x \in A \text{ or } x \in B \cap C$</li>
-<li>$\text{Thus } x \in A \text{ or } x \in B \text{ and } x \in C$</li>
-<li>$\text{Which implies } x \in A \text{ or } x \in B \text{ and } x \in A \text{ or } x \in C$</li>
-<li>$\text{Hence } x \in (A \cup B) \cap (A \cup C) \implies A \cup (B \cap C) \subseteq (A \cup B) \cap (A \cup C)$</li>
-<li>$\text{Similarly, we can show that } (A \cup B) \cap (A \cup C) \subseteq A \cup (B \cap C)$</li>
-<li>$\therefore A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$</li>
-</ul>
-<hr>
-<p><strong>Prove $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$</strong></p>
-<ul>
-<li>$\text{Let } x \in A \cap (B \cup C)$</li>
-<li>$\text{Then } x \in A \text{ and } x \in B \cup C$</li>
-<li>$\text{Thus } x \in A \text{ and } x \in B \text{ or } x \in C$</li>
-<li>$\text{Which implies } x \in A \text{ and } x \in B \text{ or } x \in A \text{ and } x \in C$</li>
-<li>$\text{Hence } x \in (A \cap B) \cup (A \cap C) \implies A \cap (B \cup C) \subseteq (A \cap B) \cup (A \cap C)$</li>
-<li>$\text{Similarly, we can show that } (A \cap B) \cup (A \cap C) \subseteq A \cap (B \cup C)$</li>
-<li>$\therefore A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$</li>
-</ul>
-
-    </div>
-  </label>
-</div>
-
-
-<div class="book-expand">
-  <label>
-    <div class="book-expand-head flex justify-between">
-      <span>$\emptyset$ is the identity for union</span>
-      <span>↕</span>
-    </div>
-    <input type="checkbox" class="hidden" />
-    <div class="book-expand-content markdown-inner">
-      
-    </div>
-  </label>
-</div>
-
-
-<div class="book-expand">
-  <label>
-    <div class="book-expand-head flex justify-between">
-      <span>$\Bbb U$ is the identitiy for intersection</span>
-      <span>↕</span>
-    </div>
-    <input type="checkbox" class="hidden" />
-    <div class="book-expand-content markdown-inner">
-      
-    </div>
-  </label>
-</div>
-
-
-<div class="book-expand">
-  <label>
-    <div class="book-expand-head flex justify-between">
-      <span>Double Complement Law</span>
-      <span>↕</span>
-    </div>
-    <input type="checkbox" class="hidden" />
-    <div class="book-expand-content markdown-inner">
-      
-    </div>
-  </label>
-</div>
-
-
-<div class="book-expand">
-  <label>
-    <div class="book-expand-head flex justify-between">
-      <span>Idempotent Laws</span>
-      <span>↕</span>
-    </div>
-    <input type="checkbox" class="hidden" />
-    <div class="book-expand-content markdown-inner">
-      
-    </div>
-  </label>
-</div>
-
-
-<div class="book-expand">
-  <label>
-    <div class="book-expand-head flex justify-between">
-      <span>De Morgan&#39;s Laws</span>
-      <span>↕</span>
-    </div>
-    <input type="checkbox" class="hidden" />
-    <div class="book-expand-content markdown-inner">
-      
-    </div>
-  </label>
-</div>
-
+<p>Example:</p>
+<p>Let $A = \{x,y,z\}$ and $B = \{1,2\}$ then</p>
+<p>$$A \times B = \{(x,1),(x,2), (y,1), (y,2), (z,1), (z,2)\}$$</p>
 <hr>
 <h1 id="functions">Functions</h1>
 <h2 id="from-high-school-functions-to-general-functions">From High School Functions to General Functions</h2>
@@ -1091,12 +951,43 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
 </ul>
 <h2 id="some-special-functions">Some Special Functions</h2>
 <h3 id="identity-functions">Identity Functions</h3>
+<blockquote class="book-hint info">
+  $I_A(a) = a$ for every element $a \in A$
+</blockquote>
+
 <ul>
 <li>Consider the identity relation $I_A$ on the set $A$.</li>
 <li>For every $x \in A, \  I_A$ relates $x$ to a unique element of $A$ that is itself.</li>
 <li>Consequently we have $I_A: A \to A$</li>
 <li>$I_A$ is also called the identity function on $A$</li>
+<li>The inverse of $I_A$ is itself.</li>
 </ul>
+<h3 id="permutations">Permutations</h3>
+<blockquote class="book-hint info">
+  A <em>permutation</em> $f$ of $A$ is a one-to-one correspondence from $A \to A$
+</blockquote>
+
+<ul>
+<li>Every permutation $f$ of $A$ has the inverse $f^{-1}$. Which is also a permutation of $A$.</li>
+</ul>
+<h4 id="permutations-as-1d-arrays">Permutations as 1D Arrays</h4>
+<p>Any permutation of $A = \{1,2,&hellip;,n\}$ can be expressed as an array.</p>
+<p>$$
+\begin{matrix}
+f[1] &amp; f[2] &amp; &hellip; &amp; f[n]
+\end{matrix}
+$$</p>
+<h4 id="permutations-as-2d-arrays">Permutations as 2D Arrays</h4>
+<p>Let $A = {1,2,&hellip;,n}$. If $n = lm$, then a permutation $f$ of $A$ can also be defined as a two dimensional array</p>
+<p>$$
+\begin{matrix}
+f[1] &amp; f[2] &amp; \cdots &amp; f[l] \<br>
+f[1+l] &amp; f[2+l] &amp; \cdots &amp; f[2l] \<br>
+f[1+2l] &amp; f[2+2l] &amp; \cdots &amp; f[3l] \<br>
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>
+f[1+(m-1)l] &amp; f[2+(m-1)l] &amp; \cdots &amp; f[ml] \<br>
+\end{matrix}
+$$</p>
 <h3 id="constant-functions">Constant Functions</h3>
 <ul>
 <li>$\text{Let } f: A \to B$</li>
@@ -1469,6 +1360,110 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
 </ul>
 </li>
 </ul>
+<h3 id="f-circ-f-1">$f \circ f^{-1}$</h3>
+<ul>
+<li>We have $f^{-1}: B \to A, \  f:A \to B$</li>
+<li>Let $(f \circ f^{-1})(x) = y$
+<ul>
+<li>$f(f^{-1}(x)) = y$</li>
+<li>$f^{-1}(x) = f^{-1}(y)$</li>
+<li>But $f^{-1}$ is a bijection</li>
+<li>So $x = y$</li>
+<li>And $f \circ (f^{-1})(x) = x$</li>
+</ul>
+</li>
+<li>That is, $f \circ f^{-1} = I_B$</li>
+</ul>
+<h3 id="f-1-circ-f">$f^{-1} \circ f$</h3>
+<ul>
+<li>We have $f:A \to B, \  f^{-1}:B \to A$</li>
+<li>Let $(f^-1 \circ f)(x) = y$
+<ul>
+<li>$f^{-1}(f(x)) = y$</li>
+<li>$f(x) = f(y)$</li>
+<li>But $f$ is a bijection</li>
+<li>So $x = y$</li>
+<li>And $f(^{-1} \circ f)(x) = x$</li>
+</ul>
+</li>
+<li>That is, $f^{-1} \circ f = I_A$</li>
+</ul>
+<h3 id="f-circ-i_a">$f \circ I_A$</h3>
+<ul>
+<li>We have $I_A:A \to A, \  f:A \to B$</li>
+<li>Let $(f\circ I_A)(x) = y$
+<ul>
+<li>$f(I_A(x)) = y$</li>
+<li>$f(x) = y$</li>
+<li>$(f \circ I_A)(x) = f(x)$</li>
+</ul>
+</li>
+<li>That is $f \circ I_A =  f$</li>
+</ul>
+<h3 id="i_b-circ-f">$I_B \circ f$</h3>
+<ul>
+<li>We have $f:A \to B, \  I_B:B \to B$</li>
+<li>Let $(I_B \circ f)(x) = y$
+<ul>
+<li>$I_B(f(x)) = y$</li>
+<li>$f(x) = y$</li>
+<li>$(I_B \circ f)(x) = f(x)$</li>
+</ul>
+</li>
+<li>That is $I_B \circ f =  f$</li>
+</ul>
+<h3 id="i_a-circ-f-1--f-1-circ-i_b">$I_A \circ f^{-1}, \ f^{-1} \circ I_B$</h3>
+<p>Using a similar proof to the last two sections, we have:</p>
+<ul>
+<li>$I_A \circ f^{-1} = f^{-1}$</li>
+<li>$f^{-1} \circ I_B = f^{-1}$</li>
+</ul>
+<h2 id="questions-3">Questions</h2>
+<p>Let $|A| = m$ and $|B| = n$. What is the total number of functions from $A \to B$?</p>
+
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Answer</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" class="hidden" />
+    <div class="book-expand-content markdown-inner">
+      $$n^m$$
+    </div>
+  </label>
+</div>
+
+<p>Let $|A| = m$ and $|B| = n$, where $m \geq n$. What is the total number of onto functions from $A \to B$?</p>
+
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Answer</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" class="hidden" />
+    <div class="book-expand-content markdown-inner">
+      $$\sum_{k=0}^n(-1)^k{n \choose k}(n-k)^m$$
+    </div>
+  </label>
+</div>
+
+<p>Let $|A| = m$ and $|B| = n$, where $m \leq n$. What is the total number of one-to-one functions from $A \to B$?</p>
+
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Answer</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" class="hidden" />
+    <div class="book-expand-content markdown-inner">
+      $$m!{n \choose m}$$
+    </div>
+  </label>
+</div>
+
 </article>
  
       
@@ -1547,7 +1542,12 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
             <li><a href="#questions-1">Questions</a></li>
           </ul>
         </li>
-        <li><a href="#proofs-of-set-identities">Proofs of Set Identities</a></li>
+        <li><a href="#other-useful-notation-and-definitions">Other Useful Notation and Definitions</a>
+          <ul>
+            <li><a href="#the-number-of-elements-in-a-set">The Number of Elements in a Set</a></li>
+            <li><a href="#cartesian-product-of-sets">Cartesian Product of Sets</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#functions">Functions</a>
@@ -1591,6 +1591,7 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
         <li><a href="#some-special-functions">Some Special Functions</a>
           <ul>
             <li><a href="#identity-functions">Identity Functions</a></li>
+            <li><a href="#permutations">Permutations</a></li>
             <li><a href="#constant-functions">Constant Functions</a></li>
             <li><a href="#characteristic-functions">Characteristic Functions</a></li>
           </ul>
@@ -1646,7 +1647,16 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
             <li><a href="#the-inverse-image-and-the-pre-image">The Inverse Image and the Pre-Image</a></li>
           </ul>
         </li>
-        <li><a href="#function-composition-properties">Function Composition Properties</a></li>
+        <li><a href="#function-composition-properties">Function Composition Properties</a>
+          <ul>
+            <li><a href="#f-circ-f-1">$f \circ f^{-1}$</a></li>
+            <li><a href="#f-1-circ-f">$f^{-1} \circ f$</a></li>
+            <li><a href="#f-circ-i_a">$f \circ I_A$</a></li>
+            <li><a href="#i_b-circ-f">$I_B \circ f$</a></li>
+            <li><a href="#i_a-circ-f-1--f-1-circ-i_b">$I_A \circ f^{-1}, \ f^{-1} \circ I_B$</a></li>
+          </ul>
+        </li>
+        <li><a href="#questions-3">Questions</a></li>
       </ul>
     </li>
   </ul>
