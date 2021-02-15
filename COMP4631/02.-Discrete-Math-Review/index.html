@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.593c5539f866365b3444731df81fa29e384ef6f1598fe83a4371f9e5a7afbe89.js" integrity="sha256-WTxVOfhmNls0RHMd&#43;B&#43;injhO9vFZj&#43;g6Q3H55aevvok="></script>
+<script defer src="/en.search.min.bba9e105f271d575069bc47d755408b4956b0aaf2914d955b4efafd30b14e309.js" integrity="sha256-u6nhBfJx1XUGm8R9dVQItJVrCq8pFNlVtO&#43;v0wsU4wk="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -305,6 +305,24 @@ delimiters: [
           </ul>
         </li>
         <li><a href="#1-1-and-onto-functions-bijections-1-1-correspondences">1-1 and Onto Functions, Bijections, 1-1 Correspondences</a></li>
+        <li><a href="#composition-of-bijections">Composition of Bijections</a>
+          <ul>
+            <li><a href="#the-converse-is-almost-true-its-still-false-again-again">The Converse is Almost True (Its Still False.. Again.. Again..)</a></li>
+          </ul>
+        </li>
+        <li><a href="#making-an-injection-a-bijection">Making an Injection a Bijection</a></li>
+        <li><a href="#f-is-a-bijection-implies-f-1-is-a-function">$f$ is a Bijection $\implies f^{-1}$ is a Function</a></li>
+        <li><a href="#f-1-is-a-function-implies-f-is-a-bijection">$f^{-1}$ is a Function $\implies f$ is a Bijection</a>
+          <ul>
+            <li><a href="#inverse-functions">Inverse Functions</a></li>
+          </ul>
+        </li>
+        <li><a href="#properties-of-inverse-functions">Properties of Inverse Functions</a>
+          <ul>
+            <li><a href="#the-inverse-image-and-the-pre-image">The Inverse Image and the Pre-Image</a></li>
+          </ul>
+        </li>
+        <li><a href="#function-composition-properties">Function Composition Properties</a></li>
       </ul>
     </li>
   </ul>
@@ -1299,6 +1317,158 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
 <li>The function $f$ is a 1-1 correspondence if and only if $f$ is 1-1 and onto.</li>
 <li>A 1-1 correspondence is also called a bijection.</li>
 </ul>
+<h2 id="composition-of-bijections">Composition of Bijections</h2>
+<blockquote class="book-hint warning">
+  <h3 id="theorem">Theorem</h3>
+<ul>
+<li>Let $f:A \to B, \ g:B \to C$</li>
+<li>If both $f$ and $g$ are both bijections, then $g \circ f$ is also a bijection</li>
+<li>That is, the composition of bijections is a bijection.</li>
+</ul>
+</blockquote>
+
+<p>Proof:</p>
+<ul>
+<li>Since $f$ and $g$ are 1-1, so is $g \circ f$</li>
+<li>Since $f$ and $g$ are onto, so is $g \circ f$</li>
+<li>Since $g \circ f$ is 1-1 and onto, $g \circ f$ is a bijection.</li>
+</ul>
+<h3 id="the-converse-is-almost-true-its-still-false-again-again">The Converse is Almost True (Its Still False.. Again.. Again..)</h3>
+<ul>
+<li>Since $g \circ f$ is 1-1
+<ul>
+<li>$f$ is 1-1</li>
+<li>$g$ may not be 1-1</li>
+</ul>
+</li>
+<li>Since $g \circ f$ is onto
+<ul>
+<li>$g$ is onto</li>
+<li>$f$ may not be onto</li>
+</ul>
+</li>
+<li>That is, $f$ and $g$ need not be bijections.</li>
+</ul>
+<h2 id="making-an-injection-a-bijection">Making an Injection a Bijection</h2>
+<ul>
+<li>Let $f:A \to B$ be 1-1</li>
+<li>Let $C = f(A)$</li>
+<li>Then $f:A \to C$ is a bijection
+<ul>
+<li>$f$ remains 1-1</li>
+<li>$f$ has become onto</li>
+</ul>
+</li>
+</ul>
+<h2 id="f-is-a-bijection-implies-f-1-is-a-function">$f$ is a Bijection $\implies f^{-1}$ is a Function</h2>
+<ul>
+<li>A function is invertible if and only if its inverse is also a function</li>
+</ul>
+<blockquote class="book-hint warning">
+  <h3 id="theorem">Theorem</h3>
+<ul>
+<li>Let $f:A \to B$.</li>
+<li>If $f$ is a bijection, then $f^{-1}$ is a function.</li>
+</ul>
+</blockquote>
+
+<p>Proof:</p>
+<ul>
+<li>Let $f:A \to B$ be a bijection.</li>
+<li>We want to show that $f^{-1} \subseteq B \times A$ is a function</li>
+<li>We need to show:
+<ol>
+<li>For any $y \in B$, there is an $x \in A$ such that $(y,x) \in f^{-1}$</li>
+<li>If $(y,x),(y,x^\prime) \in f^{-1}$, then $x=x^\prime$</li>
+</ol>
+</li>
+</ul>
+<p>Proof for 1 (Every Member ofB Has an Image under $f^{-1}$):</p>
+<ul>
+<li>Let $y \in B$</li>
+<li>Since $f$ is onto, there is an $x \in A$ such that $f(x) = y$</li>
+<li>That is, for any $y \in B$, there is an $x \in A$, such that $(x,y) \in f$</li>
+<li>But $(x,y) \in f \implies (y,x) \in f^{-1}$</li>
+</ul>
+<p>Proof for 2 (The Image Under $f^{-1} is Unique$):</p>
+<ul>
+<li>Let $y \in B$</li>
+<li>Let $(y,x), (y,x^\prime) \in f^{-1}$</li>
+<li>We have $(x,y), (x^\prime, y) \in f$</li>
+<li>This gives $f(x) = y = f(x^\prime)$</li>
+<li>But $f$ is 1-1 gives $x = x^\prime$</li>
+</ul>
+<h2 id="f-1-is-a-function-implies-f-is-a-bijection">$f^{-1}$ is a Function $\implies f$ is a Bijection</h2>
+<h3 id="inverse-functions">Inverse Functions</h3>
+<ul>
+<li>Let $f:A \to B$</li>
+<li>Since $f$ is a function, it is a relation</li>
+<li>We know $f^{-1}$ is a relation from $B$ to $A$.</li>
+<li>If $f^{-1}$ is a function, then $f$ is 1-1 and onto.</li>
+</ul>
+<blockquote class="book-hint warning">
+  <h3 id="theorem">Theorem</h3>
+<ul>
+<li>Let $f:A \to B$</li>
+<li>If $f^{-1}$ is a function, then $f$ is 1-1 and onto</li>
+</ul>
+</blockquote>
+
+<p>Proof:</p>
+<ul>
+<li>Given $f^{-1}:B \to A$ is a function</li>
+<li>We want to show $f:A \to B$ is 1-1 and onto</li>
+<li>We need to show
+<ul>
+<li>$f(x) = f(x^\prime) \implies x \ x^\prime$</li>
+<li>For any $y \in B$, there is an $x \in A$ such that $f(x) = y$</li>
+</ul>
+</li>
+</ul>
+<p>Proof $f$ is 1-1:</p>
+<ul>
+<li>Let $f(x) = f(x^\prime) = y$</li>
+<li>We have $(x,y),(x^\prime ,y) \in f$</li>
+<li>$(y,x),(y,x^\prime) \in f^{-1}$ but $f^{-1}$ is a function, so the image of $y$ under it is unique, that is, $x=x^\prime$</li>
+<li>Since $x=x^\prime$ whenever $f(x) = f(x^\prime)$, $f$ is 1-1</li>
+</ul>
+<p>Proof $f$ is onto:</p>
+<ul>
+<li>For any $y \in B$, let $f^{-1}(y)=x$. That is, $(y,x) \in f^{-1}$</li>
+<li>$(x,y) \in f$ and thus $f(x) = y$</li>
+<li>Since any member of $B$ has a non-empty pre-image under $f$, $f$ is onto.</li>
+</ul>
+<h2 id="properties-of-inverse-functions">Properties of Inverse Functions</h2>
+<h3 id="the-inverse-image-and-the-pre-image">The Inverse Image and the Pre-Image</h3>
+<ul>
+<li>Let $f:A \to B$ and $f^{-1}:B \to A$</li>
+<li>We have $(x,y) \in f$ if and only if $(y,x) \in f^{-1}$</li>
+<li>Since both $f$ and $f^{-1}$ are functions, the above can be written as $f(x) = y \text{ iff }f^{-1}(y) = x$</li>
+</ul>
+<blockquote class="book-hint warning">
+  <h3 id="theorem">Theorem</h3>
+<p>If the inverse of a function is a function, the inverse function is a bijection
+</blockquote>
+
+<p>Proof:</p>
+<ul>
+<li>Let the functions $f$ and $f^{-1}$ be functions</li>
+<li>We have $(f^{-1})^{-1} = f$ is a function</li>
+<li>Since the inverse of $f^{-1}$ is a function, by a previous theorem, $f^{-1}$ is a bijection.</li>
+</ul>
+<h2 id="function-composition-properties">Function Composition Properties</h2>
+<ul>
+<li>Let $f:A \to B$ be 1-1 and onto</li>
+<li>We have $f^{-1}:B \to A$ is also 1-1 and onto</li>
+<li>We want to find:
+<ul>
+<li>$f \circ f^{-1}$</li>
+<li>$f^{-1} \circ f$</li>
+<li>$f \circ I_A,\ I_B \circ f$</li>
+<li>$I_A \circ f^{-1},\ f^{-1} \circ I_B$</li>
+</ul>
+</li>
+</ul>
 </article>
  
       
@@ -1459,6 +1629,24 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
           </ul>
         </li>
         <li><a href="#1-1-and-onto-functions-bijections-1-1-correspondences">1-1 and Onto Functions, Bijections, 1-1 Correspondences</a></li>
+        <li><a href="#composition-of-bijections">Composition of Bijections</a>
+          <ul>
+            <li><a href="#the-converse-is-almost-true-its-still-false-again-again">The Converse is Almost True (Its Still False.. Again.. Again..)</a></li>
+          </ul>
+        </li>
+        <li><a href="#making-an-injection-a-bijection">Making an Injection a Bijection</a></li>
+        <li><a href="#f-is-a-bijection-implies-f-1-is-a-function">$f$ is a Bijection $\implies f^{-1}$ is a Function</a></li>
+        <li><a href="#f-1-is-a-function-implies-f-is-a-bijection">$f^{-1}$ is a Function $\implies f$ is a Bijection</a>
+          <ul>
+            <li><a href="#inverse-functions">Inverse Functions</a></li>
+          </ul>
+        </li>
+        <li><a href="#properties-of-inverse-functions">Properties of Inverse Functions</a>
+          <ul>
+            <li><a href="#the-inverse-image-and-the-pre-image">The Inverse Image and the Pre-Image</a></li>
+          </ul>
+        </li>
+        <li><a href="#function-composition-properties">Function Composition Properties</a></li>
       </ul>
     </li>
   </ul>
