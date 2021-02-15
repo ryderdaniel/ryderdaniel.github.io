@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.00247efa2918204b405f3c0ad22a0f70f7c74dbea15f05bfedfe088d303a9585.js" integrity="sha256-ACR&#43;&#43;ikYIEtAXzwK0ioPcPfHTb6hXwW/7f4IjTA6lYU="></script>
+<script defer src="/en.search.min.593c5539f866365b3444731df81fa29e384ef6f1598fe83a4371f9e5a7afbe89.js" integrity="sha256-WTxVOfhmNls0RHMd&#43;B&#43;injhO9vFZj&#43;g6Q3H55aevvok="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -288,7 +288,23 @@ delimiters: [
             <li><a href="#for-compositions-of-three-functions">For Compositions of Three Functions</a></li>
           </ul>
         </li>
-        <li><a href="#one-to-one-functions">One to One Functions</a></li>
+        <li><a href="#one-to-one-functions-injections">One-To-One Functions, Injections</a></li>
+        <li><a href="#composition-of-one-to-one-functions">Composition of One-To-One Functions</a>
+          <ul>
+            <li><a href="#the-converse-is-almost-true-its-still-false">The Converse is Almost True (Its Still False)</a></li>
+          </ul>
+        </li>
+        <li><a href="#onto-functions-surjections">Onto Functions, Surjections</a>
+          <ul>
+            <li><a href="#onto-means-range-is-codomain">Onto Means Range is Codomain</a></li>
+          </ul>
+        </li>
+        <li><a href="#composition-of-surjections">Composition of Surjections</a>
+          <ul>
+            <li><a href="#the-converse-is-almost-true-its-still-false-again">The Converse is Almost True (Its Still False.. Again..)</a></li>
+          </ul>
+        </li>
+        <li><a href="#1-1-and-onto-functions-bijections-1-1-correspondences">1-1 and Onto Functions, Bijections, 1-1 Correspondences</a></li>
       </ul>
     </li>
   </ul>
@@ -1160,7 +1176,129 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
 </li>
 <li>$\text{That is, } (h \circ (g \circ f))(x) = ((h \circ g) \circ f)(x) = h(g(f(x)))$</li>
 </ul>
-<h2 id="one-to-one-functions">One to One Functions</h2>
+<h2 id="one-to-one-functions-injections">One-To-One Functions, Injections</h2>
+<blockquote class="book-hint info">
+  <ul>
+<li>Let $f: A \to B$</li>
+<li>The function $f$ is only one-to-one if and only if:
+<ul>
+<li>for any $x,x^\prime \in A$</li>
+<li>$f(x) = f(x^\prime) \implies x = x^\prime$</li>
+<li>Equivalently, $x \not = x^\prime \implies f(x) \not = f(x^\prime)$</li>
+</ul>
+</li>
+<li>In words, a function is one-to-one if and only if it maps distinct elements to distinct images.</li>
+<li>A one-to-one functions is also called an injection</li>
+<li>We abbreviate one-to-one as 1-1.</li>
+</ul>
+</blockquote>
+
+<p>Example:</p>
+<ul>
+<li>$\text{Let }f:\Bbb Z \to \Bbb Z \text{ with } f(x) = x^2$</li>
+<li>$f \text{ is not 1-1 because }f(x) = f(-x)$</li>
+</ul>
+<h2 id="composition-of-one-to-one-functions">Composition of One-To-One Functions</h2>
+<blockquote class="book-hint warning">
+  <h3 id="theorem">Theorem</h3>
+<ul>
+<li>$\text{Let }f:A \to B, \  g:B \to C$</li>
+<li>$\text{If both $f$ and $g$ are 1-1 then } g \circ f \text{ is also 1-1.}$</li>
+<li>That is, the composition of 1-1 functions is 1-1.</li>
+</ul>
+</blockquote>
+
+<p>Proof:</p>
+<ul>
+<li>$\text{Let } (g \circ f)(x) = (g \circ f)(y)$</li>
+<li>$g(f(x)) = g(f(y))$</li>
+<li>$\text{Since $g$ is 1-1, } f(x) = f(y)$</li>
+<li>$\text{Since $f$ is 1-1, } x = y$</li>
+<li>$\text{That is, } g \circ f \text{ is a 1-1 function}$</li>
+</ul>
+<h3 id="the-converse-is-almost-true-its-still-false">The Converse is Almost True (Its Still False)</h3>
+<ul>
+<li>$\text{Let }f:A \to B, \  g:B \to C$</li>
+<li>$\text{Let } g \circ f: A \to C \text{ be 1-1}$</li>
+<li>Then $f$ is 1-1, but $g$ doesnt have to be 1-1</li>
+</ul>
+<p>Proof:</p>
+<ul>
+<li>$\text{Let }f(x) = f(y)$</li>
+<li>$\text{Then } g(f(x)) = g(f(y))$</li>
+<li>$(g \circ f)(x) = (g \circ f)(y)$</li>
+<li>$x = y$</li>
+<li>That is, $f$ is 1-1</li>
+</ul>
+<h2 id="onto-functions-surjections">Onto Functions, Surjections</h2>
+<blockquote class="book-hint info">
+  <ul>
+<li>$\text{Let } f:A \to B$</li>
+<li>$\text{The function $f$ is onto if and only if}$
+<ul>
+<li>For any $y \in B$</li>
+<li>There exists some $x \in A$</li>
+<li>Such that $f(x) = y$</li>
+</ul>
+</li>
+<li>In words, A function is onto if and only if every element in the codomain has a non-empty pre-image.</li>
+<li>An onto function is also called a surjection.</li>
+</ul>
+</blockquote>
+
+<h3 id="onto-means-range-is-codomain">Onto Means Range is Codomain</h3>
+<p>Proof:</p>
+<ul>
+<li>Let $f: A \to B$ be onto.</li>
+<li>Onto implies $B \subseteq f(A)$</li>
+<li>Let $y \in B$</li>
+<li>There exists $x \in A$ such that $f(x) = y$</li>
+<li>$y \in f(A)$</li>
+<li>That is, $B \subseteq A$</li>
+<li>But $f(A) \subseteq B$</li>
+<li>That is, $B = f(A)$</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>Let $f: \Bbb Z\to \Bbb Z$ with $f(x) = x^2$</li>
+<li>$f$ is not onto because there is no integer $x$ such that $f(x) = -1$</li>
+</ul>
+<h2 id="composition-of-surjections">Composition of Surjections</h2>
+<blockquote class="book-hint warning">
+  <h3 id="theorem">Theorem</h3>
+<ul>
+<li>$\text{Let }f:A \to B, \  g:B \to C$</li>
+<li>$\text{If both $f$ and $g$ are onto then } g \circ f \text{ is also onto.}$</li>
+<li>That is, the composition of onto functions is onto.</li>
+</ul>
+</blockquote>
+
+<p>Proof:</p>
+<ul>
+<li>$\text{Let } z \in C$</li>
+<li>$\text{Since } g: B \to C \text{ is onto, there is a } y \in B \text{ such that }g(y) = z$</li>
+<li>$\text{Since } f: A \to B \text{ is onto, there is an } x \in A \text{ such that }f(x) = y$</li>
+<li>$\text{Combining, we have }(g \circ f)(x) = g(f(x)) = g(y) = z$</li>
+<li>$\text{That is, the composition }g \circ f \text{ is onto.}$</li>
+</ul>
+<h3 id="the-converse-is-almost-true-its-still-false-again">The Converse is Almost True (Its Still False.. Again..)</h3>
+<p>Proof:</p>
+<ul>
+<li>$\text{Let }f:A \to B,\ g:B \to C$</li>
+<li>$\text{Let }g \circ f:A \to C \text{ be onto.}$</li>
+<li>$\text{Then $g$ is onto, but $f$ need not be onto}$</li>
+<li>$\text{Since $g \circ f$ is onto, for any $z \in C$, there is an $x \in A$ such that $(g \circ f)(x) = z$}$</li>
+<li>$\text{That is, } g(f(x))=z$</li>
+<li>$\text{But }f(x) \in B$</li>
+<li>$\text{So for any } z \in C, \text{ there is a } y = f(x) \in B \text{ such that } g(y) = x$</li>
+<li>$\text{That is, $g$ is onto.}$</li>
+</ul>
+<h2 id="1-1-and-onto-functions-bijections-1-1-correspondences">1-1 and Onto Functions, Bijections, 1-1 Correspondences</h2>
+<ul>
+<li>Let $f:A \to B$</li>
+<li>The function $f$ is a 1-1 correspondence if and only if $f$ is 1-1 and onto.</li>
+<li>A 1-1 correspondence is also called a bijection.</li>
+</ul>
 </article>
  
       
@@ -1304,7 +1442,23 @@ Let $y = f(x)$ or $(x,y) \in f$</p>
             <li><a href="#for-compositions-of-three-functions">For Compositions of Three Functions</a></li>
           </ul>
         </li>
-        <li><a href="#one-to-one-functions">One to One Functions</a></li>
+        <li><a href="#one-to-one-functions-injections">One-To-One Functions, Injections</a></li>
+        <li><a href="#composition-of-one-to-one-functions">Composition of One-To-One Functions</a>
+          <ul>
+            <li><a href="#the-converse-is-almost-true-its-still-false">The Converse is Almost True (Its Still False)</a></li>
+          </ul>
+        </li>
+        <li><a href="#onto-functions-surjections">Onto Functions, Surjections</a>
+          <ul>
+            <li><a href="#onto-means-range-is-codomain">Onto Means Range is Codomain</a></li>
+          </ul>
+        </li>
+        <li><a href="#composition-of-surjections">Composition of Surjections</a>
+          <ul>
+            <li><a href="#the-converse-is-almost-true-its-still-false-again">The Converse is Almost True (Its Still False.. Again..)</a></li>
+          </ul>
+        </li>
+        <li><a href="#1-1-and-onto-functions-bijections-1-1-correspondences">1-1 and Onto Functions, Bijections, 1-1 Correspondences</a></li>
       </ul>
     </li>
   </ul>
