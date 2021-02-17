@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.16ab88823f36f2d1fb15e19164c0d5885fbbbe6e198fdcaaa8fb154fa51de3b1.js" integrity="sha256-FquIgj828tH7FeGRZMDViF&#43;7vm4Zj9yqqPsVT6Ud47E="></script>
+<script defer src="/en.search.min.feb779850633a9fb7d431576c8a56277cc56a8b6df94d623370cfbaf882b5b88.js" integrity="sha256-/rd5hQYzqft9QxV2yKVid8xWqLbflNYjNwz7r4grW4g="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -338,6 +338,15 @@ delimiters: [
           </ul>
         </li>
         <li><a href="#questions-3">Questions</a></li>
+      </ul>
+    </li>
+    <li><a href="#foundation-for-cryptography">Foundation for Cryptography</a>
+      <ul>
+        <li><a href="#the-floor-and-ceiling-function">The Floor and Ceiling Function</a>
+          <ul>
+            <li><a href="#quotient-and-remainder">Quotient and Remainder</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -979,15 +988,19 @@ f[1] &amp; f[2] &amp; &hellip; &amp; f[n]
 $$</p>
 <h4 id="permutations-as-2d-arrays">Permutations as 2D Arrays</h4>
 <p>Let $A = {1,2,&hellip;,n}$. If $n = lm$, then a permutation $f$ of $A$ can also be defined as a two dimensional array</p>
-<p>$$
-\begin{matrix}
-f[1] &amp; f[2] &amp; \cdots &amp; f[l] \<br>
-f[1+l] &amp; f[2+l] &amp; \cdots &amp; f[2l] \<br>
-f[1+2l] &amp; f[2+2l] &amp; \cdots &amp; f[3l] \<br>
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>
-f[1+(m-1)l] &amp; f[2+(m-1)l] &amp; \cdots &amp; f[ml] \<br>
-\end{matrix}
-$$</p>
+
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \[\begin{matrix}
+f[1] &amp; f[2] &amp; \cdots &amp; f[l] \\
+f[1&#43;l] &amp; f[2&#43;l] &amp; \cdots &amp; f[2l] \\
+f[1&#43;2l] &amp; f[2&#43;2l] &amp; \cdots &amp; f[3l] \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+f[1&#43;(m-1)l] &amp; f[2&#43;(m-1)l] &amp; \cdots &amp; f[ml]
+\end{matrix}\]
+</span>
+
 <h3 id="constant-functions">Constant Functions</h3>
 <ul>
 <li>$\text{Let } f: A \to B$</li>
@@ -1060,7 +1073,7 @@ $$</p>
 </li>
 <li>$\text{But $f$ is a function, so } y = y^\prime$</li>
 <li>$\text{Now we have } (y,z), (y, z^\prime) \in g$</li>
-<li>$\tetx{But $g$ is a function, so }z = z^\prime$</li>
+<li>$\text{But $g$ is a function, so }z = z^\prime$</li>
 </ul>
 <h2 id="the-values-of-function-composition">The Values of Function Composition</h2>
 <h3 id="for-compositions-of-two-functions">For Compositions of Two Functions</h3>
@@ -1464,6 +1477,42 @@ $$</p>
   </label>
 </div>
 
+<hr>
+<h1 id="foundation-for-cryptography">Foundation for Cryptography</h1>
+<h2 id="the-floor-and-ceiling-function">The Floor and Ceiling Function</h2>
+<blockquote class="book-hint info">
+  <h3 id="the-floor-function-lfloor-x-rfloor">The Floor Function $\lfloor x \rfloor$</h3>
+<p>The largest integer $\leq x$</p>
+<h3 id="the-ceiling-function-lceil-x-rceil">The Ceiling Function $\lceil x \rceil$</h3>
+<p>The smallest integer $\geq x$</p>
+
+</blockquote>
+
+<h3 id="quotient-and-remainder">Quotient and Remainder</h3>
+<blockquote class="book-hint warning">
+  <h3 id="division-algorithm">Division Algorithm</h3>
+<p>Let $b \not = 0$ be an integer and let $a$ be any integer. Then there are two unique integers $q$ and $0 \leq r \leq |b|$ such that $a = qb+r$
+</blockquote>
+
+<p>Proof (Constructive):</p>
+<ul>
+<li>Define $\mathcal E_b = 1$ if $b &gt; 0$ and $\mathcal E_b = -1$ if $b &lt; 0$</li>
+<li>Let $q = \left \lfloor \frac{a}{b \mathcal E_b} \right \rfloor$ and $r = a-q \mathcal E_b b$</li>
+<li>It can be checked that $0 \leq r \leq |b|$ and that $a = bq + r$</li>
+<li>Proof of uniqueness of $q$ and $r$
+<ul>
+<li>Exercise</li>
+</ul>
+</li>
+</ul>
+<blockquote class="book-hint warning">
+  <h3 id="definition">Definition</h3>
+<p>$q$ and $r$ in the proof above are the <em>quotient</em> and <em>remainder</em> when $a$ is divided by $b$.</p>
+<p>We write $r = a \mod b$</p>
+<p>If $a \mod b = 0, \ b$ is called a <em>divisor</em> or <em>factor</em> of $a$. In this case, we sat that $a$ is divisible by $b$ or $b$ divides $a$.</p>
+
+</blockquote>
+
 </article>
  
       
@@ -1657,6 +1706,15 @@ $$</p>
           </ul>
         </li>
         <li><a href="#questions-3">Questions</a></li>
+      </ul>
+    </li>
+    <li><a href="#foundation-for-cryptography">Foundation for Cryptography</a>
+      <ul>
+        <li><a href="#the-floor-and-ceiling-function">The Floor and Ceiling Function</a>
+          <ul>
+            <li><a href="#quotient-and-remainder">Quotient and Remainder</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
