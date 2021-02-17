@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.feb779850633a9fb7d431576c8a56277cc56a8b6df94d623370cfbaf882b5b88.js" integrity="sha256-/rd5hQYzqft9QxV2yKVid8xWqLbflNYjNwz7r4grW4g="></script>
+<script defer src="/en.search.min.49f1bd782954ef9ab649642e5f402f42444be84d4dc533f22d65d4a181c51141.js" integrity="sha256-SfG9eClU75q2SWQuX0AvQkRL6E1NxTPyLWXUoYHFEUE="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -347,6 +347,7 @@ delimiters: [
             <li><a href="#quotient-and-remainder">Quotient and Remainder</a></li>
           </ul>
         </li>
+        <li><a href="#the-euclidean-algorithm">The Euclidean Algorithm</a></li>
       </ul>
     </li>
   </ul>
@@ -1513,6 +1514,36 @@ f[1&#43;(m-1)l] &amp; f[2&#43;(m-1)l] &amp; \cdots &amp; f[ml]
 
 </blockquote>
 
+<blockquote class="book-hint warning">
+  <h3 id="definition">Definition</h3>
+<p>The greatest common divisor (GCD) of two integers $a$ and $b$, denoted by $\gcd (a,b)$, is the largest among all the common divisors of $a$ and $b$.
+</blockquote>
+
+<blockquote class="book-hint warning">
+  <h3 id="proposition">Proposition</h3>
+<p>$\gcd (b,a) = \gcd (-b,a) = \gcd (b,-a) = \gcd (-b,-a) = \gcd (a,b)$
+</blockquote>
+
+<p>Because of the proposition above we will only consider the case that $a \geq 0$ and $b \geq 0$ later on.</p>
+<blockquote class="book-hint warning">
+  <h3 id="proposition">Proposition</h3>
+<p>Let $a$ and $b$ be two integers such that $(a,b) \not = (0,0)$. Then $\gcd (b,a)$ must exist
+</blockquote>
+
+<p>Proof:</p>
+<p>The total number of positive common divisors of $a$ and $b$ is at most $\max (|a|,|b|)$</p>
+<h2 id="the-euclidean-algorithm">The Euclidean Algorithm</h2>
+<blockquote class="book-hint info">
+  <h3 id="lemma">Lemma</h3>
+<p>Let $b \not = 0$. Then $\gcd (a,b) = \gcd (b,\ a\mod b)$
+</blockquote>
+
+<p>Proof:</p>
+<ul>
+<li>Note that $a = qb + r$, where $r = a \mod b$ is the remainder.</li>
+<li>By this equation, any common divisor of $a$ and $b$ must be a common divisor of $b$ and $r$.</li>
+<li>Hence the two sets of integers have the same GCD.</li>
+</ul>
 </article>
  
       
@@ -1715,6 +1746,7 @@ f[1&#43;(m-1)l] &amp; f[2&#43;(m-1)l] &amp; \cdots &amp; f[ml]
             <li><a href="#quotient-and-remainder">Quotient and Remainder</a></li>
           </ul>
         </li>
+        <li><a href="#the-euclidean-algorithm">The Euclidean Algorithm</a></li>
       </ul>
     </li>
   </ul>
