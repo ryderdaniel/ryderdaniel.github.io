@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.5c83f3e71afad6d40fc66ae88a308ede504b2a26dadc4f59ddc3d02f2415afc2.js" integrity="sha256-XIPz5xr61tQPxmroijCO3lBLKiba3E9Z3cPQLyQVr8I="></script>
+<script defer src="/en.search.min.9f9404cc9650bfbb85c1e36c4ae5f6321fa225584e7c8a5b3fb9c4909732640d.js" integrity="sha256-n5QEzJZQv7uFweNsSuX2Mh&#43;iJVhOfIpbP7nEkJcyZA0="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -195,8 +195,19 @@ delimiters: [
       <ul>
         <li><a href="#communication-system">Communication System</a></li>
         <li><a href="#discrete-time-channel">Discrete Time Channel</a></li>
+        <li><a href="#mathematical-models">Mathematical Models</a></li>
+        <li><a href="#engineers-use-models-to">Engineers use models to</a></li>
       </ul>
     </li>
+    <li><a href="#effects-of-the-channel">Effects of the Channel</a>
+      <ul>
+        <li><a href="#possible-effects-of-the-channel">Possible Effects of the Channel</a></li>
+        <li><a href="#modelling-attenuation-delay-and-offset">Modelling Attenuation, Delay, and Offset</a></li>
+        <li><a href="#blurring-of-transitions">Blurring of Transitions</a></li>
+        <li><a href="#developing-a-bandlimited-channel-model">Developing a Bandlimited Channel Model</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
   </ul>
 </nav>
 
@@ -308,7 +319,94 @@ b_k &amp; k \cdot \text{SPB} \leq n &lt; (k &#43; 1) \cdot \text{SPB} \\
 <h2 id="discrete-time-channel">Discrete Time Channel</h2>
 <ul>
 <li>Modern communication systems are built from computers that work in discrete time, but most channels are in continuous time.</li>
-<li>Thus modern transmitters create discrete time signals</li>
+<li>Thus modern transmitters create discrete time signals, and then generate continuous time signals to send.</li>
+<li>Modern recievers recieve continuous time signals, which they sample to obtain discrete time signals.</li>
+<li>In the context of thus course, we do not care about the conversion from/to discrete/continuous, and thus will treat the mapping from the transmitted samples $x(n)$ to the recieved samples as a black box, called a discrete time channel.</li>
+</ul>
+<h2 id="mathematical-models">Mathematical Models</h2>
+<ul>
+<li>A mathematical model describes the operation of a system using mathematical formulas.</li>
+<li>Given a formula for the input, how do we get a formula for the output.</li>
+<li>We have a good model if:
+<ul>
+<li>The model and actual response are similar, $y_m(n) \approx y_a(n)$</li>
+<li>The relationship between $y_m(n)$ and $x(n)$ is simple. i.e. easy to understand and calculate.</li>
+</ul>
+</li>
+</ul>
+<h2 id="engineers-use-models-to">Engineers use models to</h2>
+<ul>
+<li>Understand the operation of the system
+<ul>
+<li>What is the relationship between the input and output of the channel?</li>
+</ul>
+</li>
+<li>Predict the performance of a system</li>
+<li>Develop modifications to the system that can improve performance</li>
+</ul>
+<h1 id="effects-of-the-channel">Effects of the Channel</h1>
+<h2 id="possible-effects-of-the-channel">Possible Effects of the Channel</h2>
+<p>The channel may cause the recieved signal $y(n)$ to differ from the transmitted signal $x(n)$ in several ways including:</p>
+<ul>
+<li>Attenuation</li>
+<li>Delay</li>
+<li>Offset</li>
+<li>Blurring of Transitions</li>
+<li>Noise</li>
+</ul>
+<p>This course focuses on the first four listed above.</p>
+<h2 id="modelling-attenuation-delay-and-offset">Modelling Attenuation, Delay, and Offset</h2>
+<ul>
+<li>$k = \text{ attenuation } (k &lt; 1)$</li>
+<li>$d = \text{ delay}$</li>
+<li>$c = \text{ offset}$</li>
+</ul>
+<p>Mathematical Model</p>
+<p>$$y(n) = k \cdot x(n-d) + c$$</p>
+<h2 id="blurring-of-transitions">Blurring of Transitions</h2>
+<ul>
+<li>The bit sequence is encoded by a waveform that makes instantaneous changes from one value (1) to another (0).</li>
+<li>Due to physical limitations in the:
+<ul>
+<li>Transducer that creates the physical waveform</li>
+<li>Electronics that drive the transducer</li>
+<li>Physical medium that carries the waveform</li>
+<li>Sensor that senses the physical waveform</li>
+<li>Electronics that process the sensor signal</li>
+</ul>
+</li>
+</ul>
+<p>The actual recieved waveform cannot make instantaneous changes.</p>
+<ul>
+<li>In engineering terms, we say that the channel is bandlimited.</li>
+</ul>
+<h2 id="developing-a-bandlimited-channel-model">Developing a Bandlimited Channel Model</h2>
+<ul>
+<li>Can we develop a mathematical model that enables us to predict the output of a bandlimited channel from any input?</li>
+<li>Yes, if we assume the channel is linear and time invariant.</li>
+<li>We will use the fact that any input can be expressed as the sum of unit step functions.</li>
+</ul>
+<h1 id="summary">Summary</h1>
+<ul>
+<li>Discrete Time Channel:
+<ul>
+<li>Discrete waveform</li>
+<li>Represent bit sequences as bit waveform</li>
+</ul>
+</li>
+<li>Effect of the Channel:
+<ul>
+<li>Possible effects of the channel:
+<ul>
+<li>Attenuation (decrease in amplitude)</li>
+<li>Delay</li>
+<li>Offset</li>
+<li>Blurring of transitions</li>
+<li>Noise</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </article>
  
@@ -360,8 +458,19 @@ b_k &amp; k \cdot \text{SPB} \leq n &lt; (k &#43; 1) \cdot \text{SPB} \\
       <ul>
         <li><a href="#communication-system">Communication System</a></li>
         <li><a href="#discrete-time-channel">Discrete Time Channel</a></li>
+        <li><a href="#mathematical-models">Mathematical Models</a></li>
+        <li><a href="#engineers-use-models-to">Engineers use models to</a></li>
       </ul>
     </li>
+    <li><a href="#effects-of-the-channel">Effects of the Channel</a>
+      <ul>
+        <li><a href="#possible-effects-of-the-channel">Possible Effects of the Channel</a></li>
+        <li><a href="#modelling-attenuation-delay-and-offset">Modelling Attenuation, Delay, and Offset</a></li>
+        <li><a href="#blurring-of-transitions">Blurring of Transitions</a></li>
+        <li><a href="#developing-a-bandlimited-channel-model">Developing a Bandlimited Channel Model</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
   </ul>
 </nav>
 
