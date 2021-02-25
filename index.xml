@@ -12,6 +12,28 @@
     
     
     <item>
+      <title>Lecture3</title>
+      <link>http://ryderdaniel.github.io/ELEC1200/Lecture3/</link>
+      <pubDate>Thu, 25 Feb 2021 13:17:07 +0800</pubDate>
+      
+      <guid>http://ryderdaniel.github.io/ELEC1200/Lecture3/</guid>
+      <description>Representing Bit Waveforms Equivalent Representations of Waveforms  Verbal: The encoding of the bit sequence $1010001$ at 4 samples per bit. Graph:
+ List, Table or Vector of Values:
+$n = [0, 1, 2, 3, &amp;hellip;]$
+$x(n) = [1, 1, 1, 0, &amp;hellip;]$ Sum of Unit Step Functions:
+$x(n) = u(n) - u(n-4) + u(n-8) + &amp;hellip; + u(n + m)$  Uses for Different Representations  The four representations are equivalent in that if we know one, we can obtain any of the others.</description>
+    </item>
+    
+    <item>
+      <title>Lecture2</title>
+      <link>http://ryderdaniel.github.io/ELEC1200/Lecture2/</link>
+      <pubDate>Thu, 25 Feb 2021 10:55:00 +0800</pubDate>
+      
+      <guid>http://ryderdaniel.github.io/ELEC1200/Lecture2/</guid>
+      <description>Recap of Lecture 1 Representing Bit Sequences as Waveforms  A bit sequence can be encoded by changing the value of a physical variable over time Each bit is encoded by holding the state constant over a length of time known as the bit time. The shorter the bit time, the faster we can transmit information (bits).  Encoding information with Bits Bits  A bit is the basic unit of information used in modern computers and communication systems.</description>
+    </item>
+    
+    <item>
       <title>Discrete Math Review</title>
       <link>http://ryderdaniel.github.io/COMP4631/02.-Discrete-Math-Review/</link>
       <pubDate>Sat, 06 Feb 2021 10:48:17 +0800</pubDate>

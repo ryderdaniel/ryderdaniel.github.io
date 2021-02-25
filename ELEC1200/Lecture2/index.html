@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.68.3" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Recap of lecture 1, Encoding information with bits, Continuous vs Discrete waveforms, Discrete time bit waveforms">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Lecture2" />
+<meta property="og:description" content="Recap of lecture 1, Encoding information with bits, Continuous vs Discrete waveforms, Discrete time bit waveforms" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ryderdaniel.github.io/ELEC1200/Lecture2/" />
+<meta property="article:published_time" content="2021-02-25T10:55:00+08:00" />
+<meta property="article:modified_time" content="2021-02-25T10:55:00+08:00" />
+<title>Lecture2 | Spring 2021</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
+<script defer src="/en.search.min.5c83f3e71afad6d40fc66ae88a308ede504b2a26dadc4f59ddc3d02f2415afc2.js" integrity="sha256-XIPz5xr61tQPxmroijCO3lBLKiba3E9Z3cPQLyQVr8I="></script>
+
+<script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>Spring 2021</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/COMP4631/" target="_blank" rel="noopener">
+        COMP4631
+      </a>
+  </li>
+  
+  <li>
+    <a href="/COMP4632/" target="_blank" rel="noopener">
+        COMP4632
+      </a>
+  </li>
+  
+  <li>
+    <a href="/COMP4901O/" target="_blank" rel="noopener">
+        COMP4901O
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ELEC1010/" target="_blank" rel="noopener">
+        ELEC1010
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ELEC1200/" target="_blank" rel="noopener">
+        ELEC1200
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+delimiters: [
+  {left: "$$", right: "$$", display: true},
+  {left: "$", right: "$", display: false},
+  {left: "\\(", right: "\\)", display: false},
+  {left: "\\[", right: "\\]", display: true}
+]
+        });
+    });
+</script>
+
+
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+  
+  <strong>Lecture2</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+delimiters: [
+  {left: "$$", right: "$$", display: true},
+  {left: "$", right: "$", display: false},
+  {left: "\\(", right: "\\)", display: false},
+  {left: "\\[", right: "\\]", display: true}
+]
+        });
+    });
+</script>
+
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#recap-of-lecture-1">Recap of Lecture 1</a>
+      <ul>
+        <li><a href="#representing-bit-sequences-as-waveforms">Representing Bit Sequences as Waveforms</a></li>
+      </ul>
+    </li>
+    <li><a href="#encoding-information-with-bits">Encoding information with Bits</a>
+      <ul>
+        <li><a href="#bits">Bits</a></li>
+        <li><a href="#sequence-of-yesno-questions">Sequence of Yes/No Questions</a></li>
+        <li><a href="#binary-digits">Binary Digits</a></li>
+        <li><a href="#ascii-codes">ASCII Codes</a></li>
+        <li><a href="#bit-sequences">Bit Sequences</a></li>
+      </ul>
+    </li>
+    <li><a href="#continuous-vs-discrete-time-waveforms">Continuous vs Discrete Time Waveforms</a>
+      <ul>
+        <li><a href="#sampling-from-continuous-to-discrete">Sampling: From Continuous to Discrete</a></li>
+        <li><a href="#from-discrete-to-continuous-time">From Discrete to Continuous Time</a></li>
+        <li><a href="#sampling-period-vs-frequency">Sampling Period vs Frequency</a></li>
+        <li><a href="#number-of-samples">Number of Samples</a></li>
+      </ul>
+    </li>
+    <li><a href="#discrete-time-bit-waveforms">Discrete Time Bit Waveforms</a>
+      <ul>
+        <li><a href="#from-bit-sequences-to-bit-waveforms">From Bit Sequences to Bit Waveforms</a></li>
+        <li><a href="#bit-rate-sampling-frequency-spb">Bit Rate, Sampling Frequency, SPB</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="recap-of-lecture-1">Recap of Lecture 1</h1>
+<h2 id="representing-bit-sequences-as-waveforms">Representing Bit Sequences as Waveforms</h2>
+<ul>
+<li>A bit sequence can be encoded by changing the value of a physical variable over time</li>
+<li>Each bit is encoded by holding the state constant over a length of time known as the bit time.</li>
+<li>The shorter the bit time, the faster we can transmit information (bits).</li>
+</ul>
+<h1 id="encoding-information-with-bits">Encoding information with Bits</h1>
+<h2 id="bits">Bits</h2>
+<ul>
+<li>A bit is the basic unit of information used in modern computers and communication systems.</li>
+<li>A bit is a variable that can assume one of two values or &ldquo;states&rdquo;. Commonly denoted as $0$ or $1$.</li>
+<li>Can be thought of as the answer to a yes/no question.</li>
+<li>Variables that can assume more than two values can still be represented by conbinations or sequences of bits. Example:
+<ul>
+<li>binary numbers</li>
+<li>ASCII</li>
+</ul>
+</li>
+</ul>
+<h2 id="sequence-of-yesno-questions">Sequence of Yes/No Questions</h2>
+<p>A binary number can also be thought of as the answer to a series of yes/no (1/0) questions. For example if $N=3$,</p>
+<p>
+  <img src="/static/ELEC1200/tree1.png" alt="tree" /></p>
+<h2 id="binary-digits">Binary Digits</h2>
+<ul>
+<li>We can use N bits $b_{N-1}, b_{N-2}, &hellip;, b_1, b_0$ to represents integers from $0$ to $2^N -1$.</li>
+<li>Each digit is the sum of powers of two</li>
+</ul>
+<p>$$x = \sum_{i=0}^{N-1} 2^i \cdot b_i$$</p>
+<ul>
+<li>Notation:
+<ul>
+<li>$b_{N-1}$ is the most significant bit (MSB).</li>
+<li>$b_0$ is the least significant bit (LSB).</li>
+</ul>
+</li>
+</ul>
+<h2 id="ascii-codes">ASCII Codes</h2>
+<ul>
+<li>ASCII = American Standard Code for Information Interchange</li>
+<li>An 8-bit code used to represent text symbols.</li>
+</ul>
+<p>
+  <a href="http://www.asciitable.com/">See this</a></p>
+<h2 id="bit-sequences">Bit Sequences</h2>
+<ul>
+<li>Information we want to send is typically encoded as long bit sequences created by concatenating binary code words.</li>
+</ul>
+<h1 id="continuous-vs-discrete-time-waveforms">Continuous vs Discrete Time Waveforms</h1>
+<ul>
+<li>A continuous time (CT) signal has a known value for all points in a time interval.</li>
+<li>A discrete time (DT) signal has a known value only at a discrete (discontinuous) set of time points.</li>
+</ul>
+<h2 id="sampling-from-continuous-to-discrete">Sampling: From Continuous to Discrete</h2>
+<ul>
+<li>We can obtain discrete time waveforms by sampling (recording) a continuous time waveform $x_c(t)$ at regular intervals in time.
+<ul>
+<li>$T_s$ = Sample Period</li>
+</ul>
+</li>
+<li>We typically index (identify, label) each sample by an integer sample number, $n$.</li>
+<li>We denote the sampled waveform by $x(n)$</li>
+<li>The $n$th corresponds to the waveform at the time $t = nT_s$. i.e. $x(n) = x_c(nT_s)$</li>
+</ul>
+<h2 id="from-discrete-to-continuous-time">From Discrete to Continuous Time</h2>
+<ul>
+<li>Given samples $x(n)$, we can obtain a continuous time waveform $x_h(t)$ by holding the waveform at $x(n)$ between times $nT_s$ and $(n+1)T_s$</li>
+</ul>
+<h2 id="sampling-period-vs-frequency">Sampling Period vs Frequency</h2>
+<ul>
+<li>$T_s$ = Sample Period (time interval between samples)
+<ul>
+<li>Typical unit: Seconds (s)</li>
+</ul>
+</li>
+<li>$F_s$ = Sampling frequency (number of samples in a fixed period of time)
+<ul>
+<li>Typical unit: Hertz (Hz samples per second)</li>
+</ul>
+</li>
+<li>Relation: $$F_s = \frac{1}{T_s}$$</li>
+</ul>
+<p>Example:</p>
+<p>$T_s = 0.2$ seconds<br>
+$F_s = \frac{1 \text{ sample}}{0.2 \text{ seconds}} = 5 Hz$</p>
+<h2 id="number-of-samples">Number of Samples</h2>
+<ul>
+<li>
+<p>If we sample a signal at intervals of $T_s$ over a finite time window $T_w$, we obtain $N$ samples where<br>
+$$N = \frac{T_w}{T_s} = T_w \cdot F_s$$</p>
+</li>
+<li>
+<p>This is an example of an engineering tradeoff: A higher sample frequency is:</p>
+<ul>
+<li>Good: Less information lost since less time between samples</li>
+<li>Bad: More storage is needed since more samples for a given length of time.</li>
+</ul>
+</li>
+</ul>
+<h1 id="discrete-time-bit-waveforms">Discrete Time Bit Waveforms</h1>
+<h2 id="from-bit-sequences-to-bit-waveforms">From Bit Sequences to Bit Waveforms</h2>
+<ul>
+<li>Bits can be encoded by holding a physcial variable constant over a &ldquo;bit time&rdquo;</li>
+<li>In discrete time, we encode bits as waveforms by holding sample values constant over a number of Samples Per Bit (SPB).</li>
+</ul>
+<h2 id="bit-rate-sampling-frequency-spb">Bit Rate, Sampling Frequency, SPB</h2>
+<ul>
+<li>
+<p>The bit time measures the length of time it takes to send one bit.</p>
+<ul>
+<li>$\text{bit time } = \text{SPB} \cdot T_s = \frac{\text{SPB}}{F_s}$</li>
+</ul>
+</li>
+<li>
+<p>The bit rate measures the number of bits we can send in a given unit of time.</p>
+<ul>
+<li>$\text{bit rate } = \frac{1}{\text{bit time}} = \frac{1}{\text{SPB} \cdot T_s} = \frac{F_s}{\text{SPB}}$</li>
+</ul>
+</li>
+<li>
+<p>We generally want:</p>
+<ul>
+<li>The bit rate to be large</li>
+<li>The bit time to be small</li>
+</ul>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#recap-of-lecture-1">Recap of Lecture 1</a>
+      <ul>
+        <li><a href="#representing-bit-sequences-as-waveforms">Representing Bit Sequences as Waveforms</a></li>
+      </ul>
+    </li>
+    <li><a href="#encoding-information-with-bits">Encoding information with Bits</a>
+      <ul>
+        <li><a href="#bits">Bits</a></li>
+        <li><a href="#sequence-of-yesno-questions">Sequence of Yes/No Questions</a></li>
+        <li><a href="#binary-digits">Binary Digits</a></li>
+        <li><a href="#ascii-codes">ASCII Codes</a></li>
+        <li><a href="#bit-sequences">Bit Sequences</a></li>
+      </ul>
+    </li>
+    <li><a href="#continuous-vs-discrete-time-waveforms">Continuous vs Discrete Time Waveforms</a>
+      <ul>
+        <li><a href="#sampling-from-continuous-to-discrete">Sampling: From Continuous to Discrete</a></li>
+        <li><a href="#from-discrete-to-continuous-time">From Discrete to Continuous Time</a></li>
+        <li><a href="#sampling-period-vs-frequency">Sampling Period vs Frequency</a></li>
+        <li><a href="#number-of-samples">Number of Samples</a></li>
+      </ul>
+    </li>
+    <li><a href="#discrete-time-bit-waveforms">Discrete Time Bit Waveforms</a>
+      <ul>
+        <li><a href="#from-bit-sequences-to-bit-waveforms">From Bit Sequences to Bit Waveforms</a></li>
+        <li><a href="#bit-rate-sampling-frequency-spb">Bit Rate, Sampling Frequency, SPB</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
