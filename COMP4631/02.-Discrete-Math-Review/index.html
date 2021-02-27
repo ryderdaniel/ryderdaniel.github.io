@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.3647402671758cd674dd0db40e5f56ebe71b6b86a49cf94ccb4ed01e04a357d6.js" integrity="sha256-NkdAJnF1jNZ03Q20Dl9W6&#43;cba4aknPlMy07QHgSjV9Y="></script>
+<script defer src="/en.search.min.2913ba545e9827e4e2618355ca32e67d5813eb1ef4293070a7883e14d180ab02.js" integrity="sha256-KRO6VF6YJ&#43;TiYYNVyjLmfVgT6x70KTBwp4g&#43;FNGAqwI="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -347,7 +347,21 @@ delimiters: [
             <li><a href="#quotient-and-remainder">Quotient and Remainder</a></li>
           </ul>
         </li>
-        <li><a href="#the-euclidean-algorithm">The Euclidean Algorithm</a></li>
+        <li><a href="#the-euclidean-algorithm">The Euclidean Algorithm</a>
+          <ul>
+            <li><a href="#pseudo-code">Pseudo Code</a></li>
+          </ul>
+        </li>
+        <li><a href="#modulo-n-arithmetic">Modulo $n$ Arithmetic</a>
+          <ul>
+            <li><a href="#properties-of-modulo-n-operations">Properties of Modulo $n$ Operations</a></li>
+          </ul>
+        </li>
+        <li><a href="#the-multiplicative-inverse">The Multiplicative Inverse</a>
+          <ul>
+            <li><a href="#gcd-ab-as-a-linear-combination-of-a-and-b">$\gcd (a,b)$ as a linear combination of $a$ and $b$</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -1544,6 +1558,94 @@ f[1&#43;(m-1)l] &amp; f[2&#43;(m-1)l] &amp; \cdots &amp; f[ml]
 <li>By this equation, any common divisor of $a$ and $b$ must be a common divisor of $b$ and $r$.</li>
 <li>Hence the two sets of integers have the same GCD.</li>
 </ul>
+<p>Remark:</p>
+<p>A recursive application of this lemma gives an efficient algorithm for computing the <code>gcd(a,b)</code>, which is called the <strong>Euclidean Algorithm</strong></p>
+<h3 id="pseudo-code">Pseudo Code</h3>
+<ol>
+<li>$x \leftarrow a;\ y \leftarrow b$</li>
+<li>$\text{If } y = 0, \text{ return } \gcd (a,b) = x$</li>
+<li>$r \leftarrow x \mod y$</li>
+<li>$x \leftarrow y$</li>
+<li>$y \leftarrow r$</li>
+<li>$\text{Go to step 2.}$</li>
+</ol>
+<p>The time complexity of this algorithm is $O(\log |b| \times [\log |b| + \log |a|]^2)$</p>
+<h2 id="modulo-n-arithmetic">Modulo $n$ Arithmetic</h2>
+<blockquote class="book-hint info">
+  Let $n &gt; 1$ be an integer. We define:</p>
+<ul>
+<li>$x \oplus _n y = (x + y) \mod n$</li>
+<li>$x \ominus _n y = (x - y) \mod n$</li>
+<li>$x \otimes _n y = (x \times y) \mod n$</li>
+<li>Where $+,-,\times$ are integer operators.</li>
+<li>$\oplus_n$ is called modulo-n addition.</li>
+<li>$\ominus_n$ is called modulo-n subtraction.</li>
+<li>$\otimes_n$ is called modulo-n multiplicaiton.</li>
+<li>$n$ is called the modulus.</li>
+</ul>
+</blockquote>
+
+<h3 id="properties-of-modulo-n-operations">Properties of Modulo $n$ Operations</h3>
+<blockquote class="book-hint warning">
+  <h3 id="proposition">Proposition</h3>
+<p>Let $n &gt; 1$ be the modulus, $\Bbb Z = \{0,1,&hellip;,(n-1)\}$</p>
+<ul>
+<li>
+<p>Commutative laws:
+$$x \oplus_n y = y \oplus_n x,\  x \otimes_n y = y \otimes_n x $$</p>
+</li>
+<li>
+<p>Associative Laws:
+$$(x \oplus_n y) \oplus_n z = x \oplus_n (y \oplus_n z )$$
+$$(x \otimes_n y) \otimes_n z = x \otimes_n (y \otimes_n z )$$</p>
+</li>
+<li>
+<p>Distribution Law:
+$$z \otimes_n (x \oplus_n y) = (z \otimes_n x) \oplus_n (z \otimes_n y)$$</p>
+</li>
+</ul>
+
+</blockquote>
+
+<h2 id="the-multiplicative-inverse">The Multiplicative Inverse</h2>
+<blockquote class="book-hint info">
+  <h3 id="definition">Definition</h3>
+<p>Let $x \in \Bbb Z_n = {0,1,&hellip;,(n-1)}$. If there is an integer $y \in \Bbb Z_n$ such that</p>
+<p>$$x \otimes_n =: (x \times y) \mod n = 1y$$</p>
+<p>The integer $y$ is called a <em>multiplicative inverse</em> of $x$, usually denoted as $x^{-1}$. (It is unique if it exists)</p>
+
+</blockquote>
+
+<h3 id="gcd-ab-as-a-linear-combination-of-a-and-b">$\gcd (a,b)$ as a linear combination of $a$ and $b$</h3>
+<blockquote class="book-hint warning">
+  <h3 id="lemma">Lemma</h3>
+<p>There are two integers $u$ and $v$ such that $\gcd (a,b) = ua + vb$
+</blockquote>
+
+<p>Proof:</p>
+<p>Set $a_0 = a$ and $a_1 = b$. By the EA, we have:
+<span>
+  \[\begin{matrix}
+a_0 &amp; = &amp; q_1 &amp; \times &amp; a_1 &amp; &#43; &amp; a_2 \\
+a_1 &amp; = &amp; q_2 &amp; \times &amp; a_2 &amp; &#43; &amp; a_3 \\
+ &amp; \vdots &amp;  &amp;  &amp;  &amp;  &amp;  \\
+a_{t-2} &amp; = &amp; q_{t-1} &amp; \times &amp; a_{t-1} &amp; &#43; &amp; a_t \\
+a_{t-1} &amp; = &amp; q_t &amp; \times &amp; a_t &amp; &#43; &amp; 0 \\
+\end{matrix}\]
+</span>
+</p>
+<p>Where $a_i \not = 0$ for $i \leq t$. Hence, $\gcd (a,b) = a_t$. Reversing back, we can express $a_t$ as a linear combination of $a_0$ and $a_1$.</p>
+<blockquote class="book-hint warning">
+  <h3 id="preposition">Preposition</h3>
+<p>If $a \in \Bbb Z_n$ has a multiplicative inverse, then it is unique.
+</blockquote>
+
+<p>Proof:</p>
+<p>Let $b \in \Bbb Z_n$ and $c \in \Bbb Z_n$ be two multiplicative inverses of a. Then $a \otimes_n b = 1$ and $a \otimes_n c = 1$. By definition</p>
+<p>$$a \otimes_n b \otimes_n c = (a \otimes_n b) \otimes_n c = 1 \otimes_n c = c$$</p>
+<p>On the other hand, by associativity and commutativity,</p>
+<p>$$a \otimes_n b \otimes_n c = b \otimes_n (a \otimes_n c )= b \otimes_n 1 = b$$</p>
+<p>Hence $b = c$</p>
 </article>
  
       
@@ -1746,7 +1848,21 @@ f[1&#43;(m-1)l] &amp; f[2&#43;(m-1)l] &amp; \cdots &amp; f[ml]
             <li><a href="#quotient-and-remainder">Quotient and Remainder</a></li>
           </ul>
         </li>
-        <li><a href="#the-euclidean-algorithm">The Euclidean Algorithm</a></li>
+        <li><a href="#the-euclidean-algorithm">The Euclidean Algorithm</a>
+          <ul>
+            <li><a href="#pseudo-code">Pseudo Code</a></li>
+          </ul>
+        </li>
+        <li><a href="#modulo-n-arithmetic">Modulo $n$ Arithmetic</a>
+          <ul>
+            <li><a href="#properties-of-modulo-n-operations">Properties of Modulo $n$ Operations</a></li>
+          </ul>
+        </li>
+        <li><a href="#the-multiplicative-inverse">The Multiplicative Inverse</a>
+          <ul>
+            <li><a href="#gcd-ab-as-a-linear-combination-of-a-and-b">$\gcd (a,b)$ as a linear combination of $a$ and $b$</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
