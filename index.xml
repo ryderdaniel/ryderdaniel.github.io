@@ -12,6 +12,18 @@
     
     
     <item>
+      <title>Introduction to Cryptography</title>
+      <link>http://ryderdaniel.github.io/COMP4631/03.-Introduction-to-Cryptography/</link>
+      <pubDate>Tue, 02 Mar 2021 15:54:06 +0800</pubDate>
+      
+      <guid>http://ryderdaniel.github.io/COMP4631/03.-Introduction-to-Cryptography/</guid>
+      <description>Data Confidentiality Data in transmission or stored in a storage system could be very sensitive and only authorized people are allowed to read it. Data confidentiality means the prevention of unauthorized reading of data.
+How to Achieve Data Confidentiality? By Encryption.
+i.e. Use a secret 1-1 mapping (function) $f$ to map a plaintext $m$ into a ciphertext $c$. $c = f(m)$.
+To recover the plaintext $m$ from the ciphertext $c$, apply the inverse mapping $f^{-1}$ to $c$ yielding</description>
+    </item>
+    
+    <item>
       <title>Lecture4</title>
       <link>http://ryderdaniel.github.io/ELEC1200/Lecture4/</link>
       <pubDate>Thu, 25 Feb 2021 18:00:13 +0800</pubDate>
