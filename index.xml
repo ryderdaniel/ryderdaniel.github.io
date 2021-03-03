@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>Examples of One-Key Block Ciphers</title>
+      <link>http://ryderdaniel.github.io/COMP4631/05.-Examples-of-One-Key-Block-Ciphers/</link>
+      <pubDate>Wed, 03 Mar 2021 09:06:05 +0800</pubDate>
+      
+      <guid>http://ryderdaniel.github.io/COMP4631/05.-Examples-of-One-Key-Block-Ciphers/</guid>
+      <description>One-key Stream Ciphers A 6-tuple $(\mathcal M, \mathcal C, \mathcal K, E_k, D_k, u)$ where:
+ $\mathcal M, \mathcal C, \mathcal K$ are respectively the plaintext space, ciphertext space, and key space. Any $k \in \mathcal K$ could be the encryption and decryption key $u$ is a time-variable parameter stored in a memory device. $E_k$ and $D_k$ are encryption and decryption transformations with
+$D_k(E_k(m,u),u)=m,\ \forall m \in \mathcal M$  Remark: The ciphertext $c=E_k(m,u)$ depends on $k, m$ and $u$ and is time dependent, as $u$ is time-variable.</description>
+    </item>
+    
+    <item>
       <title>One Key Block Ciphers</title>
       <link>http://ryderdaniel.github.io/COMP4631/04.-One-Key-Block-Ciphers/</link>
       <pubDate>Tue, 02 Mar 2021 17:19:32 +0800</pubDate>
