@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.bfa6112f64522ec98d3fa7b013bc8d0ebc1cae45dfa7f742e5e472cf8d2d2f95.js" integrity="sha256-v6YRL2RSLsmNP6ewE7yNDrwcrkXfp/dC5eRyz40tL5U="></script>
+<script defer src="/en.search.min.e7ef0ac2700c97672239cbbe3c4a9fa163f26eb87cc10fdf18d99a818d073fe1.js" integrity="sha256-5&#43;8KwnAMl2ciOcu&#43;PEqfoWPybrh8wQ/fGNmagY0HP&#43;E="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -184,8 +184,15 @@ delimiters: [
     <li><a href="#data-confidentiality">Data Confidentiality</a>
       <ul>
         <li><a href="#how-to-achieve-data-confidentiality">How to Achieve Data Confidentiality?</a></li>
+        <li><a href="#examples-of-encryption">Examples of Encryption</a></li>
       </ul>
     </li>
+    <li><a href="#data-integrity">Data Integrity</a></li>
+    <li><a href="#authenticity-of-sender-and-reciever">Authenticity of Sender and Reciever</a></li>
+    <li><a href="#nonrepudiation">Nonrepudiation</a></li>
+    <li><a href="#secret-sharing">Secret Sharing</a></li>
+    <li><a href="#cryptographic-protocols">Cryptographic Protocols</a></li>
+    <li><a href="#history-of-cryptography">History of Cryptography</a></li>
   </ul>
 </nav>
 
@@ -205,6 +212,55 @@ delimiters: [
 <p>i.e. Use a secret 1-1 mapping (function) $f$ to map a plaintext $m$ into a ciphertext $c$. $c = f(m)$.</p>
 <p>To recover the plaintext $m$ from the ciphertext $c$, apply the inverse mapping $f^{-1}$ to $c$ yielding</p>
 <p>$$f^{-1}(c)=f^{-1}(f(m)) = (f^{-1} \circ f)(m) = m$$</p>
+<p>This process is called decryption.</p>
+<h2 id="examples-of-encryption">Examples of Encryption</h2>
+<ul>
+<li>
+  <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Cipher</a></li>
+<li>
+  <a href="https://en.wikipedia.org/wiki/Pigpen_cipher">Pigpen Cipher</a></li>
+</ul>
+<h1 id="data-integrity">Data Integrity</h1>
+<p>For data in transmission or stored in a storage system, the following could happen:</p>
+<ul>
+<li>It could be modified by an unauthorized person.</li>
+<li>It could be replaced with other data by an unauthorized person.</li>
+</ul>
+<p>The problem then becomed how detect such modification and replacement of data.</p>
+<h1 id="authenticity-of-sender-and-reciever">Authenticity of Sender and Reciever</h1>
+<p><strong>Questions</strong>:</p>
+<ul>
+<li>If you recieved a message with alleged sender $X$, how could you be sure that the sender was indeed $X$?</li>
+<li>If you sent a message to a reciever $Y$, how could you be certain that $Y$ has recieved your message?</li>
+</ul>
+<h1 id="nonrepudiation">Nonrepudiation</h1>
+<p>If I wrote a letter to you saying that I would pay you $1000000 if you finish a job for me, I cannot deny saying this because I would have signed the letter. Electronically, if you wanted to prove that I authored a message, the message would need to be signed by me.</p>
+<p>Nonrepudiation is the assurance that someone cannot deny the validity of something.</p>
+<h1 id="secret-sharing">Secret Sharing</h1>
+<p><strong>Problem:</strong> A father has put a lot of treasure into a secure place that requires an electronic key $k$. He has three sons, to which he must share the key $k$ in such a way that the following conditions are satisfied:</p>
+<ul>
+<li>Each son has a share of the key which gives zero information about $k$.</li>
+<li>When any two of his sons come together with their shares, they still get no information about $k$.</li>
+<li>Only when all three of the sons are together with their shares shall the key recover $k$.</li>
+</ul>
+<p>How could the father design such a scheme?</p>
+<h1 id="cryptographic-protocols">Cryptographic Protocols</h1>
+<p><strong>Problem:</strong> A group of banks would have an electric funds transfer system that does the following:</p>
+<ul>
+<li>Data confidentiality</li>
+<li>Data integrity</li>
+<li>Sender authentication</li>
+<li>nonrepudiation</li>
+</ul>
+<p>Suppose that you have an algorithm for doing each of the above jobs. How do you combine these algorithms such that they work as a whole? Cryptographic Protocols.</p>
+<h1 id="history-of-cryptography">History of Cryptography</h1>
+<ul>
+<li>5000 year history</li>
+<li>Earlier called codes, encryption and decryption was done by hand.</li>
+<li>Ciphers were invented in about 1817</li>
+<li>Played major roles in WWI WWII</li>
+<li>Modern cryptography started with Shannons paper: &ldquo;Communication Theory os Secrecy Systems, Bell System Technical Journal 28 (1949) 656-715&rdquo;</li>
+</ul>
 </article>
  
       
@@ -244,8 +300,15 @@ delimiters: [
     <li><a href="#data-confidentiality">Data Confidentiality</a>
       <ul>
         <li><a href="#how-to-achieve-data-confidentiality">How to Achieve Data Confidentiality?</a></li>
+        <li><a href="#examples-of-encryption">Examples of Encryption</a></li>
       </ul>
     </li>
+    <li><a href="#data-integrity">Data Integrity</a></li>
+    <li><a href="#authenticity-of-sender-and-reciever">Authenticity of Sender and Reciever</a></li>
+    <li><a href="#nonrepudiation">Nonrepudiation</a></li>
+    <li><a href="#secret-sharing">Secret Sharing</a></li>
+    <li><a href="#cryptographic-protocols">Cryptographic Protocols</a></li>
+    <li><a href="#history-of-cryptography">History of Cryptography</a></li>
   </ul>
 </nav>
 

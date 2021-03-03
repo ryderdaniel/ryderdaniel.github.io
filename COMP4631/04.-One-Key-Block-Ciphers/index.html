@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.68.3" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="One key block ciphers and their security; Transposition Ciphers and their security; Simple substitution ciphers and their security; The one-time pad">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="One Key Block Ciphers" />
+<meta property="og:description" content="One key block ciphers and their security; Transposition Ciphers and their security; Simple substitution ciphers and their security; The one-time pad" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ryderdaniel.github.io/COMP4631/04.-One-Key-Block-Ciphers/" />
+<meta property="article:published_time" content="2021-03-02T17:19:32+08:00" />
+<meta property="article:modified_time" content="2021-03-02T17:19:32+08:00" />
+<title>One Key Block Ciphers | Spring 2021</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
+<script defer src="/en.search.min.e7ef0ac2700c97672239cbbe3c4a9fa163f26eb87cc10fdf18d99a818d073fe1.js" integrity="sha256-5&#43;8KwnAMl2ciOcu&#43;PEqfoWPybrh8wQ/fGNmagY0HP&#43;E="></script>
+
+<script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>Spring 2021</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/COMP4631/" target="_blank" rel="noopener">
+        COMP4631
+      </a>
+  </li>
+  
+  <li>
+    <a href="/COMP4632/" target="_blank" rel="noopener">
+        COMP4632
+      </a>
+  </li>
+  
+  <li>
+    <a href="/COMP4901O/" target="_blank" rel="noopener">
+        COMP4901O
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ELEC1010/" target="_blank" rel="noopener">
+        ELEC1010
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ELEC1200/" target="_blank" rel="noopener">
+        ELEC1200
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+delimiters: [
+  {left: "$$", right: "$$", display: true},
+  {left: "$", right: "$", display: false},
+  {left: "\\(", right: "\\)", display: false},
+  {left: "\\[", right: "\\]", display: true}
+]
+        });
+    });
+</script>
+
+
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+  
+  <strong>One Key Block Ciphers</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+delimiters: [
+  {left: "$$", right: "$$", display: true},
+  {left: "$", right: "$", display: false},
+  {left: "\\(", right: "\\)", display: false},
+  {left: "\\[", right: "\\]", display: true}
+]
+        });
+    });
+</script>
+
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#one-key-block-ciphers">One-Key Block Ciphers</a>
+      <ul>
+        <li><a href="#direct-usage-of-one-key-block-ciphers">Direct Usage of One-Key Block Ciphers</a></li>
+        <li><a href="#classical-information-channel">Classical Information Channel</a></li>
+        <li><a href="#attacks-on-one-key-block-ciphers">Attacks on One-Key Block Ciphers</a></li>
+        <li><a href="#security-requirements-for-one-key-block-ciphers">Security Requirements for One-Key Block Ciphers</a></li>
+        <li><a href="#permutations-of-bbb-z_d-for-transposition-ciphers">Permutations of $\Bbb Z_d$ for Transposition Ciphers</a></li>
+        <li><a href="#description-of-transposition-ciphers">Description of Transposition Ciphers</a></li>
+        <li><a href="#description-of-simple-substitution-ciphers">Description of Simple Substitution Ciphers</a>
+          <ul>
+            <li><a href="#weakness-of-simple-substitution-ciphers">Weakness of Simple Substitution Ciphers</a></li>
+          </ul>
+        </li>
+        <li><a href="#frequency-distribution-of-digraphs--trigraphs">Frequency Distribution of Digraphs &amp; Trigraphs</a>
+          <ul>
+            <li><a href="#redundancy-in-human-language">Redundancy in Human Language</a></li>
+            <li><a href="#security-of-simple-substitution-ciphers">Security of Simple Substitution Ciphers</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#are-there-unbreakable-ciphers">Are There Unbreakable Ciphers?</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="one-key-block-ciphers">One-Key Block Ciphers</h1>
+<p>Defined as a 5-tuple $(\mathcal M, \mathcal C, \mathcal K, E_k, D_k)$, where:</p>
+<ul>
+<li>$\mathcal M$ is the plaintext space.</li>
+<li>$\mathcal C$ is the ciphertext space.</li>
+<li>$\mathcal K$ is the key space.</li>
+<li>Any $k \in \mathcal K$ could be the encrytption and decryption key.</li>
+<li>$E_k$ and $D_k$ are encryption and decryption transformations with<br>
+$D_k(E_k(m)) = m,\ \forall m \in \mathcal M$</li>
+</ul>
+<h2 id="direct-usage-of-one-key-block-ciphers">Direct Usage of One-Key Block Ciphers</h2>
+<p>Given a block cipher $(\mathcal M, \mathcal C, \mathcal K, E_k, D_k)$, encryption and decrytion is done as follows:</p>
+<ul>
+<li><strong>Encryption:</strong> $c = E_k(m)$ where $E_k$ is usually applied to blocks or characters of the plaintext $m$</li>
+<li><strong>Decryption:</strong> $m = D_k(c)$, where $D_k$ is usually appled to blocks or characters of the ciphertext $c$</li>
+</ul>
+<h2 id="classical-information-channel">Classical Information Channel</h2>
+<p>
+  <img src="/static/COMP4631/model.png" alt="CIC" /></p>
+<h2 id="attacks-on-one-key-block-ciphers">Attacks on One-Key Block Ciphers</h2>
+<p><strong>Ciphertext-only Attack</strong>: A cryptanalyst determines the decryption transformation $D_k$ or key $k$, or plaintext from intercepted ciphertext $c$.<br>
+<strong>Known-Plaintext Attack</strong>: A cryptanalyst determines the decryption transformation $D_k$ or key $k$, from a ciphertext-plaintext pair $(c,m)$.</p>
+<h2 id="security-requirements-for-one-key-block-ciphers">Security Requirements for One-Key Block Ciphers</h2>
+<ul>
+<li>The security should depend on the confidentiality of the key, so it is usually assumed that the algorithms $E_k$ and $D_k$ are known to a cryptanalyst.</li>
+<li>It should be computationally infeasible for a cryptanalyst to determine the plaintext $m$, given a ciphertext $c$.</li>
+<li>It should be computationally infeasible for a cryptanalyst to determine the decryption trasnformation $D_k$ or key $k$ from intercepted ciphertext $c$, even if the corresponding plaintext $m$ is known</li>
+</ul>
+<h2 id="permutations-of-bbb-z_d-for-transposition-ciphers">Permutations of $\Bbb Z_d$ for Transposition Ciphers</h2>
+<p>Let $\Bbb Z_d$ denote the integers $0$ through $d-1$. A permutation $f$ of $\Bbb Z_d$ is a one-to-one function from $\Bbb Z_d \to \Bbb Z_d$.</p>
+<p>Example:</p>
+<p>Let $d = 4$ and define $f$ by</p>
+
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \[\begin{matrix}
+i &amp; : &amp; 0 &amp; 1 &amp; 2 &amp; 3\\
+f(i) &amp; : &amp; 2 &amp; 0 &amp; 3 &amp; 1
+\end{matrix}\]
+</span>
+
+<p>Then $f$ is a permutation of $\Bbb Z_4$. The inverse permutation $f^{-1}$ is</p>
+<span>
+  \[\begin{matrix}
+i &amp; : &amp; 0 &amp; 1 &amp; 2 &amp; 3\\
+f^{-1}(i) &amp; : &amp; 1 &amp; 3 &amp; 0 &amp; 2
+\end{matrix}\]
+</span>
+
+<h2 id="description-of-transposition-ciphers">Description of Transposition Ciphers</h2>
+<p>Let $f$ be a permutation of $\Bbb Z_d$. It is a 5-tuple $(\mathcal M, \mathcal C, \mathcal K, E_k, D_k)$ where:</p>
+<ul>
+<li>$\mathcal M = \mathcal C = $ set of all finite strings of English letters.</li>
+<li>$\mathcal K$ is the set of all possible pairs $(d,f)$.</li>
+<li>$k = (d,f) \in \mathcal K$ is the secret key</li>
+<li>A message is divided into blocks of lengths $d$, for each message block, $m = m_0 &hellip; m_{d-1}$<br>
+$$E_k(m) = m_{f(0)}&hellip;m_{f(d-1)}$$</li>
+<li>For each ciphertext block $c = c_0&hellip;c_{d-1}$<br>
+$$D_k(c)= c_{f^{-1}(0)}&hellip;c_{f^{-1}(d-1)}$$</li>
+</ul>
+<p>Example:</p>
+<p>Let $d=4$ and define $f$ by</p>
+<span>
+  \[\begin{matrix}
+i &amp; : &amp; 0 &amp; 1 &amp; 2 &amp; 3\\
+f(i) &amp; : &amp; 2 &amp; 0 &amp; 3 &amp; 1
+\end{matrix}\]
+</span>
+
+<p>The message $RENAISSANCES$ is broken in groups of 4 letters and transformed into:</p>
+<span>
+  \[\begin{matrix}
+\text{position} &amp; 0123 &amp; 0123 &amp; 0123 \\
+m &amp; RENA &amp; ISSA &amp; NCES \\
+E_k(m) &amp; NRAE &amp; SIAS &amp; ENSC
+\end{matrix}\]
+</span>
+
+<p>Yielding the ciphertext $NRAESIASENSC$. Decryption follows a similar process to encryption but using $f^{-1}$ mentioned in a previous example.</p>
+<h2 id="description-of-simple-substitution-ciphers">Description of Simple Substitution Ciphers</h2>
+<p>Let $f$ be a one-to-one mapping from alphabet $A$ to alphabet $B$. It is a 5-tuple $(\mathcal M, \mathcal C, \mathcal K, E_k, D_k)$, where:</p>
+<ul>
+<li>$\mathcal M = A^{*}$ and $\mathcal C = B^{*}$, i.e. all finite strings of characters.</li>
+<li>$\mathcal K$ is the set of all possible $f$</li>
+<li>$k = f \in \mathcal K$ is the encryption and decryption key.</li>
+<li>For a message $m = m_0m_1m_2&hellip;$<br>
+$$E_k(m) = f(m_0)f(m_1)f(m_2)&hellip;$$</li>
+<li>For a ciphertext $c = c_0c_1c_2&hellip;$<br>
+$$D_k(c) = f^{-1}(c_0)f^{-1}(c_1)f^{-1}(c_2)&hellip;$$</li>
+</ul>
+<p>Example:</p>
+<p>Let $A = B$ be the english alphabet. We identify letters with digits:</p>
+<span>
+  \[\begin{matrix}
+a &amp; b &amp; c &amp; ... &amp; y &amp; z \\
+0 &amp; 1 &amp; 2 &amp; ... &amp; 24 &amp; 25
+\end{matrix}\]
+</span>
+
+<p>Take any $(k_0,k_1)$ with $\gcd (k_0,26) = 1$ and $0 \leq k_0 \leq 25$, define the one-to-one mapping $f$ by<br>
+$$f(a)= (ak_0 + k_1)\mod 26$$</p>
+<p>It is called the affine cipher, where $\text{key } = (k_0,k_1) \text{ or } k = f$.<br>
+If $k = (1,3)$ is it a caesar cipher.</p>
+<h3 id="weakness-of-simple-substitution-ciphers">Weakness of Simple Substitution Ciphers</h3>
+<p>Simple substitution ciphers are susceptible to frequency analysis of the letters.
+<span>
+  \[\begin{matrix}
+A&amp;B&amp;C&amp;D&amp;E&amp;F&amp;G&amp;H&amp;I&amp;J&amp;K&amp;L&amp;M\\
+8.0&amp;1.5&amp;3.0&amp;4.0&amp;13.0&amp;2.0&amp;1.5&amp;6.0&amp;6.5&amp;0.5&amp;0.5&amp;3.5&amp;3.0\\
+&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;\\
+N&amp;O&amp;P&amp;Q&amp;R&amp;S&amp;T&amp;U&amp;V&amp;W&amp;X&amp;Y&amp;Z\\
+7.0&amp;8.0&amp;2.0&amp;0.2&amp;6.5&amp;6.0&amp;9.0&amp;3.0&amp;1.0&amp;1.5&amp;0.5&amp;2.0&amp;0.2
+\end{matrix}\]
+</span>
+
+<strong>Note:</strong> The numbers above represent percentages.</p>
+<p>This table can be used to re-map letters back to its original self and obtain the plaintext.</p>
+<h2 id="frequency-distribution-of-digraphs--trigraphs">Frequency Distribution of Digraphs &amp; Trigraphs</h2>
+<ul>
+<li>A digraph (also called a bigram) is a sequence of two english letters.</li>
+<li>A trigraph is a sequence of three english letters</li>
+</ul>
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    <h3 id="the-most-frequent-digraphs">The Most Frequent Digraphs:</h3>
+<ul>
+<li>th</li>
+<li>he</li>
+<li>in</li>
+<li>er</li>
+<li>an</li>
+<li>re</li>
+<li>on</li>
+<li>at</li>
+<li>at</li>
+<li>en</li>
+<li>nd</li>
+<li>ed</li>
+<li>or</li>
+<li>es</li>
+<li>ti</li>
+<li>te</li>
+<li>it</li>
+<li>is</li>
+<li>st</li>
+<li>to</li>
+<li>ar</li>
+<li>of</li>
+<li>ng</li>
+<li>ha</li>
+<li>al</li>
+</ul>
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <h3 id="the-most-frequent-trigraphs">The most Frequent Trigraphs</h3>
+<ul>
+<li>the</li>
+<li>and</li>
+<li>tha</li>
+<li>hat</li>
+<li>ent</li>
+<li>ion</li>
+<li>for</li>
+<li>tio</li>
+<li>has</li>
+<li>edt</li>
+<li>tis</li>
+<li>ers</li>
+<li>res</li>
+<li>ter</li>
+<li>con</li>
+<li>ing</li>
+<li>men</li>
+<li>tho</li>
+</ul>
+  </div>
+  
+</div>
+
+<h3 id="redundancy-in-human-language">Redundancy in Human Language</h3>
+<p>Redundancy in human language makes it easy for us to determine letters in places they may be missing. Shannon information theory can be used to give a rigorous measure of redundancy in human language.</p>
+<h3 id="security-of-simple-substitution-ciphers">Security of Simple Substitution Ciphers</h3>
+<ul>
+<li>Simple substitution ciphers are not secure with respect to ciphertext-only attacks</li>
+<li>For english, about 28 letters in a piece of ciphertext are needed to break a simple substition cipher.</li>
+</ul>
+<h1 id="are-there-unbreakable-ciphers">Are There Unbreakable Ciphers?</h1>
+<p>Yes, the one-time-pad is an unbreakable cipher in the information-theoretic sense.</p>
+<p><strong>One Time Pad</strong></p>
+<ul>
+<li>Each message is encoded into a binary string using the ascii code.</li>
+<li>The secret key is a random binary string with the same length as the message.</li>
+<li>The ciphertext is the bitwise XOR of the message with the secret key.</li>
+<li>A secret key is used only for one message then discarded.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#one-key-block-ciphers">One-Key Block Ciphers</a>
+      <ul>
+        <li><a href="#direct-usage-of-one-key-block-ciphers">Direct Usage of One-Key Block Ciphers</a></li>
+        <li><a href="#classical-information-channel">Classical Information Channel</a></li>
+        <li><a href="#attacks-on-one-key-block-ciphers">Attacks on One-Key Block Ciphers</a></li>
+        <li><a href="#security-requirements-for-one-key-block-ciphers">Security Requirements for One-Key Block Ciphers</a></li>
+        <li><a href="#permutations-of-bbb-z_d-for-transposition-ciphers">Permutations of $\Bbb Z_d$ for Transposition Ciphers</a></li>
+        <li><a href="#description-of-transposition-ciphers">Description of Transposition Ciphers</a></li>
+        <li><a href="#description-of-simple-substitution-ciphers">Description of Simple Substitution Ciphers</a>
+          <ul>
+            <li><a href="#weakness-of-simple-substitution-ciphers">Weakness of Simple Substitution Ciphers</a></li>
+          </ul>
+        </li>
+        <li><a href="#frequency-distribution-of-digraphs--trigraphs">Frequency Distribution of Digraphs &amp; Trigraphs</a>
+          <ul>
+            <li><a href="#redundancy-in-human-language">Redundancy in Human Language</a></li>
+            <li><a href="#security-of-simple-substitution-ciphers">Security of Simple Substitution Ciphers</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#are-there-unbreakable-ciphers">Are There Unbreakable Ciphers?</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

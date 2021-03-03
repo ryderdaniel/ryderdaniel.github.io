@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>One Key Block Ciphers</title>
+      <link>http://ryderdaniel.github.io/COMP4631/04.-One-Key-Block-Ciphers/</link>
+      <pubDate>Tue, 02 Mar 2021 17:19:32 +0800</pubDate>
+      
+      <guid>http://ryderdaniel.github.io/COMP4631/04.-One-Key-Block-Ciphers/</guid>
+      <description>One-Key Block Ciphers Defined as a 5-tuple $(\mathcal M, \mathcal C, \mathcal K, E_k, D_k)$, where:
+ $\mathcal M$ is the plaintext space. $\mathcal C$ is the ciphertext space. $\mathcal K$ is the key space. Any $k \in \mathcal K$ could be the encrytption and decryption key. $E_k$ and $D_k$ are encryption and decryption transformations with
+$D_k(E_k(m)) = m,\ \forall m \in \mathcal M$  Direct Usage of One-Key Block Ciphers Given a block cipher $(\mathcal M, \mathcal C, \mathcal K, E_k, D_k)$, encryption and decrytion is done as follows:</description>
+    </item>
+    
+    <item>
       <title>Introduction to Cryptography</title>
       <link>http://ryderdaniel.github.io/COMP4631/03.-Introduction-to-Cryptography/</link>
       <pubDate>Tue, 02 Mar 2021 15:54:06 +0800</pubDate>
