@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://ryderdaniel.github.io/ELEC1200/</loc>
+    <lastmod>2021-03-04T16:33:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ryderdaniel.github.io/ELEC1200/Lecture6/</loc>
+    <lastmod>2021-03-04T16:33:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ryderdaniel.github.io/ELEC1200/Lecture5/</loc>
+    <lastmod>2021-03-04T15:14:31+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://ryderdaniel.github.io/COMP4631/</loc>
     <lastmod>2021-03-03T09:06:05+08:00</lastmod>
   </url>
@@ -20,11 +35,6 @@
   <url>
     <loc>http://ryderdaniel.github.io/COMP4631/03.-Introduction-to-Cryptography/</loc>
     <lastmod>2021-03-02T15:54:06+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ryderdaniel.github.io/ELEC1200/</loc>
-    <lastmod>2021-02-25T18:00:13+08:00</lastmod>
   </url>
   
   <url>

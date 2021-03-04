@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>Lecture 6</title>
+      <link>http://ryderdaniel.github.io/ELEC1200/Lecture6/</link>
+      <pubDate>Thu, 04 Mar 2021 16:33:28 +0800</pubDate>
+      
+      <guid>http://ryderdaniel.github.io/ELEC1200/Lecture6/</guid>
+      <description>Trade-Off Between bit-rate and BER  Bit rate - the number of bits that can be transmitter per second (we want this to be as high as possible) Bit Error Rate (BER) - Fraction of bits that are wrongly decoded by the reciever.  We want this to be low BER rate decreases as bit time increases BER increases with smaller bit time (SPB) BER increases if the channel is noisier or if we use less power to transmit a signal.</description>
+    </item>
+    
+    <item>
+      <title>Lecture 5</title>
+      <link>http://ryderdaniel.github.io/ELEC1200/Lecture5/</link>
+      <pubDate>Thu, 04 Mar 2021 15:14:31 +0800</pubDate>
+      
+      <guid>http://ryderdaniel.github.io/ELEC1200/Lecture5/</guid>
+      <description>Protocols Agreement on a set of rules or procedures to follow during communication.   Protocols are necessary for any communication system  Without them, one can hear but not understand    Protocols in Data Communication Systems  In data communication, protocols cover all aspects of data representation and signalling including:  The representation of text characters The order in which bit sequences are sent    Decoding Bits Thresholding  In our system, for long SPBs at the reciever:  &amp;ldquo;1&amp;rdquo; bits correspond to a number of samples with value c + k &amp;ldquo;0&amp;rdquo; bits correspond to a number of samples with value c Thus we can decide whether a bit is 0 or 1 by comparing to a threshold of c + k/2 Let $r(n)$ be the recieved signal at time $n$, and $b(n)$ the result of thresholding:</description>
+    </item>
+    
+    <item>
       <title>Examples of One-Key Block Ciphers</title>
       <link>http://ryderdaniel.github.io/COMP4631/05.-Examples-of-One-Key-Block-Ciphers/</link>
       <pubDate>Wed, 03 Mar 2021 09:06:05 +0800</pubDate>
