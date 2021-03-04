@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.f151ec4bae614516486883846fc0692f50c515bccaf44e454a55d3b455406c14.js" integrity="sha256-8VHsS65hRRZIaIOEb8BpL1DFFbzK9E5FSlXTtFVAbBQ="></script>
+<script defer src="/en.search.min.4f0b42b68b2d1bd4587a62db431e0a153b79c21fb6050927dcbac17bc4680b35.js" integrity="sha256-TwtCtostG9RYemLbQx4KFTt5wh&#43;2BQkn3LrBe8RoCzU="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -189,7 +189,11 @@ delimiters: [
             <li><a href="#effect-of-bit-time">Effect of Bit Time</a></li>
           </ul>
         </li>
-        <li><a href="#intersymbol-interference-isi">Intersymbol Interference (ISI)</a></li>
+        <li><a href="#intersymbol-interference-isi">Intersymbol Interference (ISI)</a>
+          <ul>
+            <li><a href="#settling-time">Settling Time</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -229,6 +233,23 @@ delimiters: [
 <li>Reason for BER increase with smaller bit time. (bit errors due to not crossing the threshold)</li>
 </ul>
 <h2 id="intersymbol-interference-isi">Intersymbol Interference (ISI)</h2>
+<ul>
+<li>The response to a &ldquo;0&rdquo; or &ldquo;1&rdquo; depends on the bits that were transmitted before it due to the time it takes for the channel to respond to a transition.</li>
+<li>We refer to this as intersymbol interference.</li>
+<li>The smaller the bit time, in comparison with the time it takes for the channel to respond to a transition, the greater the ISI
+<ul>
+<li>More past symbols interfere with the current symbol</li>
+<li>This leads to a greater variety of responses we can observe when a zero or one bit is transmitted</li>
+</ul>
+</li>
+</ul>
+<h3 id="settling-time">Settling Time</h3>
+<ul>
+<li>The settling time tells us how long it takes for the response to get within 90% of k</li>
+<li>To find the settling time, find $n$ such that $s(n)= 0.9k$, where $s(n)=k(1-a^{n+1})u(n)$ is the exponential step response.<br>
+$$n_s = \frac{\ln 0.1}{\ln a}-1$$</li>
+<li>Larger a $\implies$ Larger settling time.</li>
+</ul>
 </article>
  
       
@@ -273,7 +294,11 @@ delimiters: [
             <li><a href="#effect-of-bit-time">Effect of Bit Time</a></li>
           </ul>
         </li>
-        <li><a href="#intersymbol-interference-isi">Intersymbol Interference (ISI)</a></li>
+        <li><a href="#intersymbol-interference-isi">Intersymbol Interference (ISI)</a>
+          <ul>
+            <li><a href="#settling-time">Settling Time</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
