@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.68.3" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Writeup for 3-AES from Zer0pts CTF 2021">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Zer0pts CTF 2021: 3-AES" />
+<meta property="og:description" content="Writeup for 3-AES from Zer0pts CTF 2021" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ryderdaniel.github.io/COMP4901O/zer0pts-CTF-2021-3-AES/" />
+<meta property="article:published_time" content="2021-03-07T11:07:32+08:00" />
+<meta property="article:modified_time" content="2021-03-07T11:07:32+08:00" />
+<title>Zer0pts CTF 2021: 3-AES | Spring 2021</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
+<script defer src="/en.search.min.c4fffc80092620f17a3782c825af6d376367e00ebddb39db6655f0c7f8756af0.js" integrity="sha256-xP/8gAkmIPF6N4LIJa9tN2Nn4A692znbZlXwx/h1avA="></script>
+
+<script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>Spring 2021</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/COMP4631/" target="_blank" rel="noopener">
+        COMP4631
+      </a>
+  </li>
+  
+  <li>
+    <a href="/COMP4632/" target="_blank" rel="noopener">
+        COMP4632
+      </a>
+  </li>
+  
+  <li>
+    <a href="/COMP4901O/" target="_blank" rel="noopener">
+        COMP4901O
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ELEC1010/" target="_blank" rel="noopener">
+        ELEC1010
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ELEC1200/" target="_blank" rel="noopener">
+        ELEC1200
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+delimiters: [
+  {left: "$$", right: "$$", display: true},
+  {left: "$", right: "$", display: false},
+  {left: "\\(", right: "\\)", display: false},
+  {left: "\\[", right: "\\]", display: true}
+]
+        });
+    });
+</script>
+
+
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+  
+  <strong>Zer0pts CTF 2021: 3-AES</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+delimiters: [
+  {left: "$$", right: "$$", display: true},
+  {left: "$", right: "$", display: false},
+  {left: "\\(", right: "\\)", display: false},
+  {left: "\\[", right: "\\]", display: true}
+]
+        });
+    });
+</script>
+
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#3-aes">3-AES</a>
+      <ul>
+        <li><a href="#problem-description">Problem Description</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#reading-the-source-code">Reading the Source Code</a></li>
+        <li><a href="#what-is-the-problem">What is the Problem?</a></li>
+        <li><a href="#how-messages-are-encrypted-and-decrypted">How Messages Are Encrypted and Decrypted</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="3-aes">3-AES</h1>
+<h2 id="problem-description">Problem Description</h2>
+<hr>
+<h4 id="3-des-is-more-secure-than-des-then-3-aes-is-more-secure-than-aes-of-course">3-DES is more secure than DES. Then, 3-AES is more secure than AES of course!</h4>
+<p><code>nc crypto.ctf.zer0pts.com 10929</code></p>
+<details >
+  <summary>Attachment</summary>
+  <div class="markdown-inner">
+    <p><a href="/static/COMP4901O/server.py">server.py</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
+<span style="color:#f92672">from</span> Crypto.Random <span style="color:#f92672">import</span> get_random_bytes
+<span style="color:#f92672">from</span> binascii <span style="color:#f92672">import</span> hexlify, unhexlify
+<span style="color:#f92672">from</span> hashlib <span style="color:#f92672">import</span> md5
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> signal
+<span style="color:#f92672">from</span> flag <span style="color:#f92672">import</span> flag
+
+keys <span style="color:#f92672">=</span> [md5(os<span style="color:#f92672">.</span>urandom(<span style="color:#ae81ff">3</span>))<span style="color:#f92672">.</span>digest() <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>)]
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_ciphers</span>(iv1, iv2):
+    <span style="color:#66d9ef">return</span> [
+        AES<span style="color:#f92672">.</span>new(keys[<span style="color:#ae81ff">0</span>], mode<span style="color:#f92672">=</span>AES<span style="color:#f92672">.</span>MODE_ECB),
+        AES<span style="color:#f92672">.</span>new(keys[<span style="color:#ae81ff">1</span>], mode<span style="color:#f92672">=</span>AES<span style="color:#f92672">.</span>MODE_CBC, iv<span style="color:#f92672">=</span>iv1),
+        AES<span style="color:#f92672">.</span>new(keys[<span style="color:#ae81ff">2</span>], mode<span style="color:#f92672">=</span>AES<span style="color:#f92672">.</span>MODE_CFB, iv<span style="color:#f92672">=</span>iv2, segment_size<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span><span style="color:#f92672">*</span><span style="color:#ae81ff">16</span>),
+    ]
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">encrypt</span>(m: bytes, iv1: bytes, iv2: bytes) <span style="color:#f92672">-&gt;</span> bytes:
+    <span style="color:#66d9ef">assert</span> len(m) <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>
+    ciphers <span style="color:#f92672">=</span> get_ciphers(iv1, iv2)
+    c <span style="color:#f92672">=</span> m
+    <span style="color:#66d9ef">for</span> cipher <span style="color:#f92672">in</span> ciphers:
+        c <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>encrypt(c)
+    <span style="color:#66d9ef">return</span> c
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decrypt</span>(c: bytes, iv1: bytes, iv2: bytes) <span style="color:#f92672">-&gt;</span> bytes:
+    <span style="color:#66d9ef">assert</span> len(c) <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>
+    ciphers <span style="color:#f92672">=</span> get_ciphers(iv1, iv2)
+    m <span style="color:#f92672">=</span> c
+    <span style="color:#66d9ef">for</span> cipher <span style="color:#f92672">in</span> ciphers[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+        m <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>decrypt(m)
+    <span style="color:#66d9ef">return</span> m
+
+signal<span style="color:#f92672">.</span>alarm(<span style="color:#ae81ff">3600</span>)
+<span style="color:#66d9ef">while</span> True:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;==== MENU ====&#34;</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;1. Encrypt your plaintext&#34;</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;2. Decrypt your ciphertext&#34;</span>)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;3. Get encrypted flag&#34;</span>)
+    choice <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;&gt; &#34;</span>))
+
+    <span style="color:#66d9ef">if</span> choice <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+        plaintext <span style="color:#f92672">=</span> unhexlify(input(<span style="color:#e6db74">&#34;your plaintext(hex): &#34;</span>))
+        iv1, iv2 <span style="color:#f92672">=</span> get_random_bytes(<span style="color:#ae81ff">16</span>), get_random_bytes(<span style="color:#ae81ff">16</span>)
+        ciphertext <span style="color:#f92672">=</span> encrypt(plaintext, iv1, iv2)
+        ciphertext <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;:&#34;</span><span style="color:#f92672">.</span>join([hexlify(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [iv1, iv2, ciphertext]])<span style="color:#f92672">.</span>decode()
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;here&#39;s the ciphertext: {}&#34;</span><span style="color:#f92672">.</span>format(ciphertext))
+
+    <span style="color:#66d9ef">elif</span> choice <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>:
+        ciphertext <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;your ciphertext: &#34;</span>)
+        iv1, iv2, ciphertext <span style="color:#f92672">=</span> [unhexlify(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> ciphertext<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;:&#34;</span>)]
+        plaintext <span style="color:#f92672">=</span> decrypt(ciphertext, iv1, iv2)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;here&#39;s the plaintext(hex): {}&#34;</span><span style="color:#f92672">.</span>format(hexlify(plaintext)<span style="color:#f92672">.</span>decode()))
+
+    <span style="color:#66d9ef">elif</span> choice <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>:
+        plaintext <span style="color:#f92672">=</span> flag
+        iv1, iv2 <span style="color:#f92672">=</span> get_random_bytes(<span style="color:#ae81ff">16</span>), get_random_bytes(<span style="color:#ae81ff">16</span>)
+        ciphertext <span style="color:#f92672">=</span> encrypt(plaintext, iv1, iv2)
+        ciphertext <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;:&#34;</span><span style="color:#f92672">.</span>join([hexlify(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [iv1, iv2, ciphertext]])<span style="color:#f92672">.</span>decode()
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;here&#39;s the encrypted flag: {}&#34;</span><span style="color:#f92672">.</span>format(ciphertext))
+        exit()
+
+    <span style="color:#66d9ef">else</span>:
+        exit()
+
+</code></pre></div>
+  </div>
+</details>
+
+<hr>
+<h2 id="reading-the-source-code">Reading the Source Code</h2>
+<p>After taking a look at the source code, here are some noteworthy observations we can see:</p>
+<ul>
+<li>We have the ability to encrypt plaintext, decrypt ciphertext, and see the encrypted flag.</li>
+<li>The keys used for encrpytion and decryption are persistent within the session.</li>
+<li>The keyspace $\mathcal K$ is the md5 hash of every possible combination of three bytes. That is<br>
+$\mathcal K = \{\text{md5}(b_1b_2b_3)\ |\ 0 \leq b_1,b_2,b_3 \leq 256\}$</li>
+<li>$|\mathcal K| = 256^3 = 16,777,216$.</li>
+<li><strong>Encryption Service</strong>
+<ul>
+<li>The length of the plaintext has to be a multiple of 16.</li>
+<li>Our input is 
+  <a href="https://docs.python.org/3/library/binascii.html#binascii.unhexlify">unhexlified</a> by the system.</li>
+<li>Encryption is done in three phases. First encryption in ECB mode with key $k_1$ then encryption in CBC mode with key $k_2$ and iv $IV_1$, and finally encryption in CFB mode with key $k_3$ and iv $IV_2$ where the segment size is $16\times8$ bits (16 bytes).</li>
+<li>We control the plaintext.</li>
+<li>$IV_1$ and $IV_2$ are both a random sequence of 16 bytes.</li>
+<li>The output is in the form of <code>hexlify(iv1):hexlify(iv2):hexlify(ciphertext)</code>.</li>
+</ul>
+</li>
+<li><strong>Decryption Service</strong>
+<ul>
+<li>The length of the ciphertext has to be a multiple of 16.</li>
+<li>Our input is unhexlified, and is in the form of <code>hexlify(iv1):hexlify(iv2):hexlify(ciphertext)</code>.</li>
+<li>Decryption is done in three phases. First the ciphertext is decrypted in CFB mode with key $k_3$ and iv $IV_2$, then decrypted again in CBC mode with key $k_2$ and iv $IV_1$, and finally decrypted one last time in ECB mode with key $k_1$.</li>
+<li>We control the ciphertext, $IV_1$, and $IV_2$ which are supplied.</li>
+<li>The output is in the form <code>hexlify(plaintext)</code>.</li>
+</ul>
+</li>
+<li><strong>Seeing the Encrypted Flag Service</strong>
+<ul>
+<li>The flag is encrypted the same way a message is encrypted in the encryption service.</li>
+<li>The plaintext used is the flag</li>
+<li>$IV_1$ and $IV_2$ are both a random sequence of 16 bytes.</li>
+<li>The output is in the form of <code>hexlify(iv1):hexlify(iv2):hexlify(flag_ciphertext)</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="what-is-the-problem">What is the Problem?</h2>
+<p>Obviously we want to get the flag which is encrypted with $k_1,k_2$, and $k_3$. So, the goal is to obtain $k_1,k_2$, and $k_3$ it seems. The naive approach to brute force all the keys would take $256^9$ attempts at most; even trying a portion of those keys would take ages. Thus we have to look at how the messages are encrypted and spot any flaws.</p>
+<h2 id="how-messages-are-encrypted-and-decrypted">How Messages Are Encrypted and Decrypted</h2>
+<p>Using 
+  <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation">Wikipedia</a> as a guide, we can draw the encryption process as a graph. For simplicity, let us make the message blocks just 16 bytes long. This way there is no padding (which wouldnt&rsquo;ve happened anyways) and there is no splitting of blocks.</p>
+<p>
+  <img src="/static/COMP4901O/crypto.png" alt="Crypto System" /></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#3-aes">3-AES</a>
+      <ul>
+        <li><a href="#problem-description">Problem Description</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#reading-the-source-code">Reading the Source Code</a></li>
+        <li><a href="#what-is-the-problem">What is the Problem?</a></li>
+        <li><a href="#how-messages-are-encrypted-and-decrypted">How Messages Are Encrypted and Decrypted</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

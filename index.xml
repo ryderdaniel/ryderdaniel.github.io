@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>Zer0pts CTF 2021: 3-AES</title>
+      <link>http://ryderdaniel.github.io/COMP4901O/zer0pts-CTF-2021-3-AES/</link>
+      <pubDate>Sun, 07 Mar 2021 11:07:32 +0800</pubDate>
+      
+      <guid>http://ryderdaniel.github.io/COMP4901O/zer0pts-CTF-2021-3-AES/</guid>
+      <description>3-AES Problem Description  3-DES is more secure than DES. Then, 3-AES is more secure than AES of course! nc crypto.ctf.zer0pts.com 10929
+Attachment server.py
+from Crypto.Cipher import AES from Crypto.Random import get_random_bytes from binascii import hexlify, unhexlify from hashlib import md5 import os import signal from flag import flag keys = [md5(os.urandom(3)).digest() for _ in range(3)] def get_ciphers(iv1, iv2): return [ AES.new(keys[0], mode=AES.MODE_ECB), AES.new(keys[1], mode=AES.MODE_CBC, iv=iv1), AES.new(keys[2], mode=AES.MODE_CFB, iv=iv2, segment_size=8*16), ] def encrypt(m: bytes, iv1: bytes, iv2: bytes) -&amp;gt; bytes: assert len(m) % 16 == 0 ciphers = get_ciphers(iv1, iv2) c = m for cipher in ciphers: c = cipher.</description>
+    </item>
+    
+    <item>
       <title>Lecture 6</title>
       <link>http://ryderdaniel.github.io/ELEC1200/Lecture6/</link>
       <pubDate>Thu, 04 Mar 2021 16:33:28 +0800</pubDate>

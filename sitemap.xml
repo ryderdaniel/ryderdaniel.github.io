@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://ryderdaniel.github.io/COMP4901O/</loc>
+    <lastmod>2021-03-07T11:07:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ryderdaniel.github.io/COMP4901O/zer0pts-CTF-2021-3-AES/</loc>
+    <lastmod>2021-03-07T11:07:32+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://ryderdaniel.github.io/ELEC1200/</loc>
     <lastmod>2021-03-04T16:33:28+08:00</lastmod>
   </url>
@@ -79,10 +89,6 @@
   
   <url>
     <loc>http://ryderdaniel.github.io/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>http://ryderdaniel.github.io/COMP4901O/</loc>
   </url>
   
   <url>
