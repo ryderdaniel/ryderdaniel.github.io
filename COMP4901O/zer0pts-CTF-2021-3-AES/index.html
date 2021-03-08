@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.c4fffc80092620f17a3782c825af6d376367e00ebddb39db6655f0c7f8756af0.js" integrity="sha256-xP/8gAkmIPF6N4LIJa9tN2Nn4A692znbZlXwx/h1avA="></script>
+<script defer src="/en.search.min.a7f3bd589a3f6741331f803a23811b91027535ab23b57fe2b44622782ee2f40b.js" integrity="sha256-p/O9WJo/Z0EzH4A6I4EbkQJ1NasjtX/itEYieC7i9As="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -191,6 +191,15 @@ delimiters: [
         <li><a href="#reading-the-source-code">Reading the Source Code</a></li>
         <li><a href="#what-is-the-problem">What is the Problem?</a></li>
         <li><a href="#how-messages-are-encrypted-and-decrypted">How Messages Are Encrypted and Decrypted</a></li>
+        <li><a href="#approach">Approach</a>
+          <ul>
+            <li><a href="#prerequisites">Prerequisites</a></li>
+            <li><a href="#step-1-cracking-k_1">Step 1: Cracking $k_1$</a></li>
+            <li><a href="#step-2-gather-more-information">Step 2: Gather More Information</a></li>
+            <li><a href="#step-3-crack-the-keys">Step 3: Crack the Keys</a></li>
+            <li><a href="#step-4-decrypt-the-flag">Step 4: Decrypt the Flag</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -330,6 +339,234 @@ $\mathcal K = \{\text{md5}(b_1b_2b_3)\ |\ 0 \leq b_1,b_2,b_3 \leq 256\}$</li>
   <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation">Wikipedia</a> as a guide, we can draw the encryption process as a graph. For simplicity, let us make the message blocks just 16 bytes long. This way there is no padding (which wouldnt&rsquo;ve happened anyways) and there is no splitting of blocks.</p>
 <p>
   <img src="/static/COMP4901O/crypto.png" alt="Crypto System" /></p>
+<p>In this diagram, the blocks are AES cipher blocks which take an input of 16 bytes, keys of 16 bytes, and outputs 16 bytes.</p>
+<hr>
+<h2 id="approach">Approach</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<h4 id="meet-in-the-middle">Meet in the Middle</h4>
+<p>Meet in the middle is a known plaintext attack used when there are multiple encryption operations in sequence. Take a look at this scenario for example:</p>
+<p>
+  <img src="/static/COMP4901O/mitm.PNG" alt="MITM" /></p>
+<p>One could crack both keys in at most $|\mathcal K_1|\times |\mathcal K_2|$ operations with a meet in the middle attack where $\mathcal K_1$ and $\mathcal K_2$ are the keyspaces of $k_1$ and $k_2$ respectively. This would be done by creating a set $X^\prime$ such that $X^\prime$ contains all the possible outputs of the encryption block with a constant plaintext $p$, for all $k \in \mathcal K_1$, and another set $X^{\prime \prime}$ which contains all the possiblle outputs from decrypting the known $c$ with all keys $k \in K_2$. Once you find an intersection between $X^\prime$ and $X^{\prime \prime}$, then you would have found a potential $k_1$ and $k_2$. To verify, simply try encrypting a different plaintext and see if the output matches your self encrypted value.</p>
+<h4 id="notation">Notation</h4>
+<p>Lets denote an AES block encryption as $E(k,p)$ where $k$ is the key, and $p$ is the plaintext. And AES block decryption as $D(k,c)$ where $c$ is the ciphertext.</p>
+<hr>
+<h3 id="step-1-cracking-k_1">Step 1: Cracking $k_1$</h3>
+<div class="book-columns flex flex-wrap">
+  
+  <div class="flex-even markdown-inner">
+    <p>In order to crack $k_1$ we can first encrypt $p_1$ using the service. From this we can obtain $c_1, IV_1$, and $IV_2$.</p>
+<p>If we then decrypt $c_1$ using the service supplying 16 null bytes as $IV_1$ and use the same $IV_2$ we obtained from our first encryption we can obtain $p_2$.</p>
+<p>We can see that</p>
+<ul>
+<li>$D(k_2,z) = y,\ z = c_1 \oplus E(k_3, IV_2)$</li>
+<li>$E(k_1, p_1) = x$</li>
+<li>$p_2 = D(k_1, y) \implies E(k_1, p_2) = y$</li>
+<li>$y \oplus IV_1 = x$</li>
+</ul>
+
+  </div>
+  
+  <div class="flex-even markdown-inner">
+    <img src="/static/COMP4901O/step1.PNG" alt="Step 1">
+  </div>
+  
+</div>
+
+<p>We now have a relation between $p_1$ and $p_2$. By searching through the entire keyspace for a key $k$ such that $E(k,p_2) \oplus IV_1 = E(k, p_1)$ then we have found $k_1$.</p>
+<h3 id="step-2-gather-more-information">Step 2: Gather More Information</h3>
+<p>In this step, we want to gather more information about $k_2$ and $k_3$. With knowledge of $k_1$ we can essentially nullify the effect of the first encryption block.<br>
+So prepare a plaintext $p_{\text{empty}} = D(k_1, \text{null})$, and send $p_{\text{empty}}$ to the encryption service to obtain $IV_{12}, IV_{22}$ and $c_{12}$.<br>
+Next we want to recieve the encrypted flag because we have enough information at this point to crack the remaining keys.</p>
+<p>Lets save the encrypted flag as $IV_{1 \text{ flag}}, IV_{2 \text{ flag}}$ and $c_{\text{flag}}$.</p>
+<h3 id="step-3-crack-the-keys">Step 3: Crack the Keys</h3>
+<p>When we decrypted the null bytes using $k_1$ in the previous step, then encrpyted it as a message, the ciphertext $c_{12} = E(k_2, IV_{12}) \oplus E(k_3, IV_{22})$. As a diagram:</p>
+<p>
+  <img src="/static/COMP4901O/crack.PNG" alt="Crack the Keys" /></p>
+<p>With this, we can see that we can crack the keys using meet in the middle.<br>
+Let $X^\prime = \{E(k,IV_{12}),\ \forall k \in \mathcal K\}$ and $X^{\prime \prime} = \{E(k, IV_{22}) \oplus c_{12}, \ \forall k \in \mathcal K)\}$<br>
+Let $K_2, K_3$ be the potential values of $k_2$ and $k_3$ respectively.<br>
+$K_2 = \{k \ | \  E(k, IV_{12}) \in X^\prime \cap X^{\prime \prime}\}$<br>
+$K_3 = \{k \ | \  E(k, IV_{22}) \oplus c_{12} \in X^\prime \cap X^{\prime \prime}\}$<br>
+Then every combination of keys $k_2$ and $k_3$ are in $K_2 \times K_3$.</p>
+<h3 id="step-4-decrypt-the-flag">Step 4: Decrypt the Flag</h3>
+<p>With all of our potential sets of keys $k_1, k_2, k_3$, we can now try to decrypt the flag. I have found that returning after the first collision between $X^\prime$ and $X^{\prime \prime}$ is fine as the chance of more collisions is extremely low. So, finally decrypting the flag with our keys yields:<br>
+<code>zer0pts{5kip_7h3_midd13_4nd_m337_in_7h3_midd13!}</code></p>
+<hr>
+<details >
+  <summary>Solve Script</summary>
+  <div class="markdown-inner">
+    <p><a href="/static/COMP4901O/3aes_solution.py">3aes_solution.py</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
+<span style="color:#f92672">from</span> Crypto.Random <span style="color:#f92672">import</span> get_random_bytes
+<span style="color:#f92672">from</span> binascii <span style="color:#f92672">import</span> hexlify, unhexlify
+<span style="color:#f92672">from</span> hashlib <span style="color:#f92672">import</span> md5
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">from</span> tqdm <span style="color:#f92672">import</span> tqdm
+<span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> time
+
+keyspace  <span style="color:#f92672">=</span> []
+<span style="color:#66d9ef">for</span> b1 <span style="color:#f92672">in</span> tqdm(range(<span style="color:#ae81ff">256</span>)):
+    <span style="color:#66d9ef">for</span> b2 <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">256</span>):
+        <span style="color:#66d9ef">for</span> b3 <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">256</span>):
+            key <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">+</span> b1<span style="color:#f92672">.</span>to_bytes(<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;big&#39;</span>) <span style="color:#f92672">+</span> b2<span style="color:#f92672">.</span>to_bytes(<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;big&#39;</span>) <span style="color:#f92672">+</span> b3<span style="color:#f92672">.</span>to_bytes(<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;big&#39;</span>)
+            keyspace<span style="color:#f92672">.</span>append(md5(key)<span style="color:#f92672">.</span>digest())
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">prep</span>(iv1, iv2, load):
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;:&#34;</span><span style="color:#f92672">.</span>join([hexlify(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [iv1, iv2, load]])<span style="color:#f92672">.</span>decode()
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">clean</span>(inp):
+    <span style="color:#66d9ef">return</span> [unhexlify(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> inp<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;:&#39;</span>)]
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">byte_xor</span>(ba1, ba2):
+    <span style="color:#66d9ef">return</span> bytes([_a <span style="color:#f92672">^</span> _b <span style="color:#66d9ef">for</span> _a, _b <span style="color:#f92672">in</span> zip(ba1, ba2)])
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">encrypt_ecb</span>(key,text):
+    cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(key,AES<span style="color:#f92672">.</span>MODE_ECB)
+    <span style="color:#66d9ef">return</span> cipher<span style="color:#f92672">.</span>encrypt(text)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decrypt_ecb</span>(key, text):
+    cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(key, AES<span style="color:#f92672">.</span>MODE_ECB)
+    <span style="color:#66d9ef">return</span> cipher<span style="color:#f92672">.</span>decrypt(text)
+
+<span style="color:#75715e"># IDEA:</span>
+<span style="color:#75715e"># Phase 1</span>
+<span style="color:#75715e">#   - Encrypt p_1</span>
+<span style="color:#75715e">#       - Obtain IV1</span>
+<span style="color:#75715e">#       - Obtain IV2</span>
+<span style="color:#75715e">#       - Obtain c_1</span>
+<span style="color:#75715e">#   - Decrypt c_1 with IV1 = 0 and IV2 same as what was obtained in previous step</span>
+<span style="color:#75715e">#       - Obtain p_2</span>
+<span style="color:#75715e"># Phase 2</span>
+<span style="color:#75715e">#   - For each key in the key space, encrypt p_1 and p_2 and save it in sets A and B</span>
+<span style="color:#75715e">#   - xor every element in A with IV1 and if it is equal to some element in B, then we now have k1</span>
+<span style="color:#75715e"># Phase 3</span>
+<span style="color:#75715e">#   - With k1, encrypt empty bytes, and pass that to the encrypt function as plaintext.</span>
+<span style="color:#75715e">#       - Obtain IV1_2 which is the input for the CBC block.</span>
+<span style="color:#75715e">#       - Obtain IV2_2</span>
+<span style="color:#75715e">#       - Obtain c_1_2</span>
+<span style="color:#75715e"># Phase 4</span>
+<span style="color:#75715e">#   - Get encrypted flag and drop connection</span>
+<span style="color:#75715e">#   - Meet in the middle. first by trying to encrypt IV1_2 with all possible k2 and put into set C.</span>
+<span style="color:#75715e">#     Then encrypt IV2_2 and xor with c_1_2. If the result of the xor shows up in C, then all three keys</span>
+<span style="color:#75715e">#     Are found.</span>
+<span style="color:#75715e">#   - Decrypt the flag</span>
+<span style="color:#75715e"># Phase 5</span>
+<span style="color:#75715e">#   - Profit</span>
+
+r <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#34;crypto.ctf.zer0pts.com&#34;</span>, <span style="color:#ae81ff">10929</span>)
+
+p_1 <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">16</span>
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;PHASE 1&#34;</span>)
+
+r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;&gt; &#39;</span>)
+r<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;1&#39;</span>)
+r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;: &#39;</span>)
+r<span style="color:#f92672">.</span>sendline(hexlify(p_1))
+r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;: &#39;</span>)
+iv1, iv2, c_1 <span style="color:#f92672">=</span> clean(r<span style="color:#f92672">.</span>recvline())
+
+r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;&gt; &#39;</span>)
+r<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">&#39;2&#39;</span>)
+r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;: &#39;</span>)
+package <span style="color:#f92672">=</span> prep(p_1, iv2, c_1)
+<span style="color:#66d9ef">print</span>(package)
+r<span style="color:#f92672">.</span>sendline(package)
+r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;: &#39;</span>)
+p_2 <span style="color:#f92672">=</span> unhexlify(r<span style="color:#f92672">.</span>recvline()<span style="color:#f92672">.</span>strip())
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;p_1&#34;</span>, p_1)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;p_2&#34;</span>,p_2)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;iv1&#34;</span>, iv1)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;iv2&#34;</span>, iv2)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;c_1&#34;</span>, c_1)
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">PHASE 2&#34;</span>)
+
+k_1 <span style="color:#f92672">=</span> None
+t1 <span style="color:#f92672">=</span> time()
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Creating Table...&#34;</span>)
+<span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> keyspace:
+    a <span style="color:#f92672">=</span> byte_xor(encrypt_ecb(key, p_2),iv1)
+    b <span style="color:#f92672">=</span> encrypt_ecb(key, p_1)
+    <span style="color:#66d9ef">if</span> a <span style="color:#f92672">==</span> b:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;KEY 1 FOUND!!!&#34;</span>)
+        k_1 <span style="color:#f92672">=</span> key
+        <span style="color:#66d9ef">break</span>
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Time taken (seconds):&#34;</span>, time()<span style="color:#f92672">-</span>t1)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;k_1&#34;</span>, k_1)
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">PHASE 3&#34;</span>)
+
+empty <span style="color:#f92672">=</span> decrypt_ecb(k_1, p_1)
+r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;&gt; &#39;</span>)
+r<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">&#39;1&#39;</span>)
+r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;: &#39;</span>)
+r<span style="color:#f92672">.</span>sendline(hexlify(empty))
+r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;: &#39;</span>)
+iv1_2, iv2_2, c_1_2 <span style="color:#f92672">=</span> clean(r<span style="color:#f92672">.</span>recvline())
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;iv1_2&#34;</span>, iv1_2)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;iv2_2&#34;</span>, iv2_2)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;c_1_2&#34;</span>, c_1_2)
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">PHASE 4&#34;</span>)
+
+r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;&gt; &#39;</span>)
+r<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">&#39;3&#39;</span>)
+r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;: &#39;</span>)
+iv1_flag, iv2_flag, c_flag <span style="color:#f92672">=</span> clean(r<span style="color:#f92672">.</span>recvline())
+r<span style="color:#f92672">.</span>close()
+
+k_2 <span style="color:#f92672">=</span> None
+k_3 <span style="color:#f92672">=</span> None
+keymap <span style="color:#f92672">=</span> dict()
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Searching for keys...&#34;</span>)
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> tqdm(range(len(keyspace))):
+    key <span style="color:#f92672">=</span> keyspace[i]
+    a <span style="color:#f92672">=</span> encrypt_ecb(key,iv1_2)
+    b <span style="color:#f92672">=</span> byte_xor(encrypt_ecb(key,iv2_2), c_1_2)
+    <span style="color:#66d9ef">if</span> a <span style="color:#f92672">in</span> keymap:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;KEYS FOUND!!&#34;</span>)
+        k_3 <span style="color:#f92672">=</span> keymap[a]
+        k_2 <span style="color:#f92672">=</span> key
+        <span style="color:#66d9ef">break</span>
+    <span style="color:#66d9ef">if</span> b <span style="color:#f92672">in</span> keymap:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;KEYS FOUND!!&#34;</span>)
+        k_3 <span style="color:#f92672">=</span> key
+        k_2 <span style="color:#f92672">=</span> keymap[b]
+        <span style="color:#66d9ef">break</span>
+    keymap[a] <span style="color:#f92672">=</span> key
+    keymap[b] <span style="color:#f92672">=</span> key
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;k_1&#34;</span>, k_1)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;k_2&#34;</span>, k_2)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;k_3&#34;</span>, k_3)
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">PHASE 5&#34;</span>)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_ciphers</span>(iv1, iv2, k1,k2,k3):
+    <span style="color:#66d9ef">return</span> [
+        AES<span style="color:#f92672">.</span>new(k1, mode<span style="color:#f92672">=</span>AES<span style="color:#f92672">.</span>MODE_ECB),
+        AES<span style="color:#f92672">.</span>new(k2, mode<span style="color:#f92672">=</span>AES<span style="color:#f92672">.</span>MODE_CBC, iv<span style="color:#f92672">=</span>iv1),
+        AES<span style="color:#f92672">.</span>new(k3, mode<span style="color:#f92672">=</span>AES<span style="color:#f92672">.</span>MODE_CFB, iv<span style="color:#f92672">=</span>iv2, segment_size<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span><span style="color:#f92672">*</span><span style="color:#ae81ff">16</span>),
+    ]
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decrypt</span>(c: bytes, iv1: bytes, iv2: bytes,keys) <span style="color:#f92672">-&gt;</span> bytes:
+    <span style="color:#66d9ef">assert</span> len(c) <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>
+    ciphers <span style="color:#f92672">=</span> get_ciphers(iv1, iv2,keys[<span style="color:#ae81ff">0</span>],keys[<span style="color:#ae81ff">1</span>],keys[<span style="color:#ae81ff">2</span>])
+    m <span style="color:#f92672">=</span> c
+    <span style="color:#66d9ef">for</span> cipher <span style="color:#f92672">in</span> ciphers[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+        m <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>decrypt(m)
+    <span style="color:#66d9ef">return</span> m
+
+<span style="color:#66d9ef">print</span>(decrypt(c_flag, iv1_flag,iv2_flag,[k_1,k_2,k_3]))
+</code></pre></div>
+  </div>
+</details>
+
 </article>
  
       
@@ -376,6 +613,15 @@ $\mathcal K = \{\text{md5}(b_1b_2b_3)\ |\ 0 \leq b_1,b_2,b_3 \leq 256\}$</li>
         <li><a href="#reading-the-source-code">Reading the Source Code</a></li>
         <li><a href="#what-is-the-problem">What is the Problem?</a></li>
         <li><a href="#how-messages-are-encrypted-and-decrypted">How Messages Are Encrypted and Decrypted</a></li>
+        <li><a href="#approach">Approach</a>
+          <ul>
+            <li><a href="#prerequisites">Prerequisites</a></li>
+            <li><a href="#step-1-cracking-k_1">Step 1: Cracking $k_1$</a></li>
+            <li><a href="#step-2-gather-more-information">Step 2: Gather More Information</a></li>
+            <li><a href="#step-3-crack-the-keys">Step 3: Crack the Keys</a></li>
+            <li><a href="#step-4-decrypt-the-flag">Step 4: Decrypt the Flag</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
