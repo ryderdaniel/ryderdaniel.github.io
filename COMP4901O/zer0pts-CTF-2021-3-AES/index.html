@@ -16,7 +16,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
-<script defer src="/en.search.min.a7f3bd589a3f6741331f803a23811b91027535ab23b57fe2b44622782ee2f40b.js" integrity="sha256-p/O9WJo/Z0EzH4A6I4EbkQJ1NasjtX/itEYieC7i9As="></script>
+<script defer src="/en.search.min.4b86b92d0bbe8b7a573166813d07237f68c1b7c4fb00a7d13d14cfdafb0502aa.js" integrity="sha256-S4a5LQu&#43;i3pXMWaBPQcjf2jBt8T7AKfRPRTP2vsFAqo="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
 <!--
@@ -200,6 +200,7 @@ delimiters: [
             <li><a href="#step-4-decrypt-the-flag">Step 4: Decrypt the Flag</a></li>
           </ul>
         </li>
+        <li><a href="#solve-script">Solve Script</a></li>
       </ul>
     </li>
   </ul>
@@ -393,11 +394,13 @@ Then every combination of keys $k_2$ and $k_3$ are in $K_2 \times K_3$.</p>
 <p>With all of our potential sets of keys $k_1, k_2, k_3$, we can now try to decrypt the flag. I have found that returning after the first collision between $X^\prime$ and $X^{\prime \prime}$ is fine as the chance of more collisions is extremely low. So, finally decrypting the flag with our keys yields:<br>
 <code>zer0pts{5kip_7h3_midd13_4nd_m337_in_7h3_midd13!}</code></p>
 <hr>
+<h2 id="solve-script">Solve Script</h2>
+<p>
+  <a href="/static/COMP4901O/3aes_solution.py">3aes_solution.py</a></p>
 <details >
-  <summary>Solve Script</summary>
+  <summary>Solve Script Code</summary>
   <div class="markdown-inner">
-    <p><a href="/static/COMP4901O/3aes_solution.py">3aes_solution.py</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 <span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
 <span style="color:#f92672">from</span> Crypto.Random <span style="color:#f92672">import</span> get_random_bytes
 <span style="color:#f92672">from</span> binascii <span style="color:#f92672">import</span> hexlify, unhexlify
@@ -622,6 +625,7 @@ keymap <span style="color:#f92672">=</span> dict()
             <li><a href="#step-4-decrypt-the-flag">Step 4: Decrypt the Flag</a></li>
           </ul>
         </li>
+        <li><a href="#solve-script">Solve Script</a></li>
       </ul>
     </li>
   </ul>
