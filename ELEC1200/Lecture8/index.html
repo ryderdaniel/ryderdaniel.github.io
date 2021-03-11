@@ -5,21 +5,20 @@
   <meta name="generator" content="Hugo 0.68.3" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="COMP4631 - Computer and Communication Security Cryptosystems, symmetric-key and public-key cryptography, cryptanalysis, authentication, message digests, digital signatures, and random number generation. Access controls and firewalls. Applications such as certificate authorities, electronic commerce, smartcards, and digital cash.
-  Examples of One-Key Block Ciphers   One-key Stram Ciphers; The Data Encryption Standard (DES); The Triple DES; Advanced Encryption Standard (AES); A Method for Padding Messages; The Cipher Block Chaining (CBC) Mode   One Key Block Ciphers   One key block ciphers and their security; Transposition Ciphers and their security; Simple substitution ciphers and their security; The one-time pad   Introduction to Cryptography   Data confidentiality, encryption; data integrity, authentication of sender and reciever; nonrepudiation; secret sharing; cryptographic protocols; history of cryptography   Discrete Math Review   Review on discete mathematics for cryptography.">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="COMP4631 - Computer and Communication Security" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://ryderdaniel.github.io/COMP4631/" />
-<meta property="og:updated_time" content="2021-03-03T09:06:05+08:00" />
-<title>COMP4631 - Computer and Communication Security | Spring 2021</title>
+<meta name="description" content="Intuition for equalizer, Derivation of equalizer, Effect of equalization on eye diagram">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Lecture8" />
+<meta property="og:description" content="Intuition for equalizer, Derivation of equalizer, Effect of equalization on eye diagram" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ryderdaniel.github.io/ELEC1200/Lecture8/" />
+<meta property="article:published_time" content="2021-03-11T14:19:28+08:00" />
+<meta property="article:modified_time" content="2021-03-11T14:19:28+08:00" />
+<title>Lecture8 | Spring 2021</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
 <script defer src="/en.search.min.d2af871eac7d2d14c3080f0d44f4bc25fa53e6b4ce15237fcf700a03d80174b6.js" integrity="sha256-0q&#43;HHqx9LRTDCA8NRPS8JfpT5rTOFSN/z3AKA9gBdLY="></script>
 
 <script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
-<link rel="alternate" type="application/rss+xml" href="http://ryderdaniel.github.io/COMP4631/index.xml" title="Spring 2021" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -150,7 +149,7 @@ delimiters: [
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
   
-  <strong>COMP4631 - Computer and Communication Security</strong>
+  <strong>Lecture8</strong>
 
   <label for="toc-control">
     
@@ -182,7 +181,17 @@ delimiters: [
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#comp4631---computer-and-communication-security">COMP4631 - Computer and Communication Security</a></li>
+    <li>
+      <ul>
+        <li><a href="#intuition-for-equalizer">Intuition for Equalizer</a></li>
+        <li><a href="#derivation-of-equalizer">Derivation of Equalizer</a>
+          <ul>
+            <li><a href="#interpretation-in-terms-of-changes">Interpretation in Terms of Changes</a></li>
+          </ul>
+        </li>
+        <li><a href="#effect-of-equalization-on-the-eye-diagram">Effect of Equalization on the Eye Diagram</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -195,47 +204,81 @@ delimiters: [
 
       
       
-  <article class="markdown"><h1 id="comp4631---computer-and-communication-security">COMP4631 - Computer and Communication Security</h1>
-<p>Cryptosystems, symmetric-key and public-key cryptography, cryptanalysis, authentication, message digests, digital signatures, and random number generation. Access controls and firewalls. Applications such as certificate authorities, electronic commerce, smartcards, and digital cash.</p>
-<dl>
-
-  <dt>
-    <a href="/COMP4631/05.-Examples-of-One-Key-Block-Ciphers/">Examples of One-Key Block Ciphers</a>
-  </dt>
-  <dd>
-    One-key Stram Ciphers; The Data Encryption Standard (DES); The Triple DES; Advanced Encryption Standard (AES); A Method for Padding Messages; The Cipher Block Chaining (CBC) Mode
-  </dd>
-
-  <dt>
-    <a href="/COMP4631/04.-One-Key-Block-Ciphers/">One Key Block Ciphers</a>
-  </dt>
-  <dd>
-    One key block ciphers and their security; Transposition Ciphers and their security; Simple substitution ciphers and their security; The one-time pad
-  </dd>
-
-  <dt>
-    <a href="/COMP4631/03.-Introduction-to-Cryptography/">Introduction to Cryptography</a>
-  </dt>
-  <dd>
-    Data confidentiality, encryption; data integrity, authentication of sender and reciever; nonrepudiation; secret sharing; cryptographic protocols; history of cryptography
-  </dd>
-
-  <dt>
-    <a href="/COMP4631/02.-Discrete-Math-Review/">Discrete Math Review</a>
-  </dt>
-  <dd>
-    Review on discete mathematics for cryptography.
-  </dd>
-
-  <dt>
-    <a href="/COMP4631/01.-Introduction-and-Physical-Security/">Course Introduction and Physical Security</a>
-  </dt>
-  <dd>
-    The content of the first two lectures. Laying down definitions, and the giving some scope on what is to be covered
-  </dd>
-
-</dl>
-
+  <article class="markdown"><h2 id="intuition-for-equalizer">Intuition for Equalizer</h2>
+<ul>
+<li>Due to ISI, the output doesnt always move far enough to cross the threshold in response to a change in the bit</li>
+<li>Thus, looking at the value or level of the output is not a reliable way to determine the input bit.</li>
+<li>When the input goes from zero to one,
+<ul>
+<li>The channel output does not immediately move to $k$.</li>
+<li>Rather the output starts to change from zero to $k$.</li>
+</ul>
+</li>
+<li>Can we do better by looking at how the output is changing, rather than the outout level?</li>
+<li>How might we combine this information with the output level?</li>
+</ul>
+<h2 id="derivation-of-equalizer">Derivation of Equalizer</h2>
+<ul>
+<li>According to model 2:<br>
+$$y(n) = a \cdot y(n-1) + (1-a) \cdot k \cdot x(n)$$</li>
+<li>Solving for $x(n)$:<br>
+$$x(n) = \frac{1}{(1-a) \cdot k}[y(n)-a\cdot y(n-1)]$$</li>
+<li>This is only true if the output of the channel is exactly described by this equation, however, there may be unmodeled effects, such as non-linearity and noise or incorrect parameters.</li>
+<li>Thus this is really just an approximation of the input:<br>
+$$\tilde x(n) = \frac{1}{(1-a) \cdot k}[y(n)-a\cdot y(n-1)]$$</li>
+</ul>
+<h3 id="interpretation-in-terms-of-changes">Interpretation in Terms of Changes</h3>
+<p>
+  <img src="/static/ELEC1200/interpretation.PNG" alt="Interpretation in terms of changes" /></p>
+<h4 id="example">Example</h4>
+<ul>
+<li>
+<p>Suppose we have a channel step response described as<br>
+$$s(n) = \frac{1}{2}\Biggl (1-{\Bigl( \frac{2}{3} \Bigr) }^{n+1} \Biggr )u(n)$$<br>
+Where $u(n)$ is the unit step function.</p>
+</li>
+<li>
+<p>What is the equation for the equalizer for this channel?</p>
+</li>
+<li>
+<p>Solution:</p>
+</li>
+<li>
+<p>Step 1: Find the equivalent recursive model.</p>
+<ul>
+<li>$s(n) = k(1-a^{n+1})u(n) \implies k = \frac{1}{2} \text{ and } a = \frac{2}{3}$</li>
+<li>Substitute $a$ and $k$ into $y(n) = a \cdot y(n-1) + (1-a) \cdot k \cdot x(n)$<br>
+$y(n) = \frac{2}{3}y(n-1) + \frac{1}{6}x(n)$</li>
+</ul>
+</li>
+<li>
+<p>Step 2: Invert the Recursive Model</p>
+<ul>
+<li>$x(n) = 6y(n)-4y(n-1)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="effect-of-equalization-on-the-eye-diagram">Effect of Equalization on the Eye Diagram</h2>
+<ul>
+<li>
+<p>$a_{ch} = $ a parameter for the channel</p>
+</li>
+<li>
+<p>$a_{eq} = $ a parameter for the equalizer</p>
+</li>
+<li>
+<p>$k_{ch} = $ k parameter for the channel</p>
+</li>
+<li>
+<p>$k_{eq} = $ k parameter for the equalizer</p>
+</li>
+<li>
+<p>Ideally, $a_{eq} = a_{ch}$ if thats the case, the channel can be perfectly modeled.</p>
+</li>
+<li>
+<p>Beware if there is noise. Even though equalization has opened the eye width, it has also magnified the noise, thus shrinking the eye height.</p>
+</li>
+</ul>
 </article>
  
       
@@ -272,7 +315,17 @@ delimiters: [
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#comp4631---computer-and-communication-security">COMP4631 - Computer and Communication Security</a></li>
+    <li>
+      <ul>
+        <li><a href="#intuition-for-equalizer">Intuition for Equalizer</a></li>
+        <li><a href="#derivation-of-equalizer">Derivation of Equalizer</a>
+          <ul>
+            <li><a href="#interpretation-in-terms-of-changes">Interpretation in Terms of Changes</a></li>
+          </ul>
+        </li>
+        <li><a href="#effect-of-equalization-on-the-eye-diagram">Effect of Equalization on the Eye Diagram</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

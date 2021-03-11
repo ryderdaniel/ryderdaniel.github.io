@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.68.3" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Equivalent Models, Recursive Channel Model, Proof of equivalence">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Lecture 7" />
+<meta property="og:description" content="Equivalent Models, Recursive Channel Model, Proof of equivalence" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ryderdaniel.github.io/ELEC1200/Lecture7/" />
+<meta property="article:published_time" content="2021-03-11T12:37:17+08:00" />
+<meta property="article:modified_time" content="2021-03-11T12:37:17+08:00" />
+<title>Lecture 7 | Spring 2021</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.a15c3a88ea3d20b6a66c1170df2a33ad73521cb0a6747c1149ccc19189fac34f.css" integrity="sha256-oVw6iOo9ILambBFw3yozrXNSHLCmdHwRSczBkYn6w08=">
+<script defer src="/en.search.min.d2af871eac7d2d14c3080f0d44f4bc25fa53e6b4ce15237fcf700a03d80174b6.js" integrity="sha256-0q&#43;HHqx9LRTDCA8NRPS8JfpT5rTOFSN/z3AKA9gBdLY="></script>
+
+<script defer src="/sw.min.74a8bb07f0bee86d6bb9a2750f073f14d93c7e4512f28860370cfd879e9719b4.js" integrity="sha256-dKi7B/C&#43;6G1ruaJ1Dwc/FNk8fkUS8ohgNwz9h56XGbQ="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><span>Spring 2021</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/COMP4631/" target="_blank" rel="noopener">
+        COMP4631
+      </a>
+  </li>
+  
+  <li>
+    <a href="/COMP4632/" target="_blank" rel="noopener">
+        COMP4632
+      </a>
+  </li>
+  
+  <li>
+    <a href="/COMP4901O/" target="_blank" rel="noopener">
+        COMP4901O
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ELEC1010/" target="_blank" rel="noopener">
+        ELEC1010
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ELEC1200/" target="_blank" rel="noopener">
+        ELEC1200
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+delimiters: [
+  {left: "$$", right: "$$", display: true},
+  {left: "$", right: "$", display: false},
+  {left: "\\(", right: "\\)", display: false},
+  {left: "\\[", right: "\\]", display: true}
+]
+        });
+    });
+</script>
+
+
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+  
+  <strong>Lecture 7</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+delimiters: [
+  {left: "$$", right: "$$", display: true},
+  {left: "$", right: "$", display: false},
+  {left: "\\(", right: "\\)", display: false},
+  {left: "\\[", right: "\\]", display: true}
+]
+        });
+    });
+</script>
+
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#motivation-equalization">Motivation: Equalization</a></li>
+            <li><a href="#developing-the-equalizer">Developing the Equalizer</a></li>
+          </ul>
+        </li>
+        <li><a href="#equivalent-models">Equivalent Models</a>
+          <ul>
+            <li><a href="#model-1">Model 1</a></li>
+            <li><a href="#equivalent-model">Equivalent Model</a></li>
+          </ul>
+        </li>
+        <li><a href="#recursive-channel-models">Recursive Channel Models</a>
+          <ul>
+            <li><a href="#effect-of-parameter-a">Effect of Parameter $a$</a></li>
+          </ul>
+        </li>
+        <li><a href="#proof-of-equivalence">Proof of Equivalence</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h3 id="motivation-equalization">Motivation: Equalization</h3>
+<ul>
+<li>The channel introduces ISI which causes the eye to close.</li>
+<li>The goal of a channel equalizer is to undo the effect of the channel.</li>
+<li>This will cause the eye to open.</li>
+</ul>
+<h3 id="developing-the-equalizer">Developing the Equalizer</h3>
+<ul>
+<li>How can we figure out what to put into the channel equalizer?
+<ul>
+<li>We need to describe the effect of the channel using a model that enables us to predict the channel output for any input.</li>
+<li>Using this model, we can hopefully guess (estimate) what the input to the channel was from knowledge of the output.</li>
+</ul>
+</li>
+</ul>
+<h2 id="equivalent-models">Equivalent Models</h2>
+<h3 id="model-1">Model 1</h3>
+<ul>
+<li>
+<p>We have seen that the communication channel can be modelled by:</p>
+<ul>
+<li>Assuming it is linear and time invariant</li>
+<li>Assuming it has a known step response $s(n)$</li>
+</ul>
+</li>
+<li>
+<p>For our communication system, the step response has the form<br>
+$s(n) = k(1-a^{n+1})u(n),\ 0 \leq a \leq 1$</p>
+</li>
+<li>
+<p>This model is useful in predicting the output for a given input. However, it is not easy to go the other way.</p>
+</li>
+<li>
+<p>We seen another equivalent model that will allow us to do this easily.</p>
+</li>
+</ul>
+<h3 id="equivalent-model">Equivalent Model</h3>
+<ul>
+<li>
+<p>A model of the channel is a way of predicting the channel output given the channel input.</p>
+</li>
+<li>
+<p>One system may be described by many equivalent models that are written in many different ways.</p>
+</li>
+<li>
+<p>Given the same input, Equivalent models make the same prediction for the output.</p>
+</li>
+<li>
+<p>Why do we need more than one model?</p>
+<ul>
+<li>The more models we have, the better we can understand the system</li>
+<li>Different models have different uses.</li>
+</ul>
+</li>
+</ul>
+<h2 id="recursive-channel-models">Recursive Channel Models</h2>
+<ul>
+<li>
+<p>Recursive = involving repeated application of a rule</p>
+</li>
+<li>
+<p>A recursive model for a discrete time waveform $x(n)$ has two parts:</p>
+<ul>
+<li>A formula that defines the nth sample in terms of past samples</li>
+<li>An initial starting condition</li>
+</ul>
+</li>
+<li>
+<p>Generating the waveform by recursion:</p>
+<ul>
+<li>Given $x(0)$, find $x(1) = f(x(0))$</li>
+<li>Given $x(1)$, find $x(2) = f(x(1))$</li>
+<li>$&hellip;$</li>
+</ul>
+</li>
+<li>
+<p>It turns out that the response of the channel $y(n)$ to an input $x(n)$ can be described by a recursive formula:<br>
+$y(n) = a \cdot y(n-1) + (1-a) \cdot k \cdot x(n)$</p>
+</li>
+</ul>
+<p>
+  <img src="/static/ELEC1200/recursion.PNG" alt="Recursive Model" /></p>
+<ul>
+<li>The parameter $a$ lies between $0$ and $1$</li>
+<li>The parameter $k$ scales the input</li>
+<li>This is also known as a feedback system. Because the output feeds back as input to the system to determine the next output.</li>
+</ul>
+<h3 id="effect-of-parameter-a">Effect of Parameter $a$</h3>
+<p>The parameter determines the memory in the channel</p>
+<ul>
+<li>$a=0$:
+<ul>
+<li>no memory of the past</li>
+<li>$y(n) = k \cdot x(n)$</li>
+<li>The channel output is just the input multiplied by $k$</li>
+</ul>
+</li>
+<li>$a = 1$
+<ul>
+<li>Infinite memory of the past</li>
+<li>$y(n) = y(n-1)$</li>
+<li>Channel output is constant, ignores the channel input.</li>
+</ul>
+</li>
+</ul>
+<h2 id="proof-of-equivalence">Proof of Equivalence</h2>
+<ul>
+<li>The two channel models are equivalent
+<ul>
+<li>Model 1: The channel is an LTI system with step response<br>
+$s(n) = k(1-a^{n+1})u(n),\ 0 \leq a \leq 1$</li>
+<li>Model 2: The channel has input $x(n)$ and output $y(n)$ determined by<br>
+$y(n) = a \cdot y(n-1) + (1-a) \cdot k \cdot x(n), \ 0 \leq a \leq 1$</li>
+</ul>
+</li>
+<li>We can establish equivalence by showing that:
+<ul>
+<li>Model 2 is LTI.</li>
+<li>Model 2 has a step resoponse to a unit step given by $s(n)$</li>
+</ul>
+</li>
+</ul>
+<h4 id="fact-1-model-2-is-lti">Fact 1: Model 2 is LTI</h4>
+<p>$$y(n) = a \cdot y(n-1) + (1-a) \cdot k \cdot x(n)$$</p>
+<ul>
+<li>It is linear:
+<ul>
+<li>Intuitively, the output is a linear function of the input and past outputs.</li>
+<li>Formally, we will prove that it satisfies the two properties:
+<ul>
+<li>Homogeniety:
+<ul>
+<li>$y(n) = a \cdot y(n-1) + (1-a) \cdot k \cdot x(n)$</li>
+<li>$c\cdot y(n) = c\cdot (a \cdot y(n-1) + (1-a) \cdot k \cdot x(n))$</li>
+<li>$c\cdot y(n) = c \cdot a \cdot y(n-1) + (1-a) \cdot k \cdot c \cdot x(n)$</li>
+<li>$\therefore c\cdot x(n) \to |\text{system}| \to c \cdot y(n)$</li>
+</ul>
+</li>
+<li>Additivity:
+<ul>
+<li>Add two of the equations together and see</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>It it time invariant
+<ul>
+<li>Intuitively, the parameters $k$ and $a$ do not change with $n$.</li>
+<li>Formally we prove that if we delay the input by $d$, the output is the same just delayed by $d$.
+<ul>
+<li>substitute $n$ with $n-d$. Observe that $x(n) \to x(n-d)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#motivation-equalization">Motivation: Equalization</a></li>
+            <li><a href="#developing-the-equalizer">Developing the Equalizer</a></li>
+          </ul>
+        </li>
+        <li><a href="#equivalent-models">Equivalent Models</a>
+          <ul>
+            <li><a href="#model-1">Model 1</a></li>
+            <li><a href="#equivalent-model">Equivalent Model</a></li>
+          </ul>
+        </li>
+        <li><a href="#recursive-channel-models">Recursive Channel Models</a>
+          <ul>
+            <li><a href="#effect-of-parameter-a">Effect of Parameter $a$</a></li>
+          </ul>
+        </li>
+        <li><a href="#proof-of-equivalence">Proof of Equivalence</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

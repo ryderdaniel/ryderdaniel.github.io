@@ -6,10 +6,28 @@
     <description>Recent content in ELEC1200 - A System View of Communications: from Signals to Packets on Spring 2021</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Mar 2021 16:33:28 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 11 Mar 2021 14:19:28 +0800</lastBuildDate>
     
 	<atom:link href="http://ryderdaniel.github.io/ELEC1200/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lecture8</title>
+      <link>http://ryderdaniel.github.io/ELEC1200/Lecture8/</link>
+      <pubDate>Thu, 11 Mar 2021 14:19:28 +0800</pubDate>
+      
+      <guid>http://ryderdaniel.github.io/ELEC1200/Lecture8/</guid>
+      <description>Intuition for Equalizer  Due to ISI, the output doesnt always move far enough to cross the threshold in response to a change in the bit Thus, looking at the value or level of the output is not a reliable way to determine the input bit. When the input goes from zero to one,  The channel output does not immediately move to $k$. Rather the output starts to change from zero to $k$.</description>
+    </item>
+    
+    <item>
+      <title>Lecture 7</title>
+      <link>http://ryderdaniel.github.io/ELEC1200/Lecture7/</link>
+      <pubDate>Thu, 11 Mar 2021 12:37:17 +0800</pubDate>
+      
+      <guid>http://ryderdaniel.github.io/ELEC1200/Lecture7/</guid>
+      <description>Motivation: Equalization  The channel introduces ISI which causes the eye to close. The goal of a channel equalizer is to undo the effect of the channel. This will cause the eye to open.  Developing the Equalizer  How can we figure out what to put into the channel equalizer?  We need to describe the effect of the channel using a model that enables us to predict the channel output for any input.</description>
+    </item>
     
     <item>
       <title>Lecture 6</title>
@@ -30,7 +48,7 @@
     </item>
     
     <item>
-      <title>Lecture4</title>
+      <title>Lecture 4</title>
       <link>http://ryderdaniel.github.io/ELEC1200/Lecture4/</link>
       <pubDate>Thu, 25 Feb 2021 18:00:13 +0800</pubDate>
       
